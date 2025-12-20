@@ -1,0 +1,16 @@
+{
+  "name": "coloring-page-website",
+  "version": "1.0.0",
+  "description": "Online coloring platform MVP with tap-to-fill functionality",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=3000 --open=index.html",
+    "test": "echo \"No tests configured yet\""
+  },
+  "keywords": ["coloring", "svg", "kids", "art"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

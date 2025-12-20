@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - ColorTap</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <h1><a href="index.html">ColorTap</a></h1>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container content-page">
+        <h1>Contact Us</h1>
+        <p>We'd love to hear from you! Whether you have questions, feedback, or need support, please reach out to us.</p>
+
+        <div class="contact-info">
+            <h2>Get in Touch</h2>
+            <p><strong>Email:</strong> <a href="mailto:support@colortap.com">support@colortap.com</a></p>
+            <p><strong>Response Time:</strong> We typically respond within 24-48 hours.</p>
+        </div>
+
+        <div class="contact-form">
+            <h2>Send Us a Message</h2>
+            <form id="contact-form" action="#" method="post">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject:</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">-- Select a topic --</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="support">Technical Support</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="copyright">Copyright Issue</option>
+                        <option value="privacy">Privacy Concern</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+            <p class="form-note"><em>Note: For privacy concerns regarding children under 13, please include "COPPA Request" in the subject line.</em></p>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2024 ColorTap. All rights reserved.</p>
+            <nav class="footer-nav">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        // Simple form handling (placeholder - needs backend integration)
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will respond as soon as possible.\n\nNote: This is a demo form. In production, this would send an email.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

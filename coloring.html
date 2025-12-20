@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Color your selected image with tap-to-fill">
+    <title>Coloring - ColorTap</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/coloring-page.css">
+</head>
+<body class="coloring-page">
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <h1><a href="index.html">ColorTap</a></h1>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <button id="random-btn" class="btn btn-random">Random</button>
+                <button id="next-image-btn" class="btn btn-secondary">Next Image</button>
+                <button id="download-btn" class="btn btn-primary">Download</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="coloring-container">
+        <!-- Left Panel: Color Palette -->
+        <aside class="color-panel">
+            <div class="pencil-indicator">
+                <img id="pencil-icon" src="assets/pencil.svg" alt="Pencil" width="80" height="80">
+                <p class="indicator-label">Current Color</p>
+            </div>
+
+            <div class="color-palette">
+                <h3>Colors</h3>
+                <div class="color-grid">
+                    <button class="color-btn active" data-color="#FF0000" style="background-color: #FF0000;" title="Red"></button>
+                    <button class="color-btn" data-color="#FFA500" style="background-color: #FFA500;" title="Orange"></button>
+                    <button class="color-btn" data-color="#FFFF00" style="background-color: #FFFF00;" title="Yellow"></button>
+                    <button class="color-btn" data-color="#00FF00" style="background-color: #00FF00;" title="Green"></button>
+                    <button class="color-btn" data-color="#0000FF" style="background-color: #0000FF;" title="Blue"></button>
+                    <button class="color-btn" data-color="#800080" style="background-color: #800080;" title="Purple"></button>
+                    <button class="color-btn" data-color="#FFC0CB" style="background-color: #FFC0CB;" title="Pink"></button>
+                    <button class="color-btn" data-color="#8B4513" style="background-color: #8B4513;" title="Brown"></button>
+                    <button class="color-btn" data-color="#000000" style="background-color: #000000;" title="Black"></button>
+                    <button class="color-btn" data-color="#FFFFFF" style="background-color: #FFFFFF; border: 2px solid #ccc;" title="White"></button>
+                    <button class="color-btn" data-color="#808080" style="background-color: #808080;" title="Gray"></button>
+                    <button class="color-btn" data-color="#87CEEB" style="background-color: #87CEEB;" title="Light Blue"></button>
+                </div>
+            </div>
+
+            <button id="clear-btn" class="btn btn-danger btn-full-width">CLEAR</button>
+        </aside>
+
+        <!-- Center Panel: Canvas -->
+        <section class="canvas-panel">
+            <div id="svg-container" class="svg-container">
+                <div class="svg-ratio-wrapper">
+                    <!-- White colorable background (behind SVG) -->
+                    <div id="svg-background" class="svg-background"></div>
+
+                    <!-- SVG Content -->
+                    <div class="svg-content">
+                        <!-- SVG image will be loaded here -->
+                        <p class="loading-message">Loading image...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Panel: Advanced Options -->
+        <aside class="advanced-panel">
+            <button id="advanced-toggle" class="advanced-toggle">Advanced Options ▼</button>
+
+            <div id="advanced-content" class="advanced-content">
+                <!-- Gradient Section -->
+                <div class="advanced-section">
+                    <h3>Gradient Fill</h3>
+                    <div class="gradient-controls">
+                        <div class="gradient-color-info">
+                            <p><strong>From:</strong> <span id="gradient-from-label">Red</span></p>
+                            <p><strong>To:</strong> <span id="gradient-to-label">Red</span></p>
+                        </div>
+
+                        <div class="gradient-preview" id="gradient-preview"></div>
+
+                        <div class="gradient-direction-grid">
+                            <button class="gradient-direction-btn" data-direction="to bottom" title="Top to Bottom">
+                                <span class="arrow">↓</span>
+                            </button>
+                            <button class="gradient-direction-btn" data-direction="to top" title="Bottom to Top">
+                                <span class="arrow">↑</span>
+                            </button>
+                            <button class="gradient-direction-btn" data-direction="to right" title="Left to Right">
+                                <span class="arrow">→</span>
+                            </button>
+                            <button class="gradient-direction-btn" data-direction="to left" title="Right to Left">
+                                <span class="arrow">←</span>
+                            </button>
+                            <button class="gradient-direction-btn" data-direction="to bottom right" title="Top-Left to Bottom-Right">
+                                <span class="arrow">↘</span>
+                            </button>
+                            <button class="gradient-direction-btn" data-direction="to bottom left" title="Top-Right to Bottom-Left">
+                                <span class="arrow">↙</span>
+                            </button>
+                            <button class="gradient-direction-btn" data-direction="to top right" title="Bottom-Left to Top-Right">
+                                <span class="arrow">↗</span>
+                            </button>
+                            <button class="gradient-direction-btn" data-direction="to top left" title="Bottom-Right to Top-Left">
+                                <span class="arrow">↖</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pattern Section -->
+                <div class="advanced-section">
+                    <h3>Pattern Fill</h3>
+                    <div class="pattern-controls">
+                        <div class="pattern-color-info">
+                            <p><strong>Color:</strong> <span id="pattern-color-label">Red</span></p>
+                        </div>
+
+                        <div class="pattern-preview" id="pattern-preview"></div>
+
+                        <div class="pattern-grid">
+                            <button class="pattern-btn" data-pattern="stripes" title="Stripes">
+                                <svg width="50" height="50" viewBox="0 0 50 50">
+                                    <line x1="0" y1="10" x2="50" y2="10" stroke="currentColor" stroke-width="3"/>
+                                    <line x1="0" y1="20" x2="50" y2="20" stroke="currentColor" stroke-width="3"/>
+                                    <line x1="0" y1="30" x2="50" y2="30" stroke="currentColor" stroke-width="3"/>
+                                    <line x1="0" y1="40" x2="50" y2="40" stroke="currentColor" stroke-width="3"/>
+                                </svg>
+                                <span>Stripes</span>
+                            </button>
+                            <button class="pattern-btn" data-pattern="dots" title="Dots">
+                                <svg width="50" height="50" viewBox="0 0 50 50">
+                                    <circle cx="10" cy="10" r="3" fill="currentColor"/>
+                                    <circle cx="30" cy="10" r="3" fill="currentColor"/>
+                                    <circle cx="10" cy="30" r="3" fill="currentColor"/>
+                                    <circle cx="30" cy="30" r="3" fill="currentColor"/>
+                                </svg>
+                                <span>Dots</span>
+                            </button>
+                            <button class="pattern-btn" data-pattern="checkerboard" title="Checkerboard">
+                                <svg width="50" height="50" viewBox="0 0 50 50">
+                                    <rect x="0" y="0" width="25" height="25" fill="currentColor"/>
+                                    <rect x="25" y="25" width="25" height="25" fill="currentColor"/>
+                                </svg>
+                                <span>Checker</span>
+                            </button>
+                            <button class="pattern-btn" data-pattern="hearts" title="Hearts">
+                                <svg width="50" height="50" viewBox="0 0 50 50">
+                                    <text x="10" y="30" font-size="30" fill="currentColor">♥</text>
+                                </svg>
+                                <span>Hearts</span>
+                            </button>
+                            <button class="pattern-btn" data-pattern="stars" title="Stars">
+                                <svg width="50" height="50" viewBox="0 0 50 50">
+                                    <text x="10" y="30" font-size="30" fill="currentColor">★</text>
+                                </svg>
+                                <span>Stars</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Confirmation Dialog -->
+    <div id="dialog-overlay" class="dialog-overlay">
+        <div class="dialog-box">
+            <h3 id="dialog-title">Confirm</h3>
+            <p id="dialog-message">Are you sure?</p>
+            <div class="dialog-actions">
+                <button id="dialog-confirm" class="btn btn-primary">Yes</button>
+                <button id="dialog-cancel" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data/image-catalog.js"></script>
+    <script src="js/colors.js"></script>
+    <script src="js/coloring.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/download.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
