@@ -7,7 +7,11 @@
       "Bash(git init:*)",
       "Bash(git add:*)",
       "Bash(dir:*)",
-      "Bash(del nul)"
+      "Bash(del nul)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nInitial commit: ColorTap MVP online coloring platform\n\nFeatures:\n- Homepage with category grid and random image selection\n- Category pages with image thumbnails\n- Interactive coloring page with tap-to-fill functionality\n- 12 basic colors with real-time pencil indicator\n- Advanced options: gradients and patterns (stripes, dots, checkerboard, hearts, stars)\n- Download colored images as PNG\n- Fully responsive design (mobile-first)\n- 4:3 aspect ratio canvas with clickable white background\n- Clear button with confirmation dialog\n- Next Image button for random image selection\n\nTech Stack:\n- Vanilla JavaScript (no frameworks)\n- SVG-based coloring images\n- CSS3 with flexbox/grid layout\n- Live-server for development\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)"
     ]
   }
 }

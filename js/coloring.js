@@ -175,18 +175,47 @@ function fillPath(path) {
  * Initialize background click handler
  */
 function initializeBackground() {
-    const background = document.getElementById('svg-background');
-    if (!background) return;
+    const wrapper = document.querySelector('.svg-ratio-wrapper');
+    const svgContent = document.querySelector('.svg-content');
 
-    // Add click event listener
-    background.addEventListener('click', () => {
-        fillBackground();
+    if (!wrapper || !svgContent) {
+        console.error('Wrapper or SVG content not found in initializeBackground');
+        return;
+    }
+
+    // Add click event listener to the wrapper
+    wrapper.addEventListener('click', (e) => {
+        // Check if click target is NOT an SVG element (path, circle, etc.)
+        const clickedElement = e.target;
+        const isSVGPath = clickedElement.tagName === 'path' ||
+                         clickedElement.tagName === 'circle' ||
+                         clickedElement.tagName === 'rect' ||
+                         clickedElement.tagName === 'polygon' ||
+                         clickedElement.tagName === 'ellipse';
+
+        // If not clicking on SVG path, it's a background click
+        if (!isSVGPath) {
+            fillBackground();
+        }
     });
 
     // Add touch event listener for mobile
-    background.addEventListener('touchend', (e) => {
-        e.preventDefault();
-        fillBackground();
+    wrapper.addEventListener('touchend', (e) => {
+        const touch = e.changedTouches[0];
+        const touchedElement = document.elementFromPoint(touch.clientX, touch.clientY);
+
+        const isSVGPath = touchedElement && (
+            touchedElement.tagName === 'path' ||
+            touchedElement.tagName === 'circle' ||
+            touchedElement.tagName === 'rect' ||
+            touchedElement.tagName === 'polygon' ||
+            touchedElement.tagName === 'ellipse'
+        );
+
+        if (!isSVGPath) {
+            e.preventDefault();
+            fillBackground();
+        }
     });
 }
 
@@ -195,7 +224,10 @@ function initializeBackground() {
  */
 function fillBackground() {
     const background = document.getElementById('svg-background');
-    if (!background) return;
+    if (!background) {
+        console.error('Background element not found');
+        return;
+    }
 
     const startTime = performance.now();
 
@@ -210,12 +242,13 @@ function fillBackground() {
                 break;
 
             case 'gradient':
-                const gradient = `linear-gradient(to bottom, ${coloringState.gradientStart}, ${coloringState.gradientEnd})`;
+                const gradient = `linear-gradient(${coloringState.gradientDirection}, ${coloringState.gradientStart}, ${coloringState.gradientEnd})`;
                 background.style.background = gradient;
                 coloringState.filledRegions['background'] = {
                     type: 'gradient',
                     startColor: coloringState.gradientStart,
-                    endColor: coloringState.gradientEnd
+                    endColor: coloringState.gradientEnd,
+                    direction: coloringState.gradientDirection
                 };
                 break;
 

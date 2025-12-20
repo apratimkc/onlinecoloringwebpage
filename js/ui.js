@@ -27,62 +27,60 @@ function updateCursorColor() {
 }
 
 /**
+ * Get contrasting border color (black or white) for a given color
+ */
+function getContrastingBorderColor(hexColor) {
+    // Handle short hex codes
+    if (!hexColor || hexColor.length < 7) {
+        return '#000000';
+    }
+
+    // Convert hex to RGB
+    const r = parseInt(hexColor.substr(1, 2), 16);
+    const g = parseInt(hexColor.substr(3, 2), 16);
+    const b = parseInt(hexColor.substr(5, 2), 16);
+
+    // Calculate luminance (perceived brightness)
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+
+    // Return white for dark colors, black for light colors
+    return luminance > 0.5 ? '#000000' : '#FFFFFF';
+}
+
+/**
  * Update pencil indicator color
  */
 function updatePencilIndicator() {
     const pencilIcon = document.getElementById('pencil-icon');
     if (!pencilIcon) return;
 
-    // Apply CSS filter to change the color of the pencil icon image
     const color = coloringState.currentColor;
 
-    // Convert hex color to hue rotation filter
-    // This is a simplified approach - using solid color overlay
     switch (coloringState.fillMode) {
         case 'solid':
-            // Use drop-shadow filter with current color
-            pencilIcon.style.filter = `brightness(0) saturate(100%) invert(0%) sepia(100%) hue-rotate(0deg)`;
-            pencilIcon.style.filter = `drop-shadow(0 0 0 ${color}) drop-shadow(0 0 0 ${color}) drop-shadow(0 0 0 ${color}) brightness(0) saturate(100%)`;
-
-            // Better approach: just show the color by overlaying
-            pencilIcon.style.filter = '';
+            // Background = selected color, Pencil stroke & border = contrasting color
             pencilIcon.style.backgroundColor = color;
-            pencilIcon.style.maskImage = `url(${pencilIcon.src})`;
-            pencilIcon.style.maskSize = 'contain';
-            pencilIcon.style.maskRepeat = 'no-repeat';
-            pencilIcon.style.maskPosition = 'center';
-            pencilIcon.style.webkitMaskImage = `url(${pencilIcon.src})`;
-            pencilIcon.style.webkitMaskSize = 'contain';
-            pencilIcon.style.webkitMaskRepeat = 'no-repeat';
-            pencilIcon.style.webkitMaskPosition = 'center';
+            pencilIcon.style.background = color;
+            const contrastColor = getContrastingBorderColor(color);
+            pencilIcon.style.color = contrastColor;  // SVG path uses contrasting color
+            pencilIcon.style.border = `3px solid ${contrastColor}`;
             break;
 
         case 'gradient':
-            // Use gradient background with mask
-            pencilIcon.style.filter = '';
+            // Background = gradient, Pencil stroke & border = contrasting color
             pencilIcon.style.background = `linear-gradient(${coloringState.gradientDirection}, ${coloringState.gradientStart}, ${coloringState.gradientEnd})`;
-            pencilIcon.style.maskImage = `url(${pencilIcon.src})`;
-            pencilIcon.style.maskSize = 'contain';
-            pencilIcon.style.maskRepeat = 'no-repeat';
-            pencilIcon.style.maskPosition = 'center';
-            pencilIcon.style.webkitMaskImage = `url(${pencilIcon.src})`;
-            pencilIcon.style.webkitMaskSize = 'contain';
-            pencilIcon.style.webkitMaskRepeat = 'no-repeat';
-            pencilIcon.style.webkitMaskPosition = 'center';
+            const gradientContrastColor = getContrastingBorderColor(coloringState.gradientStart);
+            pencilIcon.style.color = gradientContrastColor;
+            pencilIcon.style.border = `3px solid ${gradientContrastColor}`;
             break;
 
         case 'pattern':
-            // Show solid color for pattern mode
-            pencilIcon.style.filter = '';
+            // Background = selected color, Pencil stroke & border = contrasting color
             pencilIcon.style.backgroundColor = coloringState.currentColor;
-            pencilIcon.style.maskImage = `url(${pencilIcon.src})`;
-            pencilIcon.style.maskSize = 'contain';
-            pencilIcon.style.maskRepeat = 'no-repeat';
-            pencilIcon.style.maskPosition = 'center';
-            pencilIcon.style.webkitMaskImage = `url(${pencilIcon.src})`;
-            pencilIcon.style.webkitMaskSize = 'contain';
-            pencilIcon.style.webkitMaskRepeat = 'no-repeat';
-            pencilIcon.style.webkitMaskPosition = 'center';
+            pencilIcon.style.background = coloringState.currentColor;
+            const patternContrastColor = getContrastingBorderColor(coloringState.currentColor);
+            pencilIcon.style.color = patternContrastColor;
+            pencilIcon.style.border = `3px solid ${patternContrastColor}`;
             break;
     }
 
@@ -112,27 +110,9 @@ function getColorName(hex) {
 }
 
 /**
- * Update gradient and pattern previews
+ * Update pattern preview
  */
-function updateAdvancedPreviews() {
-    // Update gradient preview
-    const gradientPreview = document.getElementById('gradient-preview');
-    const gradientFromLabel = document.getElementById('gradient-from-label');
-    const gradientToLabel = document.getElementById('gradient-to-label');
-
-    if (gradientPreview) {
-        gradientPreview.style.background = `linear-gradient(${coloringState.gradientDirection}, ${coloringState.gradientStart}, ${coloringState.gradientEnd})`;
-    }
-
-    if (gradientFromLabel) {
-        gradientFromLabel.textContent = getColorName(coloringState.gradientStart);
-    }
-
-    if (gradientToLabel) {
-        gradientToLabel.textContent = getColorName(coloringState.gradientEnd);
-    }
-
-    // Update pattern preview
+function updatePatternPreview() {
     const patternPreview = document.getElementById('pattern-preview');
     const patternColorLabel = document.getElementById('pattern-color-label');
 
@@ -186,6 +166,24 @@ function updatePatternPreviewDisplay() {
 }
 
 /**
+ * Update all gradient buttons with current color transition
+ */
+function updateGradientButtons() {
+    const gradientButtons = document.querySelectorAll('.gradient-btn');
+    const fromColor = coloringState.previousColor || '#FFFFFF';
+    const toColor = coloringState.currentColor;
+
+    gradientButtons.forEach((btn, index) => {
+        const direction = btn.dataset.direction;
+        // Update button's gradient to show transition
+        btn.style.background = `linear-gradient(${direction}, ${fromColor}, ${toColor})`;
+        // Update data attributes
+        btn.dataset.from = fromColor;
+        btn.dataset.to = toColor;
+    });
+}
+
+/**
  * Initialize color palette buttons
  */
 function initializeColorPalette() {
@@ -224,11 +222,14 @@ function initializeColorPalette() {
             // Set to solid mode
             coloringState.fillMode = 'solid';
 
+            // Update gradient buttons to reflect new color transition
+            updateGradientButtons();
+
             // Update pencil indicator
             updatePencilIndicator();
 
-            // Update gradient and pattern previews
-            updateAdvancedPreviews();
+            // Update pattern preview
+            updatePatternPreview();
         });
     });
 }
@@ -237,40 +238,32 @@ function initializeColorPalette() {
  * Initialize gradient controls
  */
 function initializeGradientControls() {
-    const gradientDirectionButtons = document.querySelectorAll('.gradient-direction-btn');
+    const gradientButtons = document.querySelectorAll('.gradient-btn');
 
-    gradientDirectionButtons.forEach(btn => {
+    gradientButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Remove active class from all direction buttons
-            gradientDirectionButtons.forEach(b => b.classList.remove('active'));
+            // Remove active class from all gradient buttons
+            gradientButtons.forEach(b => b.classList.remove('active'));
 
             // Add active class to clicked button
             btn.classList.add('active');
 
-            // Update gradient direction
+            // Get gradient colors and direction from data attributes
+            coloringState.gradientStart = btn.dataset.from;
+            coloringState.gradientEnd = btn.dataset.to;
             coloringState.gradientDirection = btn.dataset.direction;
 
             // Switch to gradient mode
             coloringState.fillMode = 'gradient';
 
-            // Remove active from color buttons
+            // Remove active from color buttons and pattern buttons
             document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.pattern-btn').forEach(b => b.classList.remove('active'));
 
             // Update pencil indicator
             updatePencilIndicator();
-
-            // Update gradient preview
-            updateAdvancedPreviews();
         });
     });
-
-    // Set first direction button as active by default
-    if (gradientDirectionButtons.length > 0) {
-        gradientDirectionButtons[0].classList.add('active');
-    }
-
-    // Initial preview
-    updateAdvancedPreviews();
 }
 
 /**
@@ -296,11 +289,14 @@ function initializePatternControls() {
             // Remove active from color buttons
             document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
 
+            // Remove active from gradient buttons
+            document.querySelectorAll('.gradient-btn').forEach(b => b.classList.remove('active'));
+
             // Update pencil indicator
             updatePencilIndicator();
 
             // Update pattern preview
-            updateAdvancedPreviews();
+            updatePatternPreview();
         });
     });
 
@@ -310,7 +306,7 @@ function initializePatternControls() {
     }
 
     // Initial preview
-    updateAdvancedPreviews();
+    updatePatternPreview();
 }
 
 /**
@@ -429,6 +425,10 @@ function initializeColoringUI() {
     initializeClearButton();
     initializeNextImageButton();
     initializeAdvancedToggle();
+
+    // Initialize gradient buttons with White → Red (default)
+    updateGradientButtons();
+
     updatePencilIndicator();
 }
 
