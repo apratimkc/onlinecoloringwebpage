@@ -58,29 +58,29 @@ function updatePencilIndicator() {
 
     switch (coloringState.fillMode) {
         case 'solid':
-            // Background = selected color, Pencil stroke & border = contrasting color
-            pencilIcon.style.backgroundColor = color;
-            pencilIcon.style.background = color;
-            const contrastColor = getContrastingBorderColor(color);
-            pencilIcon.style.color = contrastColor;  // SVG path uses contrasting color
-            pencilIcon.style.border = `3px solid ${contrastColor}`;
+            // Background = static white, Border & pencil body = selected color
+            pencilIcon.style.backgroundColor = '#FFFFFF';
+            pencilIcon.style.background = '#FFFFFF';
+            pencilIcon.style.color = color;  // SVG pencil body uses selected color
+            pencilIcon.style.border = `3px solid ${color}`;
             break;
 
         case 'gradient':
-            // Background = gradient, Pencil stroke & border = contrasting color
-            pencilIcon.style.background = `linear-gradient(${coloringState.gradientDirection}, ${coloringState.gradientStart}, ${coloringState.gradientEnd})`;
-            const gradientContrastColor = getContrastingBorderColor(coloringState.gradientStart);
-            pencilIcon.style.color = gradientContrastColor;
-            pencilIcon.style.border = `3px solid ${gradientContrastColor}`;
+            // Background = static white, Border & pencil body = gradient
+            pencilIcon.style.backgroundColor = '#FFFFFF';
+            pencilIcon.style.background = '#FFFFFF';
+            const gradient = `linear-gradient(${coloringState.gradientDirection}, ${coloringState.gradientStart}, ${coloringState.gradientEnd})`;
+            // For gradient, we'll use the start color for solid parts
+            pencilIcon.style.color = coloringState.gradientStart;
+            pencilIcon.style.border = `3px solid ${coloringState.gradientStart}`;
             break;
 
         case 'pattern':
-            // Background = selected color, Pencil stroke & border = contrasting color
-            pencilIcon.style.backgroundColor = coloringState.currentColor;
-            pencilIcon.style.background = coloringState.currentColor;
-            const patternContrastColor = getContrastingBorderColor(coloringState.currentColor);
-            pencilIcon.style.color = patternContrastColor;
-            pencilIcon.style.border = `3px solid ${patternContrastColor}`;
+            // Background = static white, Border & pencil body = selected color
+            pencilIcon.style.backgroundColor = '#FFFFFF';
+            pencilIcon.style.background = '#FFFFFF';
+            pencilIcon.style.color = coloringState.currentColor;
+            pencilIcon.style.border = `3px solid ${coloringState.currentColor}`;
             break;
     }
 

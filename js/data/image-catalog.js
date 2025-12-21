@@ -13,6 +13,30 @@ const imageCatalog = [
         difficulty: 'simple',
         regions: 5
     },
+    {
+        id: 'animal-horse-1',
+        category: 'animals',
+        name: 'Simple Horse',
+        filename: 'horse-simple.svg',
+        difficulty: 'simple',
+        regions: 18
+    },
+    {
+        id: 'animal-horse-2',
+        category: 'animals',
+        name: 'Horse',
+        filename: 'horse3.svg',
+        difficulty: 'medium',
+        regions: 25
+    },
+    {
+        id: 'animal-turtle-1',
+        category: 'animals',
+        name: 'Simple Turtle',
+        filename: 'turtle-simple.svg',
+        difficulty: 'simple',
+        regions: 8
+    },
 
     // Princess Category
     {

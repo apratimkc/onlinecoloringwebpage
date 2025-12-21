@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ColorTap Pencil Icon - Compatible Version -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 100 100" xml:space="preserve">
+<g>
+	<!-- Pencil body (will change color dynamically) -->
+	<g id="pencil-body">
+		<path fill="currentColor" d="M94.55,33.73l-32.53,32.53c-0.78,0.78-2.05,0.78-2.83,0L33.73,40.81c-0.78-0.78-0.78-2.05,0-2.83
+			l32.53-32.53c0.78-0.78,2.05-0.78,2.83,0l25.46,25.46C95.33,31.68,95.33,32.95,94.55,33.73z"/>
+		<path fill="currentColor" d="M60.61,69.35c-1.15,0-2.31-0.44-3.18-1.32L31.97,42.58c-0.85-0.85-1.32-1.98-1.32-3.18
+			c0-1.2,0.47-2.33,1.32-3.18L64.5,3.69c0.85-0.85,1.98-1.32,3.18-1.32s2.34,0.47,3.19,1.32l25.46,25.46
+			c1.76,1.76,1.76,4.61,0,6.37l0,0l-32.53,32.53C62.91,68.91,61.76,69.35,60.61,69.35z M35.86,39.4l24.75,24.75l31.82-31.82
+			L66.68,7.58L35.86,39.4z M92.78,31.97L92.78,31.97L92.78,31.97z"/>
+	</g>
+
+	<!-- Stripe 1 (white, semi-transparent) -->
+	<g opacity="0.6">
+		<rect x="47.63" y="41.85" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -10.0834 64.3432)"
+		      fill="#FFFFFF" width="50" height="5"/>
+	</g>
+
+	<!-- Stripe 2 (black, semi-transparent) -->
+	<g opacity="0.5">
+		<rect x="39.14" y="33.36" transform="matrix(0.7071 -0.7072 0.7072 0.7071 -6.5672 55.8628)"
+		      width="50" height="5"/>
+	</g>
+
+	<!-- Stripe 3 (white, semi-transparent) -->
+	<g opacity="0.6">
+		<rect x="30.66" y="24.88" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.0538 47.3726)"
+		      fill="#FFFFFF" width="50" height="5"/>
+	</g>
+
+	<!-- Pencil tip (cream color - static) -->
+	<g id="pencil-tip">
+		<polygon fill="#F5DEB3" points="60.61,67.68 32.32,39.4 18.18,81.82"/>
+		<path fill="#D2B48C" d="M14.23,85.77l17-51.01l34.01,34.01L14.23,85.77z M33.42,44.02l-11.28,33.85l33.85-11.28L33.42,44.02z"/>
+	</g>
+
+	<!-- Inner graphite point (dark - static) -->
+	<g id="graphite-point">
+		<polygon fill="#F5DEB3" points="42.48,73.75 26.23,57.6 18.11,81.82"/>
+		<path fill="#D2B48C" d="M14.15,85.77l11-32.78l21.99,21.85L14.15,85.77z M27.33,62.21l-5.26,15.67l15.77-5.22L27.33,62.21z"/>
+	</g>
+</g>
+</svg>

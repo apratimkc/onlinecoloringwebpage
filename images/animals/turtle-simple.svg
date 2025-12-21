@@ -1,0 +1,47 @@
+<svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Simple Turtle -->
+
+  <!-- Shell (large oval) -->
+  <ellipse id="shell" cx="400" cy="400" rx="200" ry="150"
+           stroke="black" stroke-width="3" fill="transparent"/>
+
+  <!-- Shell pattern (hexagons) -->
+  <polygon id="shell-pattern-1" points="400,280 440,300 440,340 400,360 360,340 360,300"
+           stroke="black" stroke-width="2" fill="transparent"/>
+  <polygon id="shell-pattern-2" points="320,340 360,360 360,400 320,420 280,400 280,360"
+           stroke="black" stroke-width="2" fill="transparent"/>
+  <polygon id="shell-pattern-3" points="480,340 520,360 520,400 480,420 440,400 440,360"
+           stroke="black" stroke-width="2" fill="transparent"/>
+  <polygon id="shell-pattern-4" points="400,400 440,420 440,460 400,480 360,460 360,420"
+           stroke="black" stroke-width="2" fill="transparent"/>
+
+  <!-- Head -->
+  <ellipse id="head" cx="400" cy="220" rx="50" ry="60"
+           stroke="black" stroke-width="3" fill="transparent"/>
+
+  <!-- Eyes -->
+  <circle id="eye-left" cx="385" cy="210" r="6"
+          stroke="black" stroke-width="2" fill="black"/>
+  <circle id="eye-right" cx="415" cy="210" r="6"
+          stroke="black" stroke-width="2" fill="black"/>
+
+  <!-- Front Left Leg -->
+  <ellipse id="leg-fl" cx="250" cy="450" rx="35" ry="60"
+           stroke="black" stroke-width="3" fill="transparent"/>
+
+  <!-- Front Right Leg -->
+  <ellipse id="leg-fr" cx="550" cy="450" rx="35" ry="60"
+           stroke="black" stroke-width="3" fill="transparent"/>
+
+  <!-- Back Left Leg -->
+  <ellipse id="leg-bl" cx="280" cy="520" rx="30" ry="50"
+           stroke="black" stroke-width="3" fill="transparent"/>
+
+  <!-- Back Right Leg -->
+  <ellipse id="leg-br" cx="520" cy="520" rx="30" ry="50"
+           stroke="black" stroke-width="3" fill="transparent"/>
+
+  <!-- Tail -->
+  <path id="tail" d="M 400 530 Q 400 580 420 620"
+        stroke="black" stroke-width="3" fill="transparent"/>
+</svg>
