@@ -13,7 +13,7 @@
     gap: 1rem;
     padding: 1rem;
     min-height: calc(100vh - 100px);
-    max-width: 1600px;
+    max-width: 2000px; /* Increased to accommodate larger canvas */
     margin: 0 auto;
 }
 
@@ -126,7 +126,7 @@
 
 .svg-container {
     width: 100%;
-    max-width: 700px;
+    max-width: 1050px; /* Increased by 150% from 700px */
     height: 100%;
     display: flex;
     align-items: center;
@@ -176,8 +176,8 @@
     pointer-events: all;
     width: 100% !important;
     height: auto !important;
-    max-width: 600px;
-    max-height: 600px;
+    max-width: 900px; /* Increased by 150% from 600px */
+    max-height: 900px; /* Increased by 150% from 600px */
 }
 
 .svg-container svg path,
