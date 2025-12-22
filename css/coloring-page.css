@@ -137,12 +137,13 @@
     position: relative;
 }
 
-/* 4:3 Aspect Ratio Container with White Background */
+/* Flexible Ratio Container with White Background */
 .svg-ratio-wrapper {
     position: relative;
     width: 100%;
-    max-width: 800px;
-    aspect-ratio: 4 / 3;
+    height: 100%;
+    max-width: 900px;
+    max-height: 900px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -175,9 +176,10 @@
 .svg-content svg {
     pointer-events: all;
     width: 100% !important;
-    height: auto !important;
-    max-width: 900px; /* Increased by 150% from 600px */
-    max-height: 900px; /* Increased by 150% from 600px */
+    height: 100% !important;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ensure SVG fits within container */
 }
 
 .svg-container svg path,
