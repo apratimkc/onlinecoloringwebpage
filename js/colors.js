@@ -38,7 +38,16 @@ const COLOR_NAMES = [
  * Apply solid color to SVG path
  */
 function applySolidColor(path, color) {
-    path.setAttribute('fill', color);
+    // If path has fill in style attribute, update style.fill
+    // Otherwise, set fill attribute
+    const styleAttr = path.getAttribute('style');
+    if (styleAttr && styleAttr.includes('fill:')) {
+        // Path uses style attribute for fill - update it directly via style property
+        path.style.fill = color;
+    } else {
+        // Path uses fill attribute
+        path.setAttribute('fill', color);
+    }
 }
 
 /**
@@ -90,7 +99,14 @@ function applyGradient(path, startColor, endColor, svgElement, direction = 'to b
     defs.appendChild(gradient);
 
     // Apply gradient to path
-    path.setAttribute('fill', `url(#${gradientId})`);
+    const styleAttr = path.getAttribute('style');
+    if (styleAttr && styleAttr.includes('fill:')) {
+        // Path uses style attribute for fill
+        path.style.fill = `url(#${gradientId})`;
+    } else {
+        // Path uses fill attribute
+        path.setAttribute('fill', `url(#${gradientId})`);
+    }
 }
 
 /**
@@ -243,7 +259,14 @@ function applyPattern(path, patternType, color, svgElement) {
     defs.appendChild(pattern);
 
     // Apply pattern to path
-    path.setAttribute('fill', `url(#${patternId})`);
+    const styleAttr = path.getAttribute('style');
+    if (styleAttr && styleAttr.includes('fill:')) {
+        // Path uses style attribute for fill
+        path.style.fill = `url(#${patternId})`;
+    } else {
+        // Path uses fill attribute
+        path.setAttribute('fill', `url(#${patternId})`);
+    }
 }
 
 /**
