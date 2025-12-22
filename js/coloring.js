@@ -88,22 +88,33 @@ async function loadSVGImage(imageId) {
 function initializePaths(svgElement) {
     const paths = svgElement.querySelectorAll('path, circle, rect, polygon, ellipse');
 
-    paths.forEach((path, index) => {
-        // Skip outline paths (non-colorable paths with black fill)
-        const fill = path.getAttribute('fill');
-        const computedFill = fill || window.getComputedStyle(path).fill;
+    console.log(`Found ${paths.length} total paths/shapes`);
 
-        // Check if this is an outline path (black fill: #000000, #000, rgb(0,0,0), or black)
-        const isOutline = fill === '#000000' ||
-                         fill === '#000' ||
-                         fill === 'black' ||
-                         fill === 'rgb(0, 0, 0)' ||
+    let colorableCount = 0;
+    let outlineCount = 0;
+
+    paths.forEach((path, index) => {
+        // Get fill value from both attribute and computed style
+        const fillAttr = path.getAttribute('fill');
+        const styleAttr = path.getAttribute('style') || '';
+        const computedStyle = window.getComputedStyle(path);
+        const computedFill = computedStyle.fill;
+
+        // Check if this is an outline path (black fill)
+        const isOutline = fillAttr === '#000000' ||
+                         fillAttr === '#000' ||
+                         fillAttr === 'black' ||
+                         fillAttr === 'rgb(0, 0, 0)' ||
+                         styleAttr.includes('fill:#000000') ||
+                         styleAttr.includes('fill:black') ||
+                         styleAttr.includes('fill:#000') ||
                          computedFill === 'rgb(0, 0, 0)';
 
         if (isOutline) {
             // This is an outline path - make it non-interactive
             path.style.cursor = 'default';
             path.style.pointerEvents = 'none'; // Prevent any clicks on outline
+            outlineCount++;
             return; // Skip adding click handlers
         }
 
@@ -115,6 +126,7 @@ function initializePaths(svgElement) {
         // Add click event listener
         path.addEventListener('click', (e) => {
             e.stopPropagation();
+            console.log(`Clicked path: ${path.id}, fill: ${fillAttr}, style: ${styleAttr.substring(0, 50)}`);
             fillPath(path);
         });
 
@@ -127,7 +139,10 @@ function initializePaths(svgElement) {
 
         // Make sure paths have a cursor pointer
         path.style.cursor = 'pointer';
+        colorableCount++;
     });
+
+    console.log(`Colorable paths: ${colorableCount}, Outline paths: ${outlineCount}`);
 }
 
 /**
@@ -193,6 +208,9 @@ function fillPath(path) {
  * Initialize background click handler
  */
 function initializeBackground() {
+    // TEMPORARILY DISABLED - Background coloring is off for debugging
+    return;
+
     const wrapper = document.querySelector('.svg-ratio-wrapper');
     const svgContent = document.querySelector('.svg-content');
 
