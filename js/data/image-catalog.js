@@ -37,6 +37,14 @@ const imageCatalog = [
         difficulty: 'simple',
         regions: 8
     },
+    {
+        id: 'animal-peacock-1',
+        category: 'animals',
+        name: 'Peacock',
+        filename: 'vecteezy_peacock.svg',
+        difficulty: 'complex',
+        regions: 71
+    },
 
     // Princess Category
     {
