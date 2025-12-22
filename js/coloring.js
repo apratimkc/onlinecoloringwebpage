@@ -63,8 +63,7 @@ async function loadSVGImage(imageId) {
         // Add click handlers to all paths
         initializePaths(svgElement);
 
-        // Initialize background click handler
-        initializeBackground();
+        // Background coloring removed - only dual-layer path coloring supported
 
         // Reset filled regions
         coloringState.filledRegions = {};
@@ -88,11 +87,6 @@ async function loadSVGImage(imageId) {
 function initializePaths(svgElement) {
     const paths = svgElement.querySelectorAll('path, circle, rect, polygon, ellipse');
 
-    console.log(`Found ${paths.length} total paths/shapes`);
-
-    let colorableCount = 0;
-    let outlineCount = 0;
-
     paths.forEach((path, index) => {
         // Get fill value from both attribute and computed style
         const fillAttr = path.getAttribute('fill');
@@ -114,7 +108,6 @@ function initializePaths(svgElement) {
             // This is an outline path - make it non-interactive
             path.style.cursor = 'default';
             path.style.pointerEvents = 'none'; // Prevent any clicks on outline
-            outlineCount++;
             return; // Skip adding click handlers
         }
 
@@ -126,7 +119,6 @@ function initializePaths(svgElement) {
         // Add click event listener
         path.addEventListener('click', (e) => {
             e.stopPropagation();
-            console.log(`Clicked path: ${path.id}, fill: ${fillAttr}, style: ${styleAttr.substring(0, 50)}`);
             fillPath(path);
         });
 
@@ -139,10 +131,7 @@ function initializePaths(svgElement) {
 
         // Make sure paths have a cursor pointer
         path.style.cursor = 'pointer';
-        colorableCount++;
     });
-
-    console.log(`Colorable paths: ${colorableCount}, Outline paths: ${outlineCount}`);
 }
 
 /**
@@ -204,139 +193,7 @@ function fillPath(path) {
     }
 }
 
-/**
- * Initialize background click handler
- */
-function initializeBackground() {
-    // TEMPORARILY DISABLED - Background coloring is off for debugging
-    return;
-
-    const wrapper = document.querySelector('.svg-ratio-wrapper');
-    const svgContent = document.querySelector('.svg-content');
-
-    if (!wrapper || !svgContent) {
-        console.error('Wrapper or SVG content not found in initializeBackground');
-        return;
-    }
-
-    // Add click event listener to the wrapper
-    wrapper.addEventListener('click', (e) => {
-        // Check if click target is NOT an SVG element (path, circle, etc.)
-        const clickedElement = e.target;
-        const isSVGPath = clickedElement.tagName === 'path' ||
-                         clickedElement.tagName === 'circle' ||
-                         clickedElement.tagName === 'rect' ||
-                         clickedElement.tagName === 'polygon' ||
-                         clickedElement.tagName === 'ellipse';
-
-        // If not clicking on SVG path, it's a background click
-        if (!isSVGPath) {
-            fillBackground();
-        }
-    });
-
-    // Add touch event listener for mobile
-    wrapper.addEventListener('touchend', (e) => {
-        const touch = e.changedTouches[0];
-        const touchedElement = document.elementFromPoint(touch.clientX, touch.clientY);
-
-        const isSVGPath = touchedElement && (
-            touchedElement.tagName === 'path' ||
-            touchedElement.tagName === 'circle' ||
-            touchedElement.tagName === 'rect' ||
-            touchedElement.tagName === 'polygon' ||
-            touchedElement.tagName === 'ellipse'
-        );
-
-        if (!isSVGPath) {
-            e.preventDefault();
-            fillBackground();
-        }
-    });
-}
-
-/**
- * Fill the background with current color
- */
-function fillBackground() {
-    const background = document.getElementById('svg-background');
-    if (!background) {
-        console.error('Background element not found');
-        return;
-    }
-
-    const startTime = performance.now();
-
-    try {
-        switch (coloringState.fillMode) {
-            case 'solid':
-                background.style.backgroundColor = coloringState.currentColor;
-                coloringState.filledRegions['background'] = {
-                    type: 'solid',
-                    color: coloringState.currentColor
-                };
-                break;
-
-            case 'gradient':
-                const gradient = `linear-gradient(${coloringState.gradientDirection}, ${coloringState.gradientStart}, ${coloringState.gradientEnd})`;
-                background.style.background = gradient;
-                coloringState.filledRegions['background'] = {
-                    type: 'gradient',
-                    startColor: coloringState.gradientStart,
-                    endColor: coloringState.gradientEnd,
-                    direction: coloringState.gradientDirection
-                };
-                break;
-
-            case 'pattern':
-                // Create pattern background (simplified CSS version)
-                const color = coloringState.currentColor;
-                let patternCSS = '';
-
-                switch (coloringState.selectedPattern) {
-                    case 'stripes':
-                        patternCSS = `repeating-linear-gradient(0deg, ${color}, ${color} 10px, white 10px, white 20px)`;
-                        break;
-                    case 'dots':
-                        patternCSS = `radial-gradient(circle, ${color} 2px, transparent 2px)`;
-                        background.style.backgroundSize = '20px 20px';
-                        break;
-                    case 'checkerboard':
-                        patternCSS = `
-                            linear-gradient(45deg, ${color} 25%, transparent 25%),
-                            linear-gradient(-45deg, ${color} 25%, transparent 25%),
-                            linear-gradient(45deg, transparent 75%, ${color} 75%),
-                            linear-gradient(-45deg, transparent 75%, ${color} 75%)`;
-                        background.style.backgroundSize = '40px 40px';
-                        background.style.backgroundPosition = '0 0, 0 20px, 20px -20px, -20px 0px';
-                        break;
-                    case 'hearts':
-                    case 'stars':
-                        // For hearts/stars, use stripes as fallback
-                        patternCSS = `repeating-linear-gradient(0deg, ${color}, ${color} 10px, white 10px, white 20px)`;
-                        break;
-                }
-
-                background.style.background = patternCSS;
-                coloringState.filledRegions['background'] = {
-                    type: 'pattern',
-                    pattern: coloringState.selectedPattern,
-                    color: coloringState.currentColor
-                };
-                break;
-        }
-
-        // Log performance
-        const endTime = performance.now();
-        const fillTime = endTime - startTime;
-        if (fillTime > 100) {
-            console.warn(`Background fill took ${fillTime}ms (target: <100ms)`);
-        }
-
-    } catch (error) {
-        console.error('Error filling background:', error);
-    }
-}
+// Background coloring removed - only dual-layer SVG path coloring is supported
 
 /**
  * Clear all colors from the image
@@ -347,20 +204,19 @@ function clearAllColors() {
     const paths = coloringState.svgElement.querySelectorAll('path, circle, rect, polygon, ellipse');
 
     paths.forEach(path => {
-        path.setAttribute('fill', 'transparent');
+        // Reset colorable paths - use style.fill for paths with style attribute
+        const styleAttr = path.getAttribute('style');
+        if (styleAttr && styleAttr.includes('fill:')) {
+            path.style.fill = 'transparent';
+        } else {
+            path.setAttribute('fill', 'transparent');
+        }
     });
 
     // Clear any gradients and patterns from defs
     const defs = coloringState.svgElement.querySelector('defs');
     if (defs) {
         defs.innerHTML = '';
-    }
-
-    // Reset background to white
-    const background = document.getElementById('svg-background');
-    if (background) {
-        background.style.background = '#FFFFFF';
-        background.style.backgroundColor = '#FFFFFF';
     }
 
     // Reset filled regions
