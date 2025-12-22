@@ -89,7 +89,25 @@ function initializePaths(svgElement) {
     const paths = svgElement.querySelectorAll('path, circle, rect, polygon, ellipse');
 
     paths.forEach((path, index) => {
-        // Ensure each path has an ID
+        // Skip outline paths (non-colorable paths with black fill)
+        const fill = path.getAttribute('fill');
+        const computedFill = fill || window.getComputedStyle(path).fill;
+
+        // Check if this is an outline path (black fill: #000000, #000, rgb(0,0,0), or black)
+        const isOutline = fill === '#000000' ||
+                         fill === '#000' ||
+                         fill === 'black' ||
+                         fill === 'rgb(0, 0, 0)' ||
+                         computedFill === 'rgb(0, 0, 0)';
+
+        if (isOutline) {
+            // This is an outline path - make it non-interactive
+            path.style.cursor = 'default';
+            path.style.pointerEvents = 'none'; // Prevent any clicks on outline
+            return; // Skip adding click handlers
+        }
+
+        // Ensure each colorable path has an ID
         if (!path.id) {
             path.id = `region-${index}`;
         }
