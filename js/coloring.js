@@ -83,7 +83,8 @@ async function loadSVGImage(imageId) {
 
 /**
  * Detect if a layer is a colorable layer by analyzing all its children
- * A layer is colorable if ALL its paths have no fill and no stroke
+ * A layer is colorable if ALL its paths have no fill and no stroke in the ORIGINAL SVG
+ * (We only check attributes from the SVG file, not dynamically applied colors)
  */
 function isColorableLayer(groupElement) {
     const paths = groupElement.querySelectorAll('path, circle, rect, polygon, ellipse');
@@ -92,24 +93,37 @@ function isColorableLayer(groupElement) {
         return false; // Empty layer
     }
 
-    // Check if ALL paths in this layer have no fill and no stroke
+    // Check if ALL paths in this layer have no fill and no stroke IN THE ORIGINAL SVG
     for (let path of paths) {
         const fillAttr = path.getAttribute('fill') || '';
         const strokeAttr = path.getAttribute('stroke') || '';
         const styleAttr = path.getAttribute('style') || '';
-        const computedStyle = window.getComputedStyle(path);
-        const computedFill = computedStyle.fill;
-        const computedStroke = computedStyle.stroke;
 
-        // Check for fills (handle both "fill:transparent" and "fill: transparent" with/without space)
-        const hasFill = fillAttr && fillAttr !== 'none' && fillAttr !== 'transparent' ||
-                       styleAttr.includes('fill:') && !styleAttr.includes('fill:none') && !styleAttr.includes('fill: none') && !styleAttr.includes('fill:transparent') && !styleAttr.includes('fill: transparent') ||
-                       computedFill && computedFill !== 'none' && computedFill !== 'rgba(0, 0, 0, 0)';
+        // Check for fills in attributes/original style only
+        const hasFillInAttr = fillAttr && fillAttr !== 'none' && fillAttr !== 'transparent';
+
+        // Extract the fill value from style attribute if it exists
+        const fillStyleMatch = styleAttr.match(/(?:^|;)\s*fill\s*:\s*([^;]+)/);
+        let originalStyleHasFill = false;
+
+        if (fillStyleMatch) {
+            const fillValue = fillStyleMatch[1].trim();
+            // Only consider it a real fill if it's NOT transparent, none, or a user-applied color
+            // User-applied colors are rgb(), rgba(), #hex, or url() patterns/gradients
+            const isUserAppliedColor = fillValue.startsWith('rgb') ||
+                                       fillValue.startsWith('#') ||
+                                       fillValue.startsWith('url(');
+            const isEmptyFill = fillValue === 'none' || fillValue === 'transparent';
+
+            // Only mark as having fill if it's in the original SVG (not user-applied or empty)
+            originalStyleHasFill = !isUserAppliedColor && !isEmptyFill;
+        }
+
+        const hasFill = hasFillInAttr || originalStyleHasFill;
 
         // Check for strokes (use regex to match "stroke:" not "stroke-width:", "stroke-opacity:", etc.)
         const hasStroke = strokeAttr && strokeAttr !== 'none' ||
-                         (styleAttr.match(/(?:^|;)\s*stroke\s*:/) && !styleAttr.includes('stroke:none') && !styleAttr.includes('stroke: none')) ||
-                         computedStroke && computedStroke !== 'none' && computedStroke !== 'rgba(0, 0, 0, 0)';
+                         (styleAttr.match(/(?:^|;)\s*stroke\s*:/) && !styleAttr.includes('stroke:none') && !styleAttr.includes('stroke: none'));
 
         // If ANY path has fill or stroke, this is NOT a colorable layer
         if (hasFill || hasStroke) {
@@ -123,6 +137,7 @@ function isColorableLayer(groupElement) {
 
 /**
  * Check if a path is in an outline layer (non-colorable layer)
+ * Only checks ORIGINAL SVG attributes, not dynamically applied colors
  */
 function isInOutlineLayer(path) {
     let current = path.parentElement;
@@ -139,24 +154,36 @@ function isInOutlineLayer(path) {
         current = current.parentElement;
     }
 
-    // If not in any group, check the path itself
-    // Paths with no fill and no stroke are colorable
+    // If not in any group, check the path itself using ORIGINAL attributes only
     const fillAttr = path.getAttribute('fill') || '';
     const strokeAttr = path.getAttribute('stroke') || '';
     const styleAttr = path.getAttribute('style') || '';
-    const computedStyle = window.getComputedStyle(path);
-    const computedFill = computedStyle.fill;
-    const computedStroke = computedStyle.stroke;
 
-    const hasFill = fillAttr && fillAttr !== 'none' && fillAttr !== 'transparent' ||
-                   styleAttr.includes('fill:') && !styleAttr.includes('fill:none') && !styleAttr.includes('fill: none') && !styleAttr.includes('fill:transparent') && !styleAttr.includes('fill: transparent') ||
-                   computedFill && computedFill !== 'none' && computedFill !== 'rgba(0, 0, 0, 0)';
+    // Only check original attributes, not computed styles
+    const hasFillInAttr = fillAttr && fillAttr !== 'none' && fillAttr !== 'transparent';
 
+    // Extract the fill value from style attribute if it exists
+    const fillStyleMatch = styleAttr.match(/(?:^|;)\s*fill\s*:\s*([^;]+)/);
+    let originalStyleHasFill = false;
+
+    if (fillStyleMatch) {
+        const fillValue = fillStyleMatch[1].trim();
+        // Only consider it a real fill if it's NOT transparent, none, or a user-applied color
+        // User-applied colors are rgb(), rgba(), #hex, or url() patterns/gradients
+        const isUserAppliedColor = fillValue.startsWith('rgb') ||
+                                   fillValue.startsWith('#') ||
+                                   fillValue.startsWith('url(');
+        const isEmptyFill = fillValue === 'none' || fillValue === 'transparent';
+
+        // Only mark as having fill if it's in the original SVG (not user-applied or empty)
+        originalStyleHasFill = !isUserAppliedColor && !isEmptyFill;
+    }
+
+    const hasFill = hasFillInAttr || originalStyleHasFill;
     const hasStroke = strokeAttr && strokeAttr !== 'none' ||
-                     (styleAttr.match(/(?:^|;)\s*stroke\s*:/) && !styleAttr.includes('stroke:none') && !styleAttr.includes('stroke: none')) ||
-                     computedStroke && computedStroke !== 'none' && computedStroke !== 'rgba(0, 0, 0, 0)';
+                     (styleAttr.match(/(?:^|;)\s*stroke\s*:/) && !styleAttr.includes('stroke:none') && !styleAttr.includes('stroke: none'));
 
-    return hasFill || hasStroke; // Has fill or stroke = outline
+    return hasFill || hasStroke; // Has fill or stroke in ORIGINAL SVG = outline
 }
 
 /**
@@ -273,11 +300,22 @@ function clearAllColors() {
             return; // Don't clear outline paths
         }
 
-        // Reset colorable paths only - use style.fill for paths with style attribute
+        // Reset colorable paths only
         const styleAttr = path.getAttribute('style') || '';
-        if (styleAttr && styleAttr.includes('fill:')) {
+        const fillAttr = path.getAttribute('fill');
+
+        // Remove fill from style attribute and set to transparent
+        if (styleAttr && styleAttr.includes('fill')) {
             path.style.fill = 'transparent';
-        } else {
+        }
+
+        // Also clear the fill attribute
+        if (fillAttr) {
+            path.setAttribute('fill', 'transparent');
+        }
+
+        // If no style or fill attribute exists, set fill to transparent
+        if (!styleAttr && !fillAttr) {
             path.setAttribute('fill', 'transparent');
         }
     });
