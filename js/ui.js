@@ -110,60 +110,16 @@ function getColorName(hex) {
 }
 
 /**
- * Update pattern preview
+ * Update pattern preview (now updates all pattern button colors)
  */
 function updatePatternPreview() {
-    const patternPreview = document.getElementById('pattern-preview');
-    const patternColorLabel = document.getElementById('pattern-color-label');
-
-    if (patternColorLabel) {
-        patternColorLabel.textContent = getColorName(coloringState.currentColor);
-    }
-
-    if (patternPreview) {
-        updatePatternPreviewDisplay();
-    }
+    // Update all pattern button SVG colors to match current color
+    const patternButtons = document.querySelectorAll('.pattern-btn');
+    patternButtons.forEach(btn => {
+        btn.style.color = coloringState.currentColor;
+    });
 }
 
-/**
- * Update pattern preview display
- */
-function updatePatternPreviewDisplay() {
-    const patternPreview = document.getElementById('pattern-preview');
-    if (!patternPreview) return;
-
-    const color = coloringState.currentColor;
-
-    switch (coloringState.selectedPattern) {
-        case 'stripes':
-            patternPreview.style.background = `repeating-linear-gradient(0deg, ${color}, ${color} 5px, white 5px, white 10px)`;
-            patternPreview.innerHTML = '';
-            break;
-        case 'dots':
-            patternPreview.style.background = `radial-gradient(circle, ${color} 3px, white 3px)`;
-            patternPreview.style.backgroundSize = '20px 20px';
-            patternPreview.innerHTML = '';
-            break;
-        case 'checkerboard':
-            patternPreview.style.background = `
-                linear-gradient(45deg, ${color} 25%, transparent 25%),
-                linear-gradient(-45deg, ${color} 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, ${color} 75%),
-                linear-gradient(-45deg, transparent 75%, ${color} 75%)`;
-            patternPreview.style.backgroundSize = '20px 20px';
-            patternPreview.style.backgroundPosition = '0 0, 0 10px, 10px -10px, -10px 0px';
-            patternPreview.innerHTML = '';
-            break;
-        case 'hearts':
-            patternPreview.innerHTML = '<div style="padding: 20px; font-size: 24px; color: ' + color + ';">♥ ♥ ♥</div>';
-            patternPreview.style.background = 'white';
-            break;
-        case 'stars':
-            patternPreview.innerHTML = '<div style="padding: 20px; font-size: 24px; color: ' + color + ';">★ ★ ★</div>';
-            patternPreview.style.background = 'white';
-            break;
-    }
-}
 
 /**
  * Update all gradient buttons with current color transition
