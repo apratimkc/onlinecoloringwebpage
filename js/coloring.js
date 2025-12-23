@@ -82,32 +82,96 @@ async function loadSVGImage(imageId) {
 }
 
 /**
+ * Detect if a layer is a colorable layer by analyzing all its children
+ * A layer is colorable if ALL its paths have no fill and no stroke
+ */
+function isColorableLayer(groupElement) {
+    const paths = groupElement.querySelectorAll('path, circle, rect, polygon, ellipse');
+
+    if (paths.length === 0) {
+        return false; // Empty layer
+    }
+
+    // Check if ALL paths in this layer have no fill and no stroke
+    for (let path of paths) {
+        const fillAttr = path.getAttribute('fill') || '';
+        const strokeAttr = path.getAttribute('stroke') || '';
+        const styleAttr = path.getAttribute('style') || '';
+        const computedStyle = window.getComputedStyle(path);
+        const computedFill = computedStyle.fill;
+        const computedStroke = computedStyle.stroke;
+
+        // Check for fills (handle both "fill:transparent" and "fill: transparent" with/without space)
+        const hasFill = fillAttr && fillAttr !== 'none' && fillAttr !== 'transparent' ||
+                       styleAttr.includes('fill:') && !styleAttr.includes('fill:none') && !styleAttr.includes('fill: none') && !styleAttr.includes('fill:transparent') && !styleAttr.includes('fill: transparent') ||
+                       computedFill && computedFill !== 'none' && computedFill !== 'rgba(0, 0, 0, 0)';
+
+        // Check for strokes (use regex to match "stroke:" not "stroke-width:", "stroke-opacity:", etc.)
+        const hasStroke = strokeAttr && strokeAttr !== 'none' ||
+                         (styleAttr.match(/(?:^|;)\s*stroke\s*:/) && !styleAttr.includes('stroke:none') && !styleAttr.includes('stroke: none')) ||
+                         computedStroke && computedStroke !== 'none' && computedStroke !== 'rgba(0, 0, 0, 0)';
+
+        // If ANY path has fill or stroke, this is NOT a colorable layer
+        if (hasFill || hasStroke) {
+            return false;
+        }
+    }
+
+    // All paths have no fill and no stroke = colorable layer
+    return true;
+}
+
+/**
+ * Check if a path is in an outline layer (non-colorable layer)
+ */
+function isInOutlineLayer(path) {
+    let current = path.parentElement;
+
+    while (current && current.tagName !== 'svg') {
+        if (current.tagName === 'g') {
+            // Check if this group is a colorable layer
+            if (isColorableLayer(current)) {
+                return false; // This is a colorable layer
+            } else {
+                return true; // This is an outline layer (has fills/strokes)
+            }
+        }
+        current = current.parentElement;
+    }
+
+    // If not in any group, check the path itself
+    // Paths with no fill and no stroke are colorable
+    const fillAttr = path.getAttribute('fill') || '';
+    const strokeAttr = path.getAttribute('stroke') || '';
+    const styleAttr = path.getAttribute('style') || '';
+    const computedStyle = window.getComputedStyle(path);
+    const computedFill = computedStyle.fill;
+    const computedStroke = computedStyle.stroke;
+
+    const hasFill = fillAttr && fillAttr !== 'none' && fillAttr !== 'transparent' ||
+                   styleAttr.includes('fill:') && !styleAttr.includes('fill:none') && !styleAttr.includes('fill: none') && !styleAttr.includes('fill:transparent') && !styleAttr.includes('fill: transparent') ||
+                   computedFill && computedFill !== 'none' && computedFill !== 'rgba(0, 0, 0, 0)';
+
+    const hasStroke = strokeAttr && strokeAttr !== 'none' ||
+                     (styleAttr.match(/(?:^|;)\s*stroke\s*:/) && !styleAttr.includes('stroke:none') && !styleAttr.includes('stroke: none')) ||
+                     computedStroke && computedStroke !== 'none' && computedStroke !== 'rgba(0, 0, 0, 0)';
+
+    return hasFill || hasStroke; // Has fill or stroke = outline
+}
+
+/**
  * Initialize click handlers for all SVG paths
  */
 function initializePaths(svgElement) {
     const paths = svgElement.querySelectorAll('path, circle, rect, polygon, ellipse');
 
     paths.forEach((path, index) => {
-        // Get fill value from both attribute and computed style
-        const fillAttr = path.getAttribute('fill');
-        const styleAttr = path.getAttribute('style') || '';
-        const computedStyle = window.getComputedStyle(path);
-        const computedFill = computedStyle.fill;
-
-        // Check if this is an outline path (black fill)
-        const isOutline = fillAttr === '#000000' ||
-                         fillAttr === '#000' ||
-                         fillAttr === 'black' ||
-                         fillAttr === 'rgb(0, 0, 0)' ||
-                         styleAttr.includes('fill:#000000') ||
-                         styleAttr.includes('fill:black') ||
-                         styleAttr.includes('fill:#000') ||
-                         computedFill === 'rgb(0, 0, 0)';
-
-        if (isOutline) {
+        // Check if this path is in an outline layer
+        if (isInOutlineLayer(path)) {
             // This is an outline path - make it non-interactive
             path.style.cursor = 'default';
             path.style.pointerEvents = 'none'; // Prevent any clicks on outline
+            // console.log('🚫 Outline path (non-clickable):', path.id || `path-${index}`);
             return; // Skip adding click handlers
         }
 
@@ -204,8 +268,13 @@ function clearAllColors() {
     const paths = coloringState.svgElement.querySelectorAll('path, circle, rect, polygon, ellipse');
 
     paths.forEach(path => {
-        // Reset colorable paths - use style.fill for paths with style attribute
-        const styleAttr = path.getAttribute('style');
+        // Check if this is an outline path - don't clear it
+        if (isInOutlineLayer(path)) {
+            return; // Don't clear outline paths
+        }
+
+        // Reset colorable paths only - use style.fill for paths with style attribute
+        const styleAttr = path.getAttribute('style') || '';
         if (styleAttr && styleAttr.includes('fill:')) {
             path.style.fill = 'transparent';
         } else {
