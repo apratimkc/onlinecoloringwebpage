@@ -462,3 +462,95 @@ a:hover {
 .mt-2 { margin-top: 2rem; }
 .mb-1 { margin-bottom: 1rem; }
 .mb-2 { margin-bottom: 2rem; }
+
+/* Under Construction Banner */
+.construction-banner {
+    background: linear-gradient(135deg, #FFC93C 0%, #FF8C42 100%);
+    border-bottom: 4px solid #FF6B9D;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 1rem 0;
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.construction-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.construction-icon {
+    font-size: 2rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.construction-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.construction-text strong {
+    color: var(--text-dark);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.construction-message {
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+.construction-message a {
+    color: #FFFFFF;
+    background-color: var(--primary-color);
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.construction-message a:hover {
+    background-color: var(--accent-purple);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .construction-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .construction-text strong {
+        font-size: 1rem;
+    }
+
+    .construction-message {
+        font-size: 0.875rem;
+    }
+}

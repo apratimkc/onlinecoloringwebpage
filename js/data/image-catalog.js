@@ -21,6 +21,26 @@ const imageCatalog = [
         filename: 'vecteezy_peacock.svg',
         difficulty: 'medium',
         regions: 67
+    },
+
+    // Food Category
+    {
+        id: 'food-cupcake',
+        category: 'food',
+        name: 'Cupcake',
+        filename: 'cupcake.svg',
+        difficulty: 'medium',
+        regions: 24
+    },
+
+    // Vehicles Category
+    {
+        id: 'vehicles-car',
+        category: 'vehicles',
+        name: 'Car',
+        filename: 'Car.svg',
+        difficulty: 'medium',
+        regions: 46
     }
 ];
 
