@@ -9,10 +9,10 @@ const imageCatalog = [
     {
         id: 'alphabets-a-apple',
         category: 'alphabets',
-        name: 'A - Apple',
+        name: 'A Apple',
         filename: 'A-Apple.svg',
-        difficulty: 'simple',
-        regions: 15
+        difficulty: 'medium',
+        regions: 8
     },
 
     // Animals Category
@@ -114,7 +114,7 @@ function getAllCategories() {
  * Category Display Names and Icons
  */
 const categoryInfo = {
-    alphabets: { name: 'Alphabets', icon: '🔤' },
+    alphabets: { name: 'Alphabets', icon: '🅰️' },
     animals: { name: 'Animals', icon: '🐶' },
     princess: { name: 'Princess', icon: '👸' },
     unicorns: { name: 'Unicorns', icon: '🦄' },
