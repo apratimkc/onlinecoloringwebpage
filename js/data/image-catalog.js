@@ -5,12 +5,38 @@
  */
 
 const imageCatalog = [
+    // Alphabets Category
+    {
+        id: 'alphabets-a-apple',
+        category: 'alphabets',
+        name: 'A - Apple',
+        filename: 'A-Apple.svg',
+        difficulty: 'simple',
+        regions: 15
+    },
+
     // Animals Category
     {
         id: 'animals-dinosore-1',
         category: 'animals',
         name: 'Dinosore 1',
         filename: 'Dinosore 1.svg',
+        difficulty: 'medium',
+        regions: 25
+    },
+    {
+        id: 'animals-hen',
+        category: 'animals',
+        name: 'Hen',
+        filename: 'Hen.svg',
+        difficulty: 'medium',
+        regions: 16
+    },
+    {
+        id: 'animals-rabbit',
+        category: 'animals',
+        name: 'Rabbit',
+        filename: 'Rabbit.svg',
         difficulty: 'medium',
         regions: 25
     },
@@ -88,6 +114,7 @@ function getAllCategories() {
  * Category Display Names and Icons
  */
 const categoryInfo = {
+    alphabets: { name: 'Alphabets', icon: '🔤' },
     animals: { name: 'Animals', icon: '🐶' },
     princess: { name: 'Princess', icon: '👸' },
     unicorns: { name: 'Unicorns', icon: '🦄' },
@@ -95,7 +122,6 @@ const categoryInfo = {
     food: { name: 'Food', icon: '🍕' },
     nature: { name: 'Nature', icon: '🌳' },
     holidays: { name: 'Holidays', icon: '🎄' },
-    dinosaurs: { name: 'Dinosaurs', icon: '🦕' },
     ocean: { name: 'Ocean', icon: '🐠' },
     fantasy: { name: 'Fantasy', icon: '🧙' },
     shapes: { name: 'Shapes', icon: '⭐' },
