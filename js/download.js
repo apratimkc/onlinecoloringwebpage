@@ -17,13 +17,42 @@ function downloadImage() {
         const svg = coloringState.svgElement;
         const svgData = new XMLSerializer().serializeToString(svg);
 
+        // Get original SVG dimensions from viewBox or bounding box
+        const viewBox = svg.viewBox.baseVal;
+        let svgWidth, svgHeight;
+
+        if (viewBox && viewBox.width && viewBox.height) {
+            // Use viewBox dimensions
+            svgWidth = viewBox.width;
+            svgHeight = viewBox.height;
+        } else {
+            // Fallback to getBBox or default
+            const bbox = svg.getBBox();
+            svgWidth = bbox.width || svg.width.baseVal.value || 800;
+            svgHeight = bbox.height || svg.height.baseVal.value || 800;
+        }
+
+        // Calculate aspect ratio
+        const aspectRatio = svgWidth / svgHeight;
+
         // Create a canvas
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
 
-        // Set canvas size (high resolution for printing)
-        const targetWidth = 1600; // High quality output
-        const targetHeight = 1600;
+        // Set canvas size (high resolution for printing, preserving aspect ratio)
+        const maxDimension = 2000; // High quality output
+        let targetWidth, targetHeight;
+
+        if (aspectRatio >= 1) {
+            // Wider or square image
+            targetWidth = maxDimension;
+            targetHeight = Math.round(maxDimension / aspectRatio);
+        } else {
+            // Taller image
+            targetHeight = maxDimension;
+            targetWidth = Math.round(maxDimension * aspectRatio);
+        }
+
         canvas.width = targetWidth;
         canvas.height = targetHeight;
 
