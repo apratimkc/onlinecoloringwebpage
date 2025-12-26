@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Minimal Logo: Simplified pencil for favicon/small sizes -->
+
+  <!-- Background circle (optional, can remove for transparency) -->
+  <circle cx="32" cy="32" r="30" fill="#FFFFFF" stroke="#FFD700" stroke-width="2"/>
+
+  <!-- Simplified pencil -->
+  <g id="pencil-simple">
+    <!-- Pencil body (yellow) -->
+    <path d="M 32 10 L 38 50 L 26 50 L 32 10 Z"
+          fill="#FFD700"
+          stroke="#D4AF37"
+          stroke-width="1.5"/>
+
+    <!-- Pencil tip (dark gray) -->
+    <path d="M 32 10 L 36 18 L 28 18 Z"
+          fill="#4A4A4A"
+          stroke="#2C2C2C"
+          stroke-width="1"/>
+
+    <!-- Eraser (pink) -->
+    <rect x="26" y="48" width="12" height="8" rx="2"
+          fill="#FF69B4"
+          stroke="#E75480"
+          stroke-width="1"/>
+
+    <!-- Metal band -->
+    <rect x="25" y="47" width="14" height="3"
+          fill="#C0C0C0"
+          stroke="#A0A0A0"
+          stroke-width="0.5"/>
+
+    <!-- Simple face -->
+    <circle cx="29" cy="32" r="1.5" fill="#333"/>
+    <circle cx="35" cy="32" r="1.5" fill="#333"/>
+    <path d="M 28 36 Q 32 39 36 36"
+          fill="none"
+          stroke="#333"
+          stroke-width="1.5"
+          stroke-linecap="round"/>
+  </g>
+
+  <!-- Simplified sparkles (just 3 for minimal version) -->
+  <g id="sparkles-minimal">
+    <!-- Top left -->
+    <path d="M 14 20 L 14.5 22 L 17 22.5 L 14.5 23 L 14 25 L 13.5 23 L 11 22.5 L 13.5 22 Z"
+          fill="#4A90E2"/>
+
+    <!-- Top right -->
+    <path d="M 50 22 L 50.5 24 L 53 24.5 L 50.5 25 L 50 27 L 49.5 25 L 47 24.5 L 49.5 24 Z"
+          fill="#9B59B6"/>
+
+    <!-- Bottom -->
+    <path d="M 32 54 L 32.5 56 L 35 56.5 L 32.5 57 L 32 59 L 31.5 57 L 29 56.5 L 31.5 56 Z"
+          fill="#FF6B35"/>
+  </g>
+</svg>

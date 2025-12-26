@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://magicpencil.fun/sitemap.xml
+
+# Disallow private directories
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.claude/
+Disallow: /SEO/
+Disallow: /Documents/
+
+# Disallow markdown files
+Disallow: /*.md$
+
+# Disallow backup files
+Disallow: /*.backup$
+
+# Allow all images and assets
+Allow: /images/
+Allow: /assets/
+Allow: /css/
+Allow: /js/
