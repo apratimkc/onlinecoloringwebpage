@@ -247,6 +247,7 @@ def fix_svg_attributes(tree, file_path):
     # 2. Ensure colorable paths have style="fill:transparent;stroke:none"
     # IMPORTANT: Only modify paths in colorable layers, NEVER touch outline layer
     colorable_fixed = 0
+    opacity_fixed = 0
     outline_preserved = 0
 
     for path in root.findall('.//{http://www.w3.org/2000/svg}path'):
@@ -259,6 +260,7 @@ def fix_svg_attributes(tree, file_path):
         # This is a COLORABLE layer path - ensure it has proper attributes
         style = path.get('style', '')
         fill = path.get('fill', '')
+        path_modified = False
 
         # Convert fill:none to fill:transparent for colorable layer paths
         if 'fill:none' in style or 'fill: none' in style:
@@ -271,8 +273,7 @@ def fix_svg_attributes(tree, file_path):
                     style += ';'
                 style += 'stroke:none'
             path.set('style', style)
-            colorable_fixed += 1
-            modified = True
+            path_modified = True
 
         # If it has fill:transparent but missing stroke:none
         elif 'fill:transparent' in style or 'fill: transparent' in style:
@@ -282,19 +283,78 @@ def fix_svg_attributes(tree, file_path):
                     style += ';'
                 style += 'stroke:none'
                 path.set('style', style)
-                colorable_fixed += 1
-                modified = True
+                path_modified = True
 
         # If it has fill="transparent" or fill="none" attribute, convert to style format
         elif fill in ['transparent', 'none']:
             path.set('style', 'fill:transparent;stroke:none')
             if 'fill' in path.attrib:
                 path.attrib.pop('fill')
+            path_modified = True
+
+        # 3. Fix opacity - ensure colorable paths have 100% opacity
+        # Check for opacity in style attribute
+        style = path.get('style', '')
+        opacity_attr = path.get('opacity', '')
+        fill_opacity_attr = path.get('fill-opacity', '')
+
+        opacity_needs_fix = False
+
+        # Check opacity in style attribute (e.g., "opacity:0.5" or "fill-opacity:0.5")
+        if 'opacity:' in style:
+            # Extract opacity value using regex
+            opacity_match = re.search(r'opacity\s*:\s*([0-9.]+)', style)
+            if opacity_match:
+                opacity_value = float(opacity_match.group(1))
+                if opacity_value < 1.0:
+                    # Replace with opacity:1
+                    style = re.sub(r'opacity\s*:\s*[0-9.]+', 'opacity:1', style)
+                    opacity_needs_fix = True
+
+        if 'fill-opacity:' in style:
+            fill_opacity_match = re.search(r'fill-opacity\s*:\s*([0-9.]+)', style)
+            if fill_opacity_match:
+                fill_opacity_value = float(fill_opacity_match.group(1))
+                if fill_opacity_value < 1.0:
+                    # Replace with fill-opacity:1
+                    style = re.sub(r'fill-opacity\s*:\s*[0-9.]+', 'fill-opacity:1', style)
+                    opacity_needs_fix = True
+
+        # Check opacity attribute (e.g., opacity="0.5")
+        if opacity_attr:
+            try:
+                opacity_value = float(opacity_attr)
+                if opacity_value < 1.0:
+                    path.set('opacity', '1')
+                    opacity_needs_fix = True
+            except ValueError:
+                pass
+
+        # Check fill-opacity attribute
+        if fill_opacity_attr:
+            try:
+                fill_opacity_value = float(fill_opacity_attr)
+                if fill_opacity_value < 1.0:
+                    path.set('fill-opacity', '1')
+                    opacity_needs_fix = True
+            except ValueError:
+                pass
+
+        if opacity_needs_fix:
+            if style != path.get('style', ''):
+                path.set('style', style)
+            opacity_fixed += 1
+            path_modified = True
+
+        if path_modified:
             colorable_fixed += 1
             modified = True
 
     if colorable_fixed > 0:
         log_info(f"  Fixed {colorable_fixed} colorable paths")
+
+    if opacity_fixed > 0:
+        log_info(f"  Fixed opacity on {opacity_fixed} paths (set to 100%)")
 
     if outline_preserved > 0:
         log_info(f"  Preserved {outline_preserved} outline paths (unchanged)")
