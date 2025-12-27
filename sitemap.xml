@@ -5,7 +5,7 @@
     <!-- Homepage -->
     <url>
         <loc>https://magicpencil.fun/</loc>
-        <lastmod>2025-12-26</lastmod>
+        <lastmod>2025-12-27</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -120,13 +120,301 @@
     <!-- Coloring Pages - Alphabets -->
     <url>
         <loc>https://magicpencil.fun/coloring.html?id=alphabets-a-apple</loc>
-        <lastmod>2025-12-26</lastmod>
+        <lastmod>2025-12-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
             <image:loc>https://magicpencil.fun/images/alphabets/A-Apple.svg</image:loc>
             <image:caption>A Apple Coloring Page - Free Online Coloring for Kids</image:caption>
             <image:title>A Apple</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-b</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/B.svg</image:loc>
+            <image:caption>B Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>B</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-c</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/C.svg</image:loc>
+            <image:caption>C Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>C</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-d</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/D.svg</image:loc>
+            <image:caption>D Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>D</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-e</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/E.svg</image:loc>
+            <image:caption>E Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>E</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-f</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/F.svg</image:loc>
+            <image:caption>F Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>F</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-g</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/G.svg</image:loc>
+            <image:caption>G Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>G</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-h</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/H.svg</image:loc>
+            <image:caption>H Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>H</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-i</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/I.svg</image:loc>
+            <image:caption>I Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>I</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-j</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/J.svg</image:loc>
+            <image:caption>J Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>J</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-k</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/K.svg</image:loc>
+            <image:caption>K Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>K</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-l</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/L.svg</image:loc>
+            <image:caption>L Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>L</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-m</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/M.svg</image:loc>
+            <image:caption>M Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>M</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-n</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/N.svg</image:loc>
+            <image:caption>N Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>N</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-o</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/O.svg</image:loc>
+            <image:caption>O Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>O</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-p</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/P.svg</image:loc>
+            <image:caption>P Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>P</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-q</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/Q.svg</image:loc>
+            <image:caption>Q Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>Q</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-r</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/R.svg</image:loc>
+            <image:caption>R Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>R</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-s</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/S.svg</image:loc>
+            <image:caption>S Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>S</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-t</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/T.svg</image:loc>
+            <image:caption>T Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>T</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-u</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/U.svg</image:loc>
+            <image:caption>U Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>U</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-v</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/V.svg</image:loc>
+            <image:caption>V Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>V</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-w</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/W.svg</image:loc>
+            <image:caption>W Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>W</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-x</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/X.svg</image:loc>
+            <image:caption>X Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>X</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-y</loc>
+        <lastmod>2025-12-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/Y.svg</image:loc>
+            <image:caption>Y Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>Y</image:title>
         </image:image>
     </url>
 
