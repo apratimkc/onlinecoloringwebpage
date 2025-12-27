@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your MagicPencil Logo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 48px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.9);
+            font-size: 20px;
+            margin-bottom: 50px;
+        }
+        .logos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .logo-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        .logo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+        .logo-card.selected {
+            border: 5px solid #4CAF50;
+            transform: scale(1.05);
+        }
+        .logo-card.selected::after {
+            content: "✓ SELECTED";
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #4CAF50;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .logo-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo-header h2 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        .logo-header .badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .logo-displays {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .logo-display {
+            background: #f8f9fa;
+            border: 2px dashed #ddd;
+            border-radius: 15px;
+            padding: 20px;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .logo-display.dark {
+            background: #2c3e50;
+        }
+        .logo-display h3 {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .logo-display.dark h3 {
+            color: rgba(255,255,255,0.7);
+        }
+        .logo-display img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .logo-sizes {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .size-demo {
+            text-align: center;
+        }
+        .size-demo h4 {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .size-box {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .specs {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.8;
+        }
+        .specs strong {
+            color: #2196f3;
+        }
+        .select-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+        .select-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        .select-btn.selected {
+            background: #4CAF50;
+        }
+        .action-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .action-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .action-section p {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background: #4CAF50;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+        .btn-secondary {
+            background: #f44336;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background: #da190b;
+        }
+        .selected-logo-display {
+            background: #e8f5e9;
+            border: 3px solid #4CAF50;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .selected-logo-display.show {
+            display: block;
+        }
+        .selected-logo-display h3 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+        .selected-logo-display img {
+            max-width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .info-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            color: #856404;
+        }
+        .info-box h3 {
+            margin-bottom: 10px;
+            color: #856404;
+        }
+        .info-box ul {
+            margin-left: 20px;
+        }
+        .info-box li {
+            margin: 8px 0;
+        }
+
+        @media (max-width: 768px) {
+            .logos-grid {
+                grid-template-columns: 1fr;
+            }
+            .logo-displays {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Choose Your MagicPencil Logo</h1>
+        <p class="subtitle">Select the logo that best represents your brand</p>
+
+        <div class="logos-grid">
+            <!-- Logo 1 -->
+            <div class="logo-card" data-logo="1">
+                <div class="logo-header">
+                    <h2>Logo Option 1</h2>
+                    <span class="badge">AI Generated</span>
+                </div>
+                <div class="logo-displays">
+                    <div class="logo-display">
+                        <h3>Light Background</h3>
+                        <img src="Logo_1.png" alt="Logo 1" style="max-width: 250px;">
+                    </div>
+                    <div class="logo-display dark">
+                        <h3>Dark Background</h3>
+                        <img src="Logo_1.png" alt="Logo 1" style="max-width: 250px;">
+                    </div>
+                </div>
+                <div class="logo-sizes">
+                    <div class="size-demo">
+                        <h4>Large (200px)</h4>
+                        <div class="size-box">
+                            <img src="Logo_1.png" width="200" alt="Logo 1">
+                        </div>
+                    </div>
+                    <div class="size-demo">
+                        <h4>Small (64px)</h4>
+                        <div class="size-box">
+                            <img src="Logo_1.png" width="64" alt="Logo 1">
+                        </div>
+                    </div>
+                    <div class="size-demo">
+                        <h4>Favicon (32px)</h4>
+                        <div class="size-box">
+                            <img src="Logo_1.png" width="32" alt="Logo 1">
+                        </div>
+                    </div>
+                </div>
+                <div class="specs">
+                    <strong>Specs:</strong> 1024x1024px PNG | Perfect square format | Works at all sizes
+                </div>
+                <button class="select-btn" onclick="selectLogo(1)">Select This Logo</button>
+            </div>
+
+            <!-- Logo 2 -->
+            <div class="logo-card" data-logo="2">
+                <div class="logo-header">
+                    <h2>Logo Option 2</h2>
+                    <span class="badge">AI Generated</span>
+                </div>
+                <div class="logo-displays">
+                    <div class="logo-display">
+                        <h3>Light Background</h3>
+                        <img src="Logo_2.png" alt="Logo 2" style="max-width: 250px;">
+                    </div>
+                    <div class="logo-display dark">
+                        <h3>Dark Background</h3>
+                        <img src="Logo_2.png" alt="Logo 2" style="max-width: 250px;">
+                    </div>
+                </div>
+                <div class="logo-sizes">
+                    <div class="size-demo">
+                        <h4>Large (200px)</h4>
+                        <div class="size-box">
+                            <img src="Logo_2.png" width="200" alt="Logo 2">
+                        </div>
+                    </div>
+                    <div class="size-demo">
+                        <h4>Small (64px)</h4>
+                        <div class="size-box">
+                            <img src="Logo_2.png" width="64" alt="Logo 2">
+                        </div>
+                    </div>
+                    <div class="size-demo">
+                        <h4>Favicon (32px)</h4>
+                        <div class="size-box">
+                            <img src="Logo_2.png" width="32" alt="Logo 2">
+                        </div>
+                    </div>
+                </div>
+                <div class="specs">
+                    <strong>Specs:</strong> 1024x1024px PNG | Perfect square format | Works at all sizes
+                </div>
+                <button class="select-btn" onclick="selectLogo(2)">Select This Logo</button>
+            </div>
+
+            <!-- Logo 3 -->
+            <div class="logo-card" data-logo="3">
+                <div class="logo-header">
+                    <h2>Logo Option 3</h2>
+                    <span class="badge">AI Generated</span>
+                </div>
+                <div class="logo-displays">
+                    <div class="logo-display">
+                        <h3>Light Background</h3>
+                        <img src="Logo_3.png" alt="Logo 3" style="max-width: 250px;">
+                    </div>
+                    <div class="logo-display dark">
+                        <h3>Dark Background</h3>
+                        <img src="Logo_3.png" alt="Logo 3" style="max-width: 250px;">
+                    </div>
+                </div>
+                <div class="logo-sizes">
+                    <div class="size-demo">
+                        <h4>Large (200px)</h4>
+                        <div class="size-box">
+                            <img src="Logo_3.png" width="200" alt="Logo 3">
+                        </div>
+                    </div>
+                    <div class="size-demo">
+                        <h4>Small (64px)</h4>
+                        <div class="size-box">
+                            <img src="Logo_3.png" width="64" alt="Logo 3">
+                        </div>
+                    </div>
+                    <div class="size-demo">
+                        <h4>Favicon (32px)</h4>
+                        <div class="size-box">
+                            <img src="Logo_3.png" width="32" alt="Logo 3">
+                        </div>
+                    </div>
+                </div>
+                <div class="specs">
+                    <strong>Specs:</strong> 1024x1024px PNG | Perfect square format | Works at all sizes
+                </div>
+                <button class="select-btn" onclick="selectLogo(3)">Select This Logo</button>
+            </div>
+
+            <!-- Logo 4 -->
+            <div class="logo-card" data-logo="4">
+                <div class="logo-header">
+                    <h2>Logo Option 4</h2>
+                    <span class="badge">AI Generated</span>
+                </div>
+                <div class="logo-displays">
+                    <div class="logo-display">
+                        <h3>Light Background</h3>
+                        <img src="Logo_4.png" alt="Logo 4" style="max-width: 250px;">
+                    </div>
+                    <div class="logo-display dark">
+                        <h3>Dark Background</h3>
+                        <img src="Logo_4.png" alt="Logo 4" style="max-width: 250px;">
+                    </div>
+                </div>
+                <div class="logo-sizes">
+                    <div class="size-demo">
+                        <h4>Large (200px)</h4>
+                        <div class="size-box">
+                            <img src="Logo_4.png" width="200" alt="Logo 4">
+                        </div>
+                    </div>
+                    <div class="size-demo">
+                        <h4>Small (64px)</h4>
+                        <div class="size-box">
+                            <img src="Logo_4.png" width="64" alt="Logo 4">
+                        </div>
+                    </div>
+                    <div class="size-demo">
+                        <h4>Favicon (32px)</h4>
+                        <div class="size-box">
+                            <img src="Logo_4.png" width="32" alt="Logo 4">
+                        </div>
+                    </div>
+                </div>
+                <div class="specs">
+                    <strong>Specs:</strong> 1024x1024px PNG | Perfect square format | Works at all sizes
+                </div>
+                <button class="select-btn" onclick="selectLogo(4)">Select This Logo</button>
+            </div>
+        </div>
+
+        <div class="action-section">
+            <div class="selected-logo-display" id="selectedDisplay">
+                <h3>Your Selected Logo:</h3>
+                <img id="selectedImg" src="" alt="Selected Logo">
+                <p style="margin-top: 15px; color: #2e7d32; font-weight: bold;">Logo <span id="selectedNumber"></span> - Ready for approval!</p>
+            </div>
+
+            <h2>Ready to Proceed?</h2>
+            <p id="mainMessage">
+                Select a logo above, then click "Approve Selected Logo" to continue with SEO implementation.
+            </p>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary" id="approveBtn" onclick="approveLogo()" disabled>
+                    ✓ Approve Selected Logo
+                </button>
+                <button class="btn btn-secondary" onclick="needMoreOptions()">
+                    Need Different Options
+                </button>
+            </div>
+
+            <div class="info-box">
+                <h3>What Happens After Approval:</h3>
+                <ul>
+                    <li>Your chosen logo will be converted to multiple web formats (PNG, SVG, ICO)</li>
+                    <li>Favicon files will be created (16x16, 32x32, 180x180)</li>
+                    <li>Logo will replace current favicon on the website</li>
+                    <li>Logo will be added to homepage header</li>
+                    <li>Open Graph image (1200x630) will be created for social sharing</li>
+                    <li>Consistent branding across all pages</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedLogoNum = null;
+
+        function selectLogo(num) {
+            // Remove previous selection
+            document.querySelectorAll('.logo-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            document.querySelectorAll('.select-btn').forEach(btn => {
+                btn.textContent = 'Select This Logo';
+                btn.classList.remove('selected');
+            });
+
+            // Add new selection
+            const card = document.querySelector(`[data-logo="${num}"]`);
+            card.classList.add('selected');
+            const btn = card.querySelector('.select-btn');
+            btn.textContent = '✓ Selected';
+            btn.classList.add('selected');
+
+            // Update selected display
+            selectedLogoNum = num;
+            document.getElementById('selectedImg').src = `Logo_${num}.png`;
+            document.getElementById('selectedNumber').textContent = num;
+            document.getElementById('selectedDisplay').classList.add('show');
+            document.getElementById('approveBtn').disabled = false;
+            document.getElementById('mainMessage').textContent = `Great choice! Logo ${num} is selected. Click "Approve Selected Logo" to continue.`;
+
+            // Scroll to action section
+            document.querySelector('.action-section').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function approveLogo() {
+            if (selectedLogoNum === null) {
+                alert('Please select a logo first!');
+                return;
+            }
+
+            const message = `APPROVED: Logo ${selectedLogoNum}\n\n` +
+                          `You have approved Logo ${selectedLogoNum} as the official MagicPencil logo.\n\n` +
+                          `Please tell Claude in the chat:\n` +
+                          `"APPROVED - Use Logo_${selectedLogoNum}.png as the primary logo"\n\n` +
+                          `Claude will then:\n` +
+                          `- Create favicon files\n` +
+                          `- Add logo to website header\n` +
+                          `- Create Open Graph image\n` +
+                          `- Begin SEO implementation`;
+
+            alert(message);
+        }
+
+        function needMoreOptions() {
+            const message = `Please tell Claude in the chat that you need different logo options.\n\n` +
+                          `Specify what you'd like:\n` +
+                          `- Different style (more playful, more professional, simpler, etc.)\n` +
+                          `- Different colors\n` +
+                          `- Different concept\n` +
+                          `- Or describe your ideal logo\n\n` +
+                          `Claude can help you find or create the perfect logo!`;
+
+            alert(message);
+        }
+    </script>
+</body>
+</html>

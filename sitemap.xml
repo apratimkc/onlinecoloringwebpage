@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+    <!-- Homepage -->
+    <url>
+        <loc>https://magicpencil.fun/</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Legal Pages -->
+    <url>
+        <loc>https://magicpencil.fun/privacy-policy.html</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/contact.html</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/about.html</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.4</priority>
+    </url>
+
+    <!-- Category Pages -->
+    <url>
+        <loc>https://magicpencil.fun/category.html?cat=alphabets</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/category.html?cat=animals</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/category.html?cat=princess</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/category.html?cat=unicorns</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/category.html?cat=vehicles</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/category.html?cat=food</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/category.html?cat=nature</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/category.html?cat=holidays</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/category.html?cat=ocean</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/category.html?cat=fantasy</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/category.html?cat=shapes</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/category.html?cat=flowers</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Coloring Pages - Alphabets -->
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=alphabets-a-apple</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/alphabets/A-Apple.svg</image:loc>
+            <image:caption>A Apple Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>A Apple</image:title>
+        </image:image>
+    </url>
+
+    <!-- Coloring Pages - Animals -->
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=animals-dinosore-1</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/animals/Dinosore%201.svg</image:loc>
+            <image:caption>Dinosore 1 Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>Dinosore 1</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=animals-hen</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/animals/Hen.svg</image:loc>
+            <image:caption>Hen Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>Hen</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=animals-rabbit</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/animals/Rabbit.svg</image:loc>
+            <image:caption>Rabbit Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>Rabbit</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=animals-vecteezy-peacock</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/animals/vecteezy_peacock.svg</image:loc>
+            <image:caption>Vecteezy Peacock Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>Vecteezy Peacock</image:title>
+        </image:image>
+    </url>
+
+    <!-- Coloring Pages - Food -->
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=food-cupcake</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/food/cupcake.svg</image:loc>
+            <image:caption>Cupcake Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>Cupcake</image:title>
+        </image:image>
+    </url>
+
+    <!-- Coloring Pages - Vehicles -->
+    <url>
+        <loc>https://magicpencil.fun/coloring.html?id=vehicles-car</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://magicpencil.fun/images/vehicles/Car.svg</image:loc>
+            <image:caption>Car Coloring Page - Free Online Coloring for Kids</image:caption>
+            <image:title>Car</image:title>
+        </image:image>
+    </url>
+
+</urlset>
