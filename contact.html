@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Contact Magic Pencil - Get in touch with us about our free online coloring pages">
     <title>Contact Us - Magic Pencil</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://magicpencil.fun/contact.html" />
+
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/responsive.css">
 
@@ -157,7 +161,7 @@
     <header class="main-header">
         <div class="container">
             <div class="logo">
-                <h1><a href="index.html">Magic Pencil</a></h1>
+                <div class="logo-text"><a href="index.html">Magic Pencil</a></div>
             </div>
             <nav class="main-nav">
                 <a href="index.html">Home</a>
@@ -172,7 +176,7 @@
             <h1>Contact Us</h1>
             <p class="intro-text">We'd love to hear from you! Whether you have questions, feedback, or need assistance, please fill out the form below and we'll get back to you as soon as possible.</p>
 
-            <form class="contact-form" id="contact-form" action="#" method="POST">
+            <form class="contact-form" id="contact-form" action="https://formspree.io/f/xzdbvapn" method="POST">
                 <div class="form-group">
                     <label for="name">Your Name <span class="required">*</span></label>
                     <input type="text" id="name" name="name" required placeholder="Enter your name">
@@ -207,7 +211,7 @@
 
             <div class="contact-info-box">
                 <h3>Alternative Contact Methods</h3>
-                <p><strong>Website:</strong> <a href="https://magicpencil.fun">magicpencil.fun</a></p>
+                <p><strong>Email:</strong> <a href="mailto:apratim.056@gmail.com">apratim.056@gmail.com</a></p>
                 <p><strong>Response Time:</strong> We typically respond within 1-2 business days.</p>
                 <p><strong>Privacy Concerns:</strong> For privacy-related questions, please select "Privacy Concern" in the subject dropdown.</p>
             </div>
@@ -231,27 +235,6 @@
         </div>
     </footer>
 
-    <script>
-        // Form submission handling
-        const form = document.getElementById('contact-form');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Get form data
-            const formData = new FormData(form);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const subject = formData.get('subject');
-            const message = formData.get('message');
-
-            // For now, show a success message
-            // TODO: Replace with actual form submission (Formspree, EmailJS, or backend)
-            alert(`Thank you for your message, ${name}!\n\nWe've received your ${subject} inquiry and will respond to ${email} within 1-2 business days.`);
-
-            // Reset form
-            form.reset();
-        });
-    </script>
+    <!-- Form is handled by Formspree - no custom JavaScript needed -->
 </body>
 </html>

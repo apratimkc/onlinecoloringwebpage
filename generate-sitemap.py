@@ -195,7 +195,7 @@ def generate_sitemap(images_by_category):
 
             xml_lines.extend([
                 '    <url>',
-                f'        <loc>{BASE_URL}/coloring.html?id={image_id}</loc>',
+                f'        <loc>{BASE_URL}/coloring.html?image={image_id}</loc>',
                 f'        <lastmod>{today}</lastmod>',
                 '        <changefreq>monthly</changefreq>',
                 '        <priority>0.7</priority>',

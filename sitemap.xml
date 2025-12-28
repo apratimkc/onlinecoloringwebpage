@@ -5,7 +5,7 @@
     <!-- Homepage -->
     <url>
         <loc>https://magicpencil.fun/</loc>
-        <lastmod>2025-12-27</lastmod>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -13,21 +13,21 @@
     <!-- Legal Pages -->
     <url>
         <loc>https://magicpencil.fun/privacy-policy.html</loc>
-        <lastmod>2025-12-27</lastmod>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
 
     <url>
         <loc>https://magicpencil.fun/contact.html</loc>
-        <lastmod>2025-12-27</lastmod>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
 
     <url>
         <loc>https://magicpencil.fun/about.html</loc>
-        <lastmod>2025-12-27</lastmod>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
@@ -35,92 +35,92 @@
     <!-- Category Pages -->
     <url>
         <loc>https://magicpencil.fun/category.html?cat=alphabets</loc>
-        <lastmod>2025-12-27</lastmod>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://magicpencil.fun/category.html?cat=animals</loc>
-        <lastmod>2025-12-27</lastmod>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://magicpencil.fun/category.html?cat=princess</loc>
-        <lastmod>2025-12-27</lastmod>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://magicpencil.fun/category.html?cat=unicorns</loc>
-        <lastmod>2025-12-27</lastmod>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://magicpencil.fun/category.html?cat=vehicles</loc>
-        <lastmod>2025-12-27</lastmod>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://magicpencil.fun/category.html?cat=food</loc>
-        <lastmod>2025-12-27</lastmod>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://magicpencil.fun/category.html?cat=nature</loc>
-        <lastmod>2025-12-27</lastmod>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://magicpencil.fun/category.html?cat=holidays</loc>
-        <lastmod>2025-12-27</lastmod>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://magicpencil.fun/category.html?cat=ocean</loc>
-        <lastmod>2025-12-27</lastmod>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://magicpencil.fun/category.html?cat=fantasy</loc>
-        <lastmod>2025-12-27</lastmod>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://magicpencil.fun/category.html?cat=shapes</loc>
-        <lastmod>2025-12-27</lastmod>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://magicpencil.fun/category.html?cat=flowers</loc>
-        <lastmod>2025-12-27</lastmod>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <!-- Coloring Pages - Alphabets -->
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-a-apple</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-a-apple</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -131,8 +131,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-b</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-b</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -143,8 +143,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-c</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-c</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -155,8 +155,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-d</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-d</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -167,8 +167,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-e</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-e</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -179,8 +179,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-f</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-f</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -191,8 +191,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-g</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-g</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -203,8 +203,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-h</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-h</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -215,8 +215,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-i</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-i</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -227,8 +227,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-j</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-j</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -239,8 +239,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-k</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-k</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -251,8 +251,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-l</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-l</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -263,8 +263,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-m</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-m</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -275,8 +275,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-n</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-n</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -287,8 +287,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-o</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-o</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -299,8 +299,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-p</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-p</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -311,8 +311,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-q</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-q</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -323,8 +323,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-r</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-r</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -335,8 +335,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-s</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-s</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -347,8 +347,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-t</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-t</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -359,8 +359,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-u</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-u</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -371,8 +371,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-v</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-v</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -383,8 +383,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-w</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-w</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -395,8 +395,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-x</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-x</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -407,8 +407,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=alphabets-y</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=alphabets-y</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -420,8 +420,8 @@
 
     <!-- Coloring Pages - Animals -->
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=animals-dinosore-1</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=animals-dinosore-1</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -432,8 +432,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=animals-hen</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=animals-hen</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -444,8 +444,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=animals-rabbit</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=animals-rabbit</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -456,8 +456,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=animals-vecteezypeacock</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=animals-vecteezypeacock</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -469,8 +469,8 @@
 
     <!-- Coloring Pages - Food -->
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=food-cupcake</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=food-cupcake</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -482,8 +482,8 @@
 
     <!-- Coloring Pages - Vehicles -->
     <url>
-        <loc>https://magicpencil.fun/coloring.html?id=vehicles-car</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://magicpencil.fun/coloring.html?image=vehicles-car</loc>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>

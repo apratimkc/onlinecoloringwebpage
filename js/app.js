@@ -63,6 +63,12 @@ function initializeCategoryPage() {
     // Update page title
     document.title = `${categoryInfo.name} - ColorTap`;
 
+    // Update canonical URL
+    const canonicalTag = document.getElementById('canonical-tag');
+    if (canonicalTag) {
+        canonicalTag.href = `https://magicpencil.fun/category.html?cat=${categoryId}`;
+    }
+
     // Load images for this category
     const images = getImagesByCategory(categoryId);
     const imageGrid = document.getElementById('image-grid');
@@ -90,6 +96,20 @@ function initializeCategoryPage() {
 
         imageGrid.appendChild(card);
     });
+
+    // Add "work in progress" info tile at the end
+    const infoCard = document.createElement('div');
+    infoCard.className = 'image-card info-card';
+    infoCard.innerHTML = `
+        <div class="image-thumbnail info-thumbnail">
+            <div class="info-content">
+                <span class="info-icon">🎨</span>
+                <h4>More Coming Soon!</h4>
+                <p>We add new coloring pages every day</p>
+            </div>
+        </div>
+    `;
+    imageGrid.appendChild(infoCard);
 }
 
 /**

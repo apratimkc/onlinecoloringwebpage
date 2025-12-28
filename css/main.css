@@ -98,7 +98,8 @@ a:hover {
     align-items: center;
 }
 
-.logo h1 {
+.logo h1,
+.logo .logo-text {
     font-size: 2.5rem;
     color: var(--text-light);
     margin: 0;
@@ -337,6 +338,49 @@ a:hover {
     font-size: 0.9rem;
     margin: 0;
     text-align: center;
+}
+
+/* Info Card - "Work in Progress" tile */
+.info-card {
+    background: linear-gradient(135deg, #E3F2FD 0%, #FFF9C4 100%);
+    border: 3px dashed var(--accent-purple);
+    cursor: default;
+    pointer-events: none;
+}
+
+.info-card:hover {
+    transform: none;
+    box-shadow: var(--shadow-sm);
+}
+
+.info-thumbnail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+
+.info-content {
+    text-align: center;
+    padding: 1rem;
+}
+
+.info-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.info-content h4 {
+    color: var(--accent-purple);
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+.info-content p {
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    margin: 0;
 }
 
 /* Content Pages (Privacy, Contact) */

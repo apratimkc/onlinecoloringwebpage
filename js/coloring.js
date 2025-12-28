@@ -355,6 +355,12 @@ function initializeColoringPage() {
     console.log('Image ID from URL:', imageId);
 
     if (imageId) {
+        // Update canonical URL
+        const canonicalTag = document.getElementById('canonical-tag');
+        if (canonicalTag) {
+            canonicalTag.href = `https://magicpencil.fun/coloring.html?image=${imageId}`;
+        }
+
         loadSVGImage(imageId);
     } else {
         // Load random image if no ID specified
@@ -364,6 +370,12 @@ function initializeColoringPage() {
             loadSVGImage(randomImage.id);
             // Update URL without reloading
             window.history.replaceState({}, '', `coloring.html?image=${randomImage.id}`);
+
+            // Update canonical URL
+            const canonicalTag = document.getElementById('canonical-tag');
+            if (canonicalTag) {
+                canonicalTag.href = `https://magicpencil.fun/coloring.html?image=${randomImage.id}`;
+            }
         } else {
             const container = document.getElementById('svg-container');
             if (container) {
