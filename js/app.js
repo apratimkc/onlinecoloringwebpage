@@ -47,8 +47,10 @@ function initializeCategoryPage() {
         return;
     }
 
-    // Update page title and breadcrumb
+    // Get category info and SEO metadata
     const categoryInfo = getCategoryInfo(categoryId);
+    const categoryMeta = getCategoryMetadata(categoryId);
+
     const categoryTitle = document.getElementById('category-title');
     const categoryName = document.getElementById('category-name');
 
@@ -60,13 +62,65 @@ function initializeCategoryPage() {
         categoryName.textContent = categoryInfo.name;
     }
 
-    // Update page title
-    document.title = `${categoryInfo.name} - ColorTap`;
+    // Update page title with SEO-optimized title
+    document.title = categoryMeta.title;
+
+    // Update meta description
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+        metaDesc.setAttribute('content', categoryMeta.description);
+    }
+
+    // Update meta keywords
+    let metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (metaKeywords) {
+        metaKeywords.setAttribute('content', categoryMeta.keywords);
+    }
+
+    // Update Open Graph tags
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+        ogTitle.setAttribute('content', categoryMeta.title);
+    }
+
+    let ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) {
+        ogDesc.setAttribute('content', categoryMeta.description);
+    }
+
+    let ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) {
+        ogUrl.setAttribute('content', `https://magicpencil.fun/category.html?cat=${categoryId}`);
+    }
 
     // Update canonical URL
     const canonicalTag = document.getElementById('canonical-tag');
     if (canonicalTag) {
         canonicalTag.href = `https://magicpencil.fun/category.html?cat=${categoryId}`;
+    }
+
+    // Update Breadcrumb Schema
+    const breadcrumbSchema = document.getElementById('breadcrumb-schema');
+    if (breadcrumbSchema) {
+        const schema = {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://magicpencil.fun/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": categoryMeta.name,
+                    "item": `https://magicpencil.fun/category.html?cat=${categoryId}`
+                }
+            ]
+        };
+        breadcrumbSchema.textContent = JSON.stringify(schema, null, 2);
     }
 
     // Load images for this category

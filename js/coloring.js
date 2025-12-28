@@ -343,6 +343,59 @@ function getSVGDataURL() {
 }
 
 /**
+ * Update Schema.org structured data for coloring page
+ */
+function updateColoringPageSchemas(imageData) {
+    const categoryMeta = getCategoryMetadata(imageData.category);
+    const categoryInfo = getCategoryInfo(imageData.category);
+
+    // Update ImageObject Schema
+    const imageSchema = document.getElementById('image-schema');
+    if (imageSchema) {
+        const schema = {
+            "@context": "https://schema.org",
+            "@type": "ImageObject",
+            "name": imageData.name,
+            "contentUrl": `https://magicpencil.fun/images/${imageData.category}/${imageData.filename}`,
+            "description": `Free ${imageData.name} coloring page. Color this ${imageData.difficulty} difficulty image online. ${categoryMeta.description}`,
+            "uploadDate": new Date().toISOString().split('T')[0],
+            "license": "https://magicpencil.fun/privacy-policy.html"
+        };
+        imageSchema.textContent = JSON.stringify(schema, null, 2);
+    }
+
+    // Update BreadcrumbList Schema
+    const breadcrumbSchema = document.getElementById('breadcrumb-schema');
+    if (breadcrumbSchema) {
+        const schema = {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://magicpencil.fun/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": categoryInfo.name,
+                    "item": `https://magicpencil.fun/category.html?cat=${imageData.category}`
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": imageData.name,
+                    "item": `https://magicpencil.fun/coloring.html?image=${imageData.id}`
+                }
+            ]
+        };
+        breadcrumbSchema.textContent = JSON.stringify(schema, null, 2);
+    }
+}
+
+/**
  * Initialize coloring page on load
  */
 function initializeColoringPage() {
@@ -355,10 +408,18 @@ function initializeColoringPage() {
     console.log('Image ID from URL:', imageId);
 
     if (imageId) {
+        // Get image data for schema
+        const imageData = getImageById(imageId);
+
         // Update canonical URL
         const canonicalTag = document.getElementById('canonical-tag');
         if (canonicalTag) {
             canonicalTag.href = `https://magicpencil.fun/coloring.html?image=${imageId}`;
+        }
+
+        // Update schemas with image data
+        if (imageData) {
+            updateColoringPageSchemas(imageData);
         }
 
         loadSVGImage(imageId);
@@ -376,6 +437,9 @@ function initializeColoringPage() {
             if (canonicalTag) {
                 canonicalTag.href = `https://magicpencil.fun/coloring.html?image=${randomImage.id}`;
             }
+
+            // Update schemas with random image data
+            updateColoringPageSchemas(randomImage);
         } else {
             const container = document.getElementById('svg-container');
             if (container) {
