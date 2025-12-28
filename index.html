@@ -37,6 +37,7 @@
     <title>Free Online Coloring Pages for Kids - MagicPencil</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/cookie-consent.css">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-S4TFTTG0SD"></script>
@@ -205,7 +206,80 @@
         </div>
     </footer>
 
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent-banner" class="cookie-consent-banner">
+        <div class="cookie-consent-container">
+            <div class="cookie-consent-content">
+                <h3>🍪 We Use Cookies</h3>
+                <p>
+                    We use cookies to improve your experience and show COPPA-compliant ads.
+                    No personal information is collected from children.
+                    <a href="privacy-policy.html">Learn more</a>
+                </p>
+            </div>
+            <div class="cookie-consent-actions">
+                <button id="cookie-accept-btn" class="cookie-consent-btn cookie-consent-btn-accept">
+                    Accept All
+                </button>
+                <button id="cookie-decline-btn" class="cookie-consent-btn cookie-consent-btn-decline">
+                    Decline
+                </button>
+                <button id="cookie-settings-btn" class="cookie-consent-btn cookie-consent-btn-settings">
+                    Settings
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div id="cookie-settings-modal" class="cookie-settings-modal">
+        <div class="cookie-settings-content">
+            <h2>Cookie Preferences</h2>
+            <p>We respect your privacy. Choose which cookies you want to allow:</p>
+
+            <div class="cookie-option">
+                <h3>
+                    <span>Essential Cookies</span>
+                    <span class="required-badge">Required</span>
+                </h3>
+                <p>These cookies are necessary for the website to function and cannot be disabled.</p>
+            </div>
+
+            <div class="cookie-option">
+                <h3>
+                    <span>Analytics Cookies</span>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" id="analytics-toggle">
+                        <span class="cookie-toggle-slider"></span>
+                    </label>
+                </h3>
+                <p>Help us understand how visitors use our site to improve user experience. Uses Google Analytics with IP anonymization.</p>
+            </div>
+
+            <div class="cookie-option">
+                <h3>
+                    <span>Advertising Cookies</span>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" id="ads-toggle">
+                        <span class="cookie-toggle-slider"></span>
+                    </label>
+                </h3>
+                <p>Allow COPPA-compliant ads from Google AdSense. All ads shown to children are non-personalized.</p>
+            </div>
+
+            <div class="cookie-settings-actions">
+                <button id="cookie-save-btn" class="cookie-consent-btn cookie-consent-btn-accept">
+                    Save Preferences
+                </button>
+                <button id="cookie-close-btn" class="cookie-consent-btn cookie-consent-btn-decline">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="js/data/image-catalog.js"></script>
+    <script src="js/cookie-consent.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
