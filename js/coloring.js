@@ -393,6 +393,54 @@ function updateColoringPageSchemas(imageData) {
         };
         breadcrumbSchema.textContent = JSON.stringify(schema, null, 2);
     }
+
+    // Update page title
+    document.title = `${imageData.name} Coloring Page - ${categoryInfo.name} | MagicPencil`;
+
+    // Update meta description
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+        metaDesc.setAttribute('content',
+            `Free ${imageData.name} coloring page. Color this ${imageData.difficulty} difficulty image online with tap-to-fill, gradients, and patterns. Perfect for kids!`);
+    }
+
+    // Update meta keywords
+    let metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (metaKeywords) {
+        metaKeywords.setAttribute('content',
+            `${imageData.name.toLowerCase()} coloring page, ${imageData.category} coloring, free coloring pages, online coloring for kids, ${categoryMeta.keywords}`);
+    }
+
+    // Update Open Graph tags
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+        ogTitle.setAttribute('content',
+            `Free ${imageData.name} Coloring Page - ${categoryInfo.name} | MagicPencil`);
+    }
+
+    let ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) {
+        ogDesc.setAttribute('content',
+            `Color this ${imageData.difficulty} difficulty ${imageData.name} coloring page online. Tap-to-fill with colors, gradients, and patterns. Free for kids!`);
+    }
+
+    let ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) {
+        ogUrl.setAttribute('content',
+            `https://magicpencil.fun/coloring.html?image=${imageData.id}`);
+    }
+
+    let ogImage = document.querySelector('meta[property="og:image"]');
+    if (ogImage) {
+        ogImage.setAttribute('content',
+            `https://magicpencil.fun/images/${imageData.category}/${imageData.filename}`);
+    }
+
+    // Update canonical URL
+    const canonicalTag = document.getElementById('canonical-tag');
+    if (canonicalTag) {
+        canonicalTag.href = `https://magicpencil.fun/coloring.html?image=${imageData.id}`;
+    }
 }
 
 /**
