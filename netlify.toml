@@ -20,3 +20,10 @@
   to = "/sitemap.xml"
   status = 200
   force = false
+
+# Redirect root favicon to assets folder
+[[redirects]]
+  from = "/favicon.ico"
+  to = "/assets/favicon.ico"
+  status = 200
+  force = false
