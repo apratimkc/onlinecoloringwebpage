@@ -71,6 +71,14 @@ const imageCatalog = [
         regions: 13
     },
     {
+        id: 'alphabets-i-icecream',
+        category: 'alphabets',
+        name: 'I Icecream',
+        filename: 'I-Icecream.svg',
+        difficulty: 'medium',
+        regions: 7
+    },
+    {
         id: 'alphabets-j-jucie',
         category: 'alphabets',
         name: 'J Jucie',
@@ -110,15 +118,135 @@ const imageCatalog = [
         difficulty: 'medium',
         regions: 9
     },
+    {
+        id: 'alphabets-o-orange',
+        category: 'alphabets',
+        name: 'O Orange',
+        filename: 'O-Orange.svg',
+        difficulty: 'medium',
+        regions: 8
+    },
+    {
+        id: 'alphabets-p-pencil',
+        category: 'alphabets',
+        name: 'P Pencil',
+        filename: 'P-Pencil.svg',
+        difficulty: 'medium',
+        regions: 15
+    },
+    {
+        id: 'alphabets-q-queen',
+        category: 'alphabets',
+        name: 'Q Queen',
+        filename: 'Q-Queen.svg',
+        difficulty: 'medium',
+        regions: 55
+    },
+    {
+        id: 'alphabets-r-rainbow',
+        category: 'alphabets',
+        name: 'R Rainbow',
+        filename: 'R-Rainbow.svg',
+        difficulty: 'medium',
+        regions: 8
+    },
+    {
+        id: 'alphabets-s-sun',
+        category: 'alphabets',
+        name: 'S Sun',
+        filename: 'S-Sun.svg',
+        difficulty: 'medium',
+        regions: 6
+    },
+    {
+        id: 'alphabets-t-tree',
+        category: 'alphabets',
+        name: 'T Tree',
+        filename: 'T-Tree.svg',
+        difficulty: 'medium',
+        regions: 22
+    },
+    {
+        id: 'alphabets-u-umbrella',
+        category: 'alphabets',
+        name: 'U Umbrella',
+        filename: 'U-Umbrella.svg',
+        difficulty: 'medium',
+        regions: 13
+    },
+    {
+        id: 'alphabets-v-van',
+        category: 'alphabets',
+        name: 'V Van',
+        filename: 'V-Van.svg',
+        difficulty: 'medium',
+        regions: 36
+    },
+    {
+        id: 'alphabets-w-whale',
+        category: 'alphabets',
+        name: 'W Whale',
+        filename: 'W-Whale.svg',
+        difficulty: 'medium',
+        regions: 16
+    },
+    {
+        id: 'alphabets-x-xylophone',
+        category: 'alphabets',
+        name: 'X Xylophone',
+        filename: 'X-Xylophone.svg',
+        difficulty: 'medium',
+        regions: 32
+    },
+    {
+        id: 'alphabets-y-yak',
+        category: 'alphabets',
+        name: 'Y Yak',
+        filename: 'Y-Yak.svg',
+        difficulty: 'medium',
+        regions: 24
+    },
+    {
+        id: 'alphabets-z-zebra',
+        category: 'alphabets',
+        name: 'Z Zebra',
+        filename: 'Z-Zebra.svg',
+        difficulty: 'medium',
+        regions: 36
+    },
 
     // Animals Category
     {
-        id: 'animals-dinosore-1',
+        id: 'animals-caterpillar',
         category: 'animals',
-        name: 'Dinosore 1',
-        filename: 'Dinosore 1.svg',
+        name: 'Caterpillar',
+        filename: 'Caterpillar.svg',
         difficulty: 'medium',
         regions: 25
+    },
+    {
+        id: 'animals-dinosore',
+        category: 'animals',
+        name: 'Dinosore',
+        filename: 'Dinosore.svg',
+        difficulty: 'medium',
+        regions: 25
+    },
+    {
+        id: 'animals-elephant',
+        category: 'animals',
+        name: 'Elephant',
+        filename: 'Elephant.svg',
+        difficulty: 'medium',
+        regions: 24
+    },
+    {
+        id: 'animals-giraffe',
+        category: 'animals',
+        name: 'Giraffe',
+        filename: 'Giraffe.svg',
+        difficulty: 'medium',
+        regions: 26
     },
     {
         id: 'animals-hen',
@@ -129,23 +257,203 @@ const imageCatalog = [
         regions: 16
     },
     {
+        id: 'animals-honney-bee',
+        category: 'animals',
+        name: 'Honney Bee',
+        filename: 'Honney Bee.svg',
+        difficulty: 'medium',
+        regions: 13
+    },
+    {
+        id: 'animals-ladybug',
+        category: 'animals',
+        name: 'Ladybug',
+        filename: 'Ladybug.svg',
+        difficulty: 'medium',
+        regions: 19
+    },
+    {
+        id: 'animals-lion',
+        category: 'animals',
+        name: 'Lion',
+        filename: 'Lion.svg',
+        difficulty: 'medium',
+        regions: 15
+    },
+    {
+        id: 'animals-owl',
+        category: 'animals',
+        name: 'Owl',
+        filename: 'Owl.svg',
+        difficulty: 'medium',
+        regions: 30
+    },
+    {
+        id: 'animals-peacock',
+        category: 'animals',
+        name: 'Peacock',
+        filename: 'peacock.svg',
+        difficulty: 'medium',
+        regions: 67
+    },
+    {
+        id: 'animals-penguin',
+        category: 'animals',
+        name: 'Penguin',
+        filename: 'Penguin.svg',
+        difficulty: 'medium',
+        regions: 27
+    },
+    {
+        id: 'animals-rabbit-1',
+        category: 'animals',
+        name: 'Rabbit 1',
+        filename: 'Rabbit 1.svg',
+        difficulty: 'medium',
+        regions: 25
+    },
+    {
         id: 'animals-rabbit',
         category: 'animals',
         name: 'Rabbit',
         filename: 'Rabbit.svg',
         difficulty: 'medium',
-        regions: 25
+        regions: 21
     },
     {
-        id: 'animals-vecteezy-peacock',
+        id: 'animals-rubber-duckie',
         category: 'animals',
-        name: 'Vecteezy Peacock',
-        filename: 'vecteezy_peacock.svg',
+        name: 'Rubber Duckie',
+        filename: 'Rubber Duckie.svg',
         difficulty: 'medium',
-        regions: 67
+        regions: 7
+    },
+    {
+        id: 'animals-teddy-bear',
+        category: 'animals',
+        name: 'Teddy Bear',
+        filename: 'Teddy Bear.svg',
+        difficulty: 'medium',
+        regions: 19
+    },
+
+    // Fantasy Category
+    {
+        id: 'fantasy-dragon-firing',
+        category: 'fantasy',
+        name: 'Dragon Firing',
+        filename: 'Dragon Firing.svg',
+        difficulty: 'medium',
+        regions: 82
+    },
+    {
+        id: 'fantasy-house',
+        category: 'fantasy',
+        name: 'House',
+        filename: 'House.svg',
+        difficulty: 'medium',
+        regions: 9
+    },
+    {
+        id: 'fantasy-magic-wand',
+        category: 'fantasy',
+        name: 'Magic Wand',
+        filename: 'Magic Wand.svg',
+        difficulty: 'medium',
+        regions: 11
+    },
+    {
+        id: 'fantasy-pair-of-mittens',
+        category: 'fantasy',
+        name: 'Pair Of Mittens',
+        filename: 'Pair of Mittens.svg',
+        difficulty: 'medium',
+        regions: 14
+    },
+    {
+        id: 'fantasy-pencil',
+        category: 'fantasy',
+        name: 'Pencil',
+        filename: 'Pencil.svg',
+        difficulty: 'medium',
+        regions: 10
+    },
+    {
+        id: 'fantasy-robot',
+        category: 'fantasy',
+        name: 'Robot',
+        filename: 'Robot.svg',
+        difficulty: 'medium',
+        regions: 22
+    },
+    {
+        id: 'fantasy-treasure-chest',
+        category: 'fantasy',
+        name: 'Treasure Chest',
+        filename: 'Treasure Chest.svg',
+        difficulty: 'medium',
+        regions: 99
+    },
+
+    // Flowers Category
+    {
+        id: 'flowers-cactus',
+        category: 'flowers',
+        name: 'Cactus',
+        filename: 'Cactus.svg',
+        difficulty: 'medium',
+        regions: 23
+    },
+    {
+        id: 'flowers-mashroom',
+        category: 'flowers',
+        name: 'Mashroom',
+        filename: 'Mashroom.svg',
+        difficulty: 'medium',
+        regions: 13
+    },
+    {
+        id: 'flowers-rose',
+        category: 'flowers',
+        name: 'Rose',
+        filename: 'Rose.svg',
+        difficulty: 'medium',
+        regions: 15
+    },
+    {
+        id: 'flowers-sunflower',
+        category: 'flowers',
+        name: 'Sunflower',
+        filename: 'Sunflower.svg',
+        difficulty: 'medium',
+        regions: 36
+    },
+    {
+        id: 'flowers-tulip',
+        category: 'flowers',
+        name: 'Tulip',
+        filename: 'Tulip.svg',
+        difficulty: 'medium',
+        regions: 16
     },
 
     // Food Category
+    {
+        id: 'food-apple',
+        category: 'food',
+        name: 'Apple',
+        filename: 'Apple.svg',
+        difficulty: 'medium',
+        regions: 7
+    },
+    {
+        id: 'food-birthday-cake',
+        category: 'food',
+        name: 'Birthday Cake',
+        filename: 'Birthday Cake.svg',
+        difficulty: 'medium',
+        regions: 28
+    },
     {
         id: 'food-cupcake',
         category: 'food',
@@ -154,8 +462,192 @@ const imageCatalog = [
         difficulty: 'medium',
         regions: 24
     },
+    {
+        id: 'food-donut',
+        category: 'food',
+        name: 'Donut',
+        filename: 'Donut.svg',
+        difficulty: 'medium',
+        regions: 28
+    },
+    {
+        id: 'food-ice-cream-cone',
+        category: 'food',
+        name: 'Ice Cream Cone',
+        filename: 'Ice Cream Cone.svg',
+        difficulty: 'medium',
+        regions: 25
+    },
+    {
+        id: 'food-tea-cup--saucer',
+        category: 'food',
+        name: 'Tea Cup & Saucer',
+        filename: 'Tea Cup & Saucer.svg',
+        difficulty: 'medium',
+        regions: 8
+    },
+    {
+        id: 'food-watermalon',
+        category: 'food',
+        name: 'Watermalon',
+        filename: 'Watermalon.svg',
+        difficulty: 'medium',
+        regions: 8
+    },
+
+    // Holidays Category
+    {
+        id: 'holidays-gift-box',
+        category: 'holidays',
+        name: 'Gift Box',
+        filename: 'Gift Box.svg',
+        difficulty: 'medium',
+        regions: 26
+    },
+    {
+        id: 'holidays-hot-air-balloon',
+        category: 'holidays',
+        name: 'Hot Air Balloon',
+        filename: 'Hot Air Balloon.svg',
+        difficulty: 'medium',
+        regions: 31
+    },
+    {
+        id: 'holidays-kite',
+        category: 'holidays',
+        name: 'Kite',
+        filename: 'Kite.svg',
+        difficulty: 'medium',
+        regions: 39
+    },
+
+    // Nature Category
+    {
+        id: 'nature-cloud--sun',
+        category: 'nature',
+        name: 'Cloud & Sun',
+        filename: 'Cloud & Sun.svg',
+        difficulty: 'medium',
+        regions: 3
+    },
+    {
+        id: 'nature-oak-leaf',
+        category: 'nature',
+        name: 'Oak Leaf',
+        filename: 'Oak Leaf.svg',
+        difficulty: 'medium',
+        regions: 6
+    },
+    {
+        id: 'nature-palm-tree',
+        category: 'nature',
+        name: 'Palm Tree',
+        filename: 'Palm Tree.svg',
+        difficulty: 'medium',
+        regions: 13
+    },
+    {
+        id: 'nature-rainbow',
+        category: 'nature',
+        name: 'Rainbow',
+        filename: 'Rainbow.svg',
+        difficulty: 'medium',
+        regions: 10
+    },
+    {
+        id: 'nature-sean-and-hills',
+        category: 'nature',
+        name: 'Sean And Hills',
+        filename: 'Sean and Hills.svg',
+        difficulty: 'medium',
+        regions: 78
+    },
+    {
+        id: 'nature-smilling-star',
+        category: 'nature',
+        name: 'Smilling Star',
+        filename: 'Smilling Star.svg',
+        difficulty: 'medium',
+        regions: 2
+    },
+    {
+        id: 'nature-starry-sky',
+        category: 'nature',
+        name: 'Starry Sky',
+        filename: 'Starry Sky.svg',
+        difficulty: 'medium',
+        regions: 10
+    },
+    {
+        id: 'nature-umbrella',
+        category: 'nature',
+        name: 'Umbrella',
+        filename: 'Umbrella.svg',
+        difficulty: 'medium',
+        regions: 13
+    },
+
+    // Ocean Category
+    {
+        id: 'ocean-sea-shell',
+        category: 'ocean',
+        name: 'Sea Shell',
+        filename: 'Sea Shell.svg',
+        difficulty: 'medium',
+        regions: 8
+    },
+    {
+        id: 'ocean-shark-with-baby',
+        category: 'ocean',
+        name: 'Shark With Baby',
+        filename: 'Shark with Baby.svg',
+        difficulty: 'medium',
+        regions: 149
+    },
+    {
+        id: 'ocean-submarine',
+        category: 'ocean',
+        name: 'Submarine',
+        filename: 'Submarine.svg',
+        difficulty: 'medium',
+        regions: 21
+    },
+    {
+        id: 'ocean-whale',
+        category: 'ocean',
+        name: 'Whale',
+        filename: 'Whale.svg',
+        difficulty: 'medium',
+        regions: 18
+    },
+
+    // Shapes Category
+    {
+        id: 'shapes-crown',
+        category: 'shapes',
+        name: 'Crown',
+        filename: 'Crown.svg',
+        difficulty: 'medium',
+        regions: 15
+    },
 
     // Vehicles Category
+    {
+        id: 'vehicles-airplane',
+        category: 'vehicles',
+        name: 'Airplane',
+        filename: 'Airplane.svg',
+        difficulty: 'medium',
+        regions: 30
+    },
+    {
+        id: 'vehicles-bicycle',
+        category: 'vehicles',
+        name: 'Bicycle',
+        filename: 'Bicycle.svg',
+        difficulty: 'medium',
+        regions: 171
+    },
     {
         id: 'vehicles-car',
         category: 'vehicles',
@@ -163,6 +655,54 @@ const imageCatalog = [
         filename: 'Car.svg',
         difficulty: 'medium',
         regions: 46
+    },
+    {
+        id: 'vehicles-fire-truck',
+        category: 'vehicles',
+        name: 'Fire Truck',
+        filename: 'Fire Truck.svg',
+        difficulty: 'medium',
+        regions: 90
+    },
+    {
+        id: 'vehicles-helicopter',
+        category: 'vehicles',
+        name: 'Helicopter',
+        filename: 'Helicopter.svg',
+        difficulty: 'medium',
+        regions: 28
+    },
+    {
+        id: 'vehicles-rocket',
+        category: 'vehicles',
+        name: 'Rocket',
+        filename: 'Rocket.svg',
+        difficulty: 'medium',
+        regions: 17
+    },
+    {
+        id: 'vehicles-school-bus',
+        category: 'vehicles',
+        name: 'School Bus',
+        filename: 'School Bus.svg',
+        difficulty: 'medium',
+        regions: 56
+    },
+    {
+        id: 'vehicles-steam-engine-train',
+        category: 'vehicles',
+        name: 'Steam Engine Train',
+        filename: 'Steam Engine Train.svg',
+        difficulty: 'medium',
+        regions: 83
+    },
+    {
+        id: 'vehicles-tugboat',
+        category: 'vehicles',
+        name: 'Tugboat',
+        filename: 'Tugboat.svg',
+        difficulty: 'medium',
+        regions: 35
     }
 ];
 
