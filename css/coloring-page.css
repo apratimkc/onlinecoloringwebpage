@@ -390,3 +390,65 @@
 #clear-btn {
     margin-top: auto;
 }
+
+/* Action Buttons Section (Color It & Download PDF) */
+.action-buttons-section {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px dashed #e0e0e0;
+}
+
+.action-buttons-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.btn-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.btn-action svg {
+    flex-shrink: 0;
+}
+
+.btn-color-it {
+    background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 50%, #4ECDC4 100%);
+    color: #333;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.btn-color-it:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
+.btn-color-it:active {
+    transform: translateY(0);
+}
+
+.btn-download-pdf {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-download-pdf:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-download-pdf:active {
+    transform: translateY(0);
+}

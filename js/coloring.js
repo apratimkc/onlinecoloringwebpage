@@ -287,6 +287,57 @@ function fillPath(path) {
 // Background coloring removed - only dual-layer SVG path coloring is supported
 
 /**
+ * Array of 18 palette colors for random coloring
+ */
+const PALETTE_COLORS = [
+    '#FF0000', '#FF6347', '#FFC0CB',  // Reds/Pinks
+    '#FFA500', '#FFFF00', '#FFD700',  // Oranges/Yellows
+    '#00FF00', '#32CD32', '#8B4513',  // Greens/Brown
+    '#0000FF', '#87CEEB', '#00CED1',  // Blues
+    '#800080', '#4B0082', '#FF69B4',  // Purples/Pink
+    '#000000', '#808080', '#FFFFFF'   // Neutrals
+];
+
+/**
+ * Randomly color all colorable regions
+ */
+function colorItRandomly() {
+    if (!coloringState.svgElement) {
+        console.warn('No SVG loaded');
+        return;
+    }
+
+    const paths = coloringState.svgElement.querySelectorAll('path, circle, rect, polygon, ellipse');
+    let coloredCount = 0;
+
+    paths.forEach((path) => {
+        // Skip outline paths (non-colorable)
+        if (isInOutlineLayer(path)) {
+            return;
+        }
+
+        // Pick a random color from the palette
+        const randomColor = PALETTE_COLORS[Math.floor(Math.random() * PALETTE_COLORS.length)];
+
+        // Apply the color
+        applySolidColor(path, randomColor);
+
+        // Track the filled region
+        if (!path.id) {
+            path.id = `region-${coloredCount}`;
+        }
+        coloringState.filledRegions[path.id] = {
+            type: 'solid',
+            color: randomColor
+        };
+
+        coloredCount++;
+    });
+
+    console.log(`Randomly colored ${coloredCount} regions`);
+}
+
+/**
  * Clear all colors from the image
  */
 function clearAllColors() {
