@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coloring Page - MagicPencil (Rainbow Theme)</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="coloring-page">
+    <!-- Subtle animated bubbles -->
+    <div class="bubbles-container subtle">
+        <div class="bubble bubble-1"></div>
+        <div class="bubble bubble-2"></div>
+        <div class="bubble bubble-3"></div>
+        <div class="bubble bubble-4"></div>
+    </div>
+
+    <header class="main-header">
+        <div class="rainbow-stripe"></div>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <div class="logo-bubble">
+                        <span>🎨</span>
+                    </div>
+                    <h1>MagicPencil</h1>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-bubble">
+                    <span class="nav-icon">🏠</span>
+                    <span>Home</span>
+                </a>
+                <button class="btn btn-random">
+                    <span class="btn-icon">🎲</span>
+                    <span>Random</span>
+                </button>
+                <button class="btn btn-secondary">
+                    <span class="btn-icon">➡️</span>
+                    <span>Next</span>
+                </button>
+                <button class="btn btn-primary">
+                    <span class="btn-icon">📥</span>
+                    <span>Save</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="coloring-container">
+        <!-- Left Panel: Colors -->
+        <aside class="color-panel">
+            <div class="panel-header rainbow-border">
+                <span class="panel-icon">🎨</span>
+                <h3>Colors</h3>
+            </div>
+
+            <div class="pencil-indicator">
+                <div class="pencil-bubble" style="background: #FF6B6B;">
+                    <div class="pencil-shine"></div>
+                </div>
+                <span class="pencil-label">Your Color</span>
+            </div>
+
+            <div class="color-palette">
+                <div class="color-grid">
+                    <!-- Colors with bubble effect -->
+                    <button class="color-btn active" data-color="#FF6B6B" style="--btn-color: #FF6B6B;" title="Coral"></button>
+                    <button class="color-btn" data-color="#FF8E8E" style="--btn-color: #FF8E8E;" title="Salmon"></button>
+                    <button class="color-btn" data-color="#FFB3B3" style="--btn-color: #FFB3B3;" title="Pink"></button>
+
+                    <button class="color-btn" data-color="#FFA502" style="--btn-color: #FFA502;" title="Orange"></button>
+                    <button class="color-btn" data-color="#FECA57" style="--btn-color: #FECA57;" title="Yellow"></button>
+                    <button class="color-btn" data-color="#FFE066" style="--btn-color: #FFE066;" title="Light Yellow"></button>
+
+                    <button class="color-btn" data-color="#26DE81" style="--btn-color: #26DE81;" title="Green"></button>
+                    <button class="color-btn" data-color="#7BED9F" style="--btn-color: #7BED9F;" title="Mint"></button>
+                    <button class="color-btn" data-color="#20BF6B" style="--btn-color: #20BF6B;" title="Emerald"></button>
+
+                    <button class="color-btn" data-color="#45B7D1" style="--btn-color: #45B7D1;" title="Sky Blue"></button>
+                    <button class="color-btn" data-color="#70A1FF" style="--btn-color: #70A1FF;" title="Blue"></button>
+                    <button class="color-btn" data-color="#4ECDC4" style="--btn-color: #4ECDC4;" title="Turquoise"></button>
+
+                    <button class="color-btn" data-color="#9C88FF" style="--btn-color: #9C88FF;" title="Purple"></button>
+                    <button class="color-btn" data-color="#B388FF" style="--btn-color: #B388FF;" title="Lavender"></button>
+                    <button class="color-btn" data-color="#FF9FF3" style="--btn-color: #FF9FF3;" title="Magenta"></button>
+
+                    <button class="color-btn" data-color="#2D3436" style="--btn-color: #2D3436;" title="Dark"></button>
+                    <button class="color-btn" data-color="#636E72" style="--btn-color: #636E72;" title="Gray"></button>
+                    <button class="color-btn" data-color="#FFFFFF" style="--btn-color: #FFFFFF;" title="White"></button>
+                </div>
+            </div>
+
+            <button class="btn btn-danger btn-full-width btn-bounce">
+                <span>🔄</span> Start Over
+            </button>
+        </aside>
+
+        <!-- Center Panel: Canvas -->
+        <section class="canvas-panel">
+            <div class="canvas-wrapper">
+                <div class="canvas-frame">
+                    <div class="frame-corner tl"></div>
+                    <div class="frame-corner tr"></div>
+                    <div class="frame-corner bl"></div>
+                    <div class="frame-corner br"></div>
+                    <div class="svg-container">
+                        <!-- Sample SVG -->
+                        <svg viewBox="0 0 400 400" class="coloring-svg">
+                            <rect x="50" y="50" width="300" height="300" fill="transparent" stroke="#2D3436" stroke-width="3" rx="20"/>
+                            <circle cx="150" cy="150" r="40" fill="transparent" stroke="#2D3436" stroke-width="3"/>
+                            <circle cx="250" cy="150" r="40" fill="transparent" stroke="#2D3436" stroke-width="3"/>
+                            <path d="M 120 250 Q 200 320 280 250" fill="transparent" stroke="#2D3436" stroke-width="3"/>
+                            <text x="200" y="380" text-anchor="middle" fill="#636E72" font-size="14" font-family="Quicksand">Tap to add colors!</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="canvas-info">
+                <div class="info-bubble">
+                    <span class="image-icon">🌟</span>
+                    <span class="image-name">Happy Star</span>
+                </div>
+                <div class="difficulty-badge easy">
+                    <span>⭐</span> Easy
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Panel: Advanced -->
+        <aside class="advanced-panel">
+            <div class="panel-header rainbow-border">
+                <span class="panel-icon">✨</span>
+                <h3>Magic Tools</h3>
+            </div>
+
+            <!-- Gradients -->
+            <div class="advanced-section">
+                <div class="section-title">
+                    <span>🌈</span>
+                    <h4>Rainbow Mix</h4>
+                </div>
+                <div class="gradient-grid">
+                    <button class="gradient-btn" style="background: linear-gradient(135deg, #FF6B6B, #FECA57);" title="Sunset"></button>
+                    <button class="gradient-btn" style="background: linear-gradient(135deg, #4ECDC4, #45B7D1);" title="Ocean"></button>
+                    <button class="gradient-btn" style="background: linear-gradient(135deg, #B388FF, #FF9FF3);" title="Magic"></button>
+                    <button class="gradient-btn" style="background: linear-gradient(135deg, #26DE81, #FECA57);" title="Meadow"></button>
+                    <button class="gradient-btn" style="background: linear-gradient(135deg, #70A1FF, #B388FF);" title="Sky"></button>
+                    <button class="gradient-btn" style="background: linear-gradient(135deg, #FF6B6B, #FF9FF3);" title="Candy"></button>
+                    <button class="gradient-btn rainbow-gradient" title="Rainbow"></button>
+                    <button class="gradient-btn" style="background: linear-gradient(135deg, #FECA57, #FFFFFF);" title="Glow"></button>
+                </div>
+            </div>
+
+            <!-- Patterns -->
+            <div class="advanced-section">
+                <div class="section-title">
+                    <span>🎭</span>
+                    <h4>Fun Patterns</h4>
+                </div>
+                <div class="pattern-grid">
+                    <button class="pattern-btn" data-pattern="stripes">
+                        <div class="pattern-icon stripes"></div>
+                        <span>Lines</span>
+                    </button>
+                    <button class="pattern-btn" data-pattern="dots">
+                        <div class="pattern-icon dots"></div>
+                        <span>Dots</span>
+                    </button>
+                    <button class="pattern-btn" data-pattern="checker">
+                        <div class="pattern-icon checker"></div>
+                        <span>Squares</span>
+                    </button>
+                    <button class="pattern-btn" data-pattern="hearts">
+                        <div class="pattern-icon">💕</div>
+                        <span>Hearts</span>
+                    </button>
+                    <button class="pattern-btn" data-pattern="stars">
+                        <div class="pattern-icon">⭐</div>
+                        <span>Stars</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Help Tip -->
+            <div class="help-bubble">
+                <div class="help-icon">💡</div>
+                <div class="help-text">
+                    <strong>Pro Tip!</strong>
+                    <p>Pick a color, then tap any white area to fill it!</p>
+                </div>
+            </div>
+        </aside>
+    </main>
+</body>
+</html>

@@ -287,15 +287,15 @@ function fillPath(path) {
 // Background coloring removed - only dual-layer SVG path coloring is supported
 
 /**
- * Array of 18 palette colors for random coloring
+ * Array of 24 palette colors for random coloring
  */
 const PALETTE_COLORS = [
-    '#FF0000', '#FF6347', '#FFC0CB',  // Reds/Pinks
-    '#FFA500', '#FFFF00', '#FFD700',  // Oranges/Yellows
-    '#00FF00', '#32CD32', '#8B4513',  // Greens/Brown
-    '#0000FF', '#87CEEB', '#00CED1',  // Blues
-    '#800080', '#4B0082', '#FF69B4',  // Purples/Pink
-    '#000000', '#808080', '#FFFFFF'   // Neutrals
+    '#FF0000', '#FF6347', '#FFC0CB', '#FFCBA4',  // Reds/Pinks/Peach
+    '#FFA500', '#FFFF00', '#FFD700', '#F5DEB3',  // Oranges/Yellows/Tan
+    '#00FF00', '#32CD32', '#228B22', '#90EE90',  // Greens
+    '#0000FF', '#87CEEB', '#008B8B', '#191970',  // Blues/Teals/Navy
+    '#800080', '#4B0082', '#FF69B4', '#DDA0DD',  // Purples/Pinks
+    '#8B4513', '#D2691E', '#808080', '#FFFFFF'   // Earth/Neutrals
 ];
 
 /**

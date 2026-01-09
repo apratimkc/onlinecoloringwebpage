@@ -79,10 +79,10 @@ const imageCatalog = [
         regions: 7
     },
     {
-        id: 'alphabets-j-jucie',
+        id: 'alphabets-j-juice',
         category: 'alphabets',
-        name: 'J Jucie',
-        filename: 'J-Jucie.svg',
+        name: 'J Juice',
+        filename: 'J-Juice.svg',
         difficulty: 'medium',
         regions: 10
     },
@@ -225,10 +225,10 @@ const imageCatalog = [
         regions: 25
     },
     {
-        id: 'animals-dinosore',
+        id: 'animals-dinosaur',
         category: 'animals',
-        name: 'Dinosore',
-        filename: 'Dinosore.svg',
+        name: 'Dinosaur',
+        filename: 'Dinosaur.svg',
         difficulty: 'medium',
         regions: 25
     },
@@ -257,10 +257,10 @@ const imageCatalog = [
         regions: 16
     },
     {
-        id: 'animals-honney-bee',
+        id: 'animals-honey-bee',
         category: 'animals',
-        name: 'Honney Bee',
-        filename: 'Honney Bee.svg',
+        name: 'Honey Bee',
+        filename: 'Honey Bee.svg',
         difficulty: 'medium',
         regions: 13
     },
@@ -405,10 +405,10 @@ const imageCatalog = [
         regions: 23
     },
     {
-        id: 'flowers-mashroom',
+        id: 'flowers-mushroom',
         category: 'flowers',
-        name: 'Mashroom',
-        filename: 'Mashroom.svg',
+        name: 'Mushroom',
+        filename: 'Mushroom.svg',
         difficulty: 'medium',
         regions: 13
     },
@@ -487,10 +487,10 @@ const imageCatalog = [
         regions: 8
     },
     {
-        id: 'food-watermalon',
+        id: 'food-watermelon',
         category: 'food',
-        name: 'Watermalon',
-        filename: 'Watermalon.svg',
+        name: 'Watermelon',
+        filename: 'Watermelon.svg',
         difficulty: 'medium',
         regions: 8
     },
@@ -555,18 +555,18 @@ const imageCatalog = [
         regions: 10
     },
     {
-        id: 'nature-sean-and-hills',
+        id: 'nature-sea-and-hills',
         category: 'nature',
-        name: 'Sean And Hills',
-        filename: 'Sean and Hills.svg',
+        name: 'Sea And Hills',
+        filename: 'Sea and Hills.svg',
         difficulty: 'medium',
         regions: 78
     },
     {
-        id: 'nature-smilling-star',
+        id: 'nature-smiling-star',
         category: 'nature',
-        name: 'Smilling Star',
-        filename: 'Smilling Star.svg',
+        name: 'Smiling Star',
+        filename: 'Smiling Star.svg',
         difficulty: 'medium',
         regions: 2
     },

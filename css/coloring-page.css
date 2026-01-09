@@ -10,7 +10,7 @@
 
 .coloring-container {
     display: grid;
-    grid-template-columns: minmax(180px, 250px) 1fr minmax(250px, 350px);
+    grid-template-columns: minmax(220px, 280px) 1fr minmax(180px, 240px);
     grid-template-rows: 1fr;
     gap: 1rem;
     padding: 1rem;
@@ -84,8 +84,8 @@
 
 .color-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.5rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.4rem;
 }
 
 .color-btn {
@@ -241,8 +241,8 @@
 /* Gradient Palette Grid */
 .gradient-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.75rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
 }
 
 .gradient-btn {
@@ -281,8 +281,8 @@
 
 .pattern-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 0.75rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
 }
 
 .pattern-btn {

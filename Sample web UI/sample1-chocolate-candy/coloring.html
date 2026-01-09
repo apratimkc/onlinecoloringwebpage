@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coloring Page - MagicPencil (Chocolate Theme)</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="coloring-page">
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <span class="logo-icon">🎨</span>
+                    <h1>MagicPencil</h1>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <button class="btn btn-random">
+                    <span class="btn-icon">🎲</span> Random
+                </button>
+                <button class="btn btn-secondary">
+                    <span class="btn-icon">➡️</span> Next
+                </button>
+                <button class="btn btn-primary">
+                    <span class="btn-icon">💾</span> Download
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="coloring-container">
+        <!-- Left Panel: Color Palette -->
+        <aside class="color-panel">
+            <div class="panel-header">
+                <h3><span>🖍️</span> Colors</h3>
+            </div>
+
+            <div class="pencil-indicator">
+                <div class="pencil-wrapper">
+                    <div class="pencil-preview" style="background: #FF0000;">
+                        <span class="pencil-tip"></span>
+                    </div>
+                    <span class="pencil-label">Selected</span>
+                </div>
+            </div>
+
+            <div class="color-palette">
+                <div class="color-grid">
+                    <!-- Row 1: Reds/Pinks -->
+                    <button class="color-btn active" data-color="#FF0000" style="background-color: #FF0000;" title="Red"></button>
+                    <button class="color-btn" data-color="#FF6347" style="background-color: #FF6347;" title="Tomato"></button>
+                    <button class="color-btn" data-color="#FFC0CB" style="background-color: #FFC0CB;" title="Pink"></button>
+                    <!-- Row 2: Oranges/Yellows/Golds -->
+                    <button class="color-btn" data-color="#FFA500" style="background-color: #FFA500;" title="Orange"></button>
+                    <button class="color-btn" data-color="#FFFF00" style="background-color: #FFFF00;" title="Yellow"></button>
+                    <button class="color-btn" data-color="#FFD700" style="background-color: #FFD700;" title="Gold"></button>
+                    <!-- Row 3: Greens -->
+                    <button class="color-btn" data-color="#00FF00" style="background-color: #00FF00;" title="Green"></button>
+                    <button class="color-btn" data-color="#32CD32" style="background-color: #32CD32;" title="Lime"></button>
+                    <button class="color-btn" data-color="#8B4513" style="background-color: #8B4513;" title="Brown"></button>
+                    <!-- Row 4: Blues/Cyans -->
+                    <button class="color-btn" data-color="#0000FF" style="background-color: #0000FF;" title="Blue"></button>
+                    <button class="color-btn" data-color="#87CEEB" style="background-color: #87CEEB;" title="Sky Blue"></button>
+                    <button class="color-btn" data-color="#00CED1" style="background-color: #00CED1;" title="Turquoise"></button>
+                    <!-- Row 5: Purples/Pinks -->
+                    <button class="color-btn" data-color="#800080" style="background-color: #800080;" title="Purple"></button>
+                    <button class="color-btn" data-color="#4B0082" style="background-color: #4B0082;" title="Indigo"></button>
+                    <button class="color-btn" data-color="#FF69B4" style="background-color: #FF69B4;" title="Hot Pink"></button>
+                    <!-- Row 6: Neutrals -->
+                    <button class="color-btn" data-color="#000000" style="background-color: #000000;" title="Black"></button>
+                    <button class="color-btn" data-color="#808080" style="background-color: #808080;" title="Gray"></button>
+                    <button class="color-btn" data-color="#FFFFFF" style="background-color: #FFFFFF;" title="White"></button>
+                </div>
+            </div>
+
+            <button class="btn btn-danger btn-full-width">
+                <span>🗑️</span> CLEAR ALL
+            </button>
+        </aside>
+
+        <!-- Center Panel: Canvas -->
+        <section class="canvas-panel">
+            <div class="canvas-wrapper">
+                <div class="svg-container">
+                    <!-- Sample SVG placeholder -->
+                    <svg viewBox="0 0 400 400" class="coloring-svg">
+                        <rect x="50" y="50" width="300" height="300" fill="transparent" stroke="#5D4037" stroke-width="3" rx="20"/>
+                        <circle cx="150" cy="150" r="40" fill="transparent" stroke="#5D4037" stroke-width="3"/>
+                        <circle cx="250" cy="150" r="40" fill="transparent" stroke="#5D4037" stroke-width="3"/>
+                        <path d="M 120 250 Q 200 320 280 250" fill="transparent" stroke="#5D4037" stroke-width="3"/>
+                        <text x="200" y="380" text-anchor="middle" fill="#8B4513" font-size="14" font-family="Nunito">Click to color!</text>
+                    </svg>
+                </div>
+            </div>
+            <div class="canvas-info">
+                <span class="image-name">🐶 Happy Dog</span>
+                <span class="difficulty easy">Easy</span>
+            </div>
+        </section>
+
+        <!-- Right Panel: Advanced Options -->
+        <aside class="advanced-panel">
+            <div class="panel-header">
+                <h3><span>✨</span> Magic Tools</h3>
+            </div>
+
+            <!-- Gradient Section -->
+            <div class="advanced-section">
+                <h4><span>🌈</span> Gradients</h4>
+                <div class="gradient-grid">
+                    <button class="gradient-btn" style="background: linear-gradient(to bottom, #FF0000, #FFFF00);" title="Fire"></button>
+                    <button class="gradient-btn" style="background: linear-gradient(to bottom, #0000FF, #00FF00);" title="Ocean"></button>
+                    <button class="gradient-btn" style="background: linear-gradient(to bottom, #800080, #FFC0CB);" title="Candy"></button>
+                    <button class="gradient-btn" style="background: linear-gradient(to bottom, #FFA500, #FFFFFF);" title="Sunset"></button>
+                    <button class="gradient-btn" style="background: linear-gradient(to right, #87CEEB, #FFFFFF);" title="Sky"></button>
+                    <button class="gradient-btn" style="background: linear-gradient(to right, #8B4513, #D2691E);" title="Chocolate"></button>
+                    <button class="gradient-btn" style="background: linear-gradient(to bottom right, #00FF00, #FFFF00);" title="Lime"></button>
+                    <button class="gradient-btn" style="background: linear-gradient(to bottom right, #FF69B4, #FFC0CB);" title="Rose"></button>
+                </div>
+            </div>
+
+            <!-- Pattern Section -->
+            <div class="advanced-section">
+                <h4><span>🎭</span> Patterns</h4>
+                <div class="pattern-grid">
+                    <button class="pattern-btn" data-pattern="stripes" title="Stripes">
+                        <div class="pattern-preview stripes"></div>
+                        <span>Stripes</span>
+                    </button>
+                    <button class="pattern-btn" data-pattern="dots" title="Dots">
+                        <div class="pattern-preview dots"></div>
+                        <span>Dots</span>
+                    </button>
+                    <button class="pattern-btn" data-pattern="checkerboard" title="Checker">
+                        <div class="pattern-preview checker"></div>
+                        <span>Checker</span>
+                    </button>
+                    <button class="pattern-btn" data-pattern="hearts" title="Hearts">
+                        <div class="pattern-preview hearts">♥♥</div>
+                        <span>Hearts</span>
+                    </button>
+                    <button class="pattern-btn" data-pattern="stars" title="Stars">
+                        <div class="pattern-preview stars">★★</div>
+                        <span>Stars</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tips Section -->
+            <div class="tips-section">
+                <div class="tip-card">
+                    <span class="tip-icon">💡</span>
+                    <p>Tap any area to fill it with your selected color!</p>
+                </div>
+            </div>
+        </aside>
+    </main>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coloring Page - MagicPencil (Magic Theme)</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="coloring-page">
+    <!-- Subtle stars -->
+    <div class="stars-container subtle">
+        <div class="star star-1">✨</div>
+        <div class="star star-2">⭐</div>
+        <div class="star star-3">✨</div>
+        <div class="star star-4">💫</div>
+    </div>
+
+    <header class="main-header">
+        <div class="header-glow"></div>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <div class="magic-wand">🪄</div>
+                    <h1>MagicPencil</h1>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">
+                    <span class="nav-star">⭐</span>
+                    Home
+                </a>
+                <button class="btn btn-magic">
+                    <span>✨</span> Surprise!
+                </button>
+                <button class="btn btn-secondary">
+                    <span>➡️</span> Next
+                </button>
+                <button class="btn btn-primary">
+                    <span>💾</span> Save
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="coloring-container">
+        <!-- Left Panel: Color Palette -->
+        <aside class="color-panel">
+            <div class="panel-header">
+                <span class="panel-star">🎨</span>
+                <h3>Magic Colors</h3>
+                <span class="panel-star">✨</span>
+            </div>
+
+            <div class="pencil-indicator">
+                <div class="magic-orb" style="background: linear-gradient(135deg, #FF6B9D, #C77DFF);">
+                    <div class="orb-glow"></div>
+                    <div class="orb-sparkle">✨</div>
+                </div>
+                <span class="orb-label">Your Magic Color</span>
+            </div>
+
+            <div class="color-palette">
+                <div class="color-grid">
+                    <!-- Magical color palette -->
+                    <button class="color-btn active" data-color="#FF6B9D" style="--color: #FF6B9D;" title="Rose"></button>
+                    <button class="color-btn" data-color="#FF85B3" style="--color: #FF85B3;" title="Pink"></button>
+                    <button class="color-btn" data-color="#FFB8D0" style="--color: #FFB8D0;" title="Blush"></button>
+
+                    <button class="color-btn" data-color="#FFA07A" style="--color: #FFA07A;" title="Coral"></button>
+                    <button class="color-btn" data-color="#FFD700" style="--color: #FFD700;" title="Gold"></button>
+                    <button class="color-btn" data-color="#FFFACD" style="--color: #FFFACD;" title="Cream"></button>
+
+                    <button class="color-btn" data-color="#98FB98" style="--color: #98FB98;" title="Mint"></button>
+                    <button class="color-btn" data-color="#7AE582" style="--color: #7AE582;" title="Spring"></button>
+                    <button class="color-btn" data-color="#20B2AA" style="--color: #20B2AA;" title="Teal"></button>
+
+                    <button class="color-btn" data-color="#87CEEB" style="--color: #87CEEB;" title="Sky"></button>
+                    <button class="color-btn" data-color="#4FACFE" style="--color: #4FACFE;" title="Azure"></button>
+                    <button class="color-btn" data-color="#6A5ACD" style="--color: #6A5ACD;" title="Periwinkle"></button>
+
+                    <button class="color-btn" data-color="#9370DB" style="--color: #9370DB;" title="Lavender"></button>
+                    <button class="color-btn" data-color="#C77DFF" style="--color: #C77DFF;" title="Violet"></button>
+                    <button class="color-btn" data-color="#DA70D6" style="--color: #DA70D6;" title="Orchid"></button>
+
+                    <button class="color-btn" data-color="#2D3142" style="--color: #2D3142;" title="Midnight"></button>
+                    <button class="color-btn" data-color="#9E9E9E" style="--color: #9E9E9E;" title="Silver"></button>
+                    <button class="color-btn" data-color="#FFFFFF" style="--color: #FFFFFF;" title="Snow"></button>
+                </div>
+            </div>
+
+            <button class="btn btn-danger btn-full-width">
+                <span>🔮</span> Clear Magic
+            </button>
+        </aside>
+
+        <!-- Center Panel: Canvas -->
+        <section class="canvas-panel">
+            <div class="canvas-wrapper">
+                <div class="magic-frame">
+                    <div class="frame-decoration top-left">✨</div>
+                    <div class="frame-decoration top-right">⭐</div>
+                    <div class="frame-decoration bottom-left">💫</div>
+                    <div class="frame-decoration bottom-right">✨</div>
+                    <div class="svg-container">
+                        <!-- Sample SVG -->
+                        <svg viewBox="0 0 400 400" class="coloring-svg">
+                            <rect x="50" y="50" width="300" height="300" fill="transparent" stroke="#6A5ACD" stroke-width="3" rx="20"/>
+                            <circle cx="150" cy="150" r="40" fill="transparent" stroke="#6A5ACD" stroke-width="3"/>
+                            <circle cx="250" cy="150" r="40" fill="transparent" stroke="#6A5ACD" stroke-width="3"/>
+                            <path d="M 120 250 Q 200 320 280 250" fill="transparent" stroke="#6A5ACD" stroke-width="3"/>
+                            <text x="200" y="380" text-anchor="middle" fill="#9370DB" font-size="14" font-family="Poppins">Tap to add magic!</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="canvas-info">
+                <div class="info-crystal">
+                    <span class="crystal-icon">💎</span>
+                    <span class="image-name">Magical Unicorn</span>
+                </div>
+                <div class="difficulty-gem easy">
+                    <span>⭐</span> Easy
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Panel: Advanced Options -->
+        <aside class="advanced-panel">
+            <div class="panel-header">
+                <span class="panel-star">✨</span>
+                <h3>Spell Book</h3>
+                <span class="panel-star">🪄</span>
+            </div>
+
+            <!-- Gradients -->
+            <div class="spell-section">
+                <div class="spell-title">
+                    <span class="spell-icon">🌈</span>
+                    <h4>Rainbow Spells</h4>
+                </div>
+                <div class="gradient-grid">
+                    <button class="gradient-btn" style="background: linear-gradient(135deg, #FF6B9D, #C77DFF);" title="Fairy Dust"></button>
+                    <button class="gradient-btn" style="background: linear-gradient(135deg, #4FACFE, #87CEEB);" title="Sky Magic"></button>
+                    <button class="gradient-btn" style="background: linear-gradient(135deg, #FFD700, #FFA07A);" title="Sunset"></button>
+                    <button class="gradient-btn" style="background: linear-gradient(135deg, #98FB98, #20B2AA);" title="Forest"></button>
+                    <button class="gradient-btn" style="background: linear-gradient(135deg, #C77DFF, #6A5ACD);" title="Twilight"></button>
+                    <button class="gradient-btn" style="background: linear-gradient(135deg, #FF85B3, #FFB8D0);" title="Rose"></button>
+                    <button class="gradient-btn" style="background: linear-gradient(135deg, #4FACFE, #C77DFF);" title="Aurora"></button>
+                    <button class="gradient-btn unicorn-gradient" title="Unicorn"></button>
+                </div>
+            </div>
+
+            <!-- Patterns -->
+            <div class="spell-section">
+                <div class="spell-title">
+                    <span class="spell-icon">🎭</span>
+                    <h4>Pattern Charms</h4>
+                </div>
+                <div class="pattern-grid">
+                    <button class="pattern-btn" data-pattern="stripes">
+                        <div class="pattern-preview stripes"></div>
+                        <span>Stripes</span>
+                    </button>
+                    <button class="pattern-btn" data-pattern="dots">
+                        <div class="pattern-preview dots"></div>
+                        <span>Dots</span>
+                    </button>
+                    <button class="pattern-btn" data-pattern="checker">
+                        <div class="pattern-preview checker"></div>
+                        <span>Checker</span>
+                    </button>
+                    <button class="pattern-btn" data-pattern="hearts">
+                        <div class="pattern-preview">💕</div>
+                        <span>Hearts</span>
+                    </button>
+                    <button class="pattern-btn" data-pattern="stars">
+                        <div class="pattern-preview">⭐</div>
+                        <span>Stars</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Magic Tip -->
+            <div class="magic-tip">
+                <div class="tip-wand">🪄</div>
+                <div class="tip-content">
+                    <strong>Magic Tip!</strong>
+                    <p>Select a color, then tap any area to cast your color spell!</p>
+                </div>
+            </div>
+        </aside>
+    </main>
+</body>
+</html>

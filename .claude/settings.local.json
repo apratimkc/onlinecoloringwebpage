@@ -24,7 +24,21 @@
       "Bash(node:*)",
       "Bash(git commit -m \"$(cat <<''EOF''\nImplement layer-based detection for dual-layer SVG coloring\n\nFixed critical bugs in SVG layer detection that prevented coloring from working.\nThis implementation supports z-axis occlusion (white fills in outline layer) and \nworks independently of Inkscape''s layer naming.\n\n**Key Changes:**\n\n**JavaScript (js/coloring.js):**\n- Implemented `isColorableLayer()`: Detects layers by analyzing ALL paths for fill/stroke\n- Implemented `isInOutlineLayer()`: Traverses parent groups to identify layer type\n- Fixed stroke detection: Use regex `/(?:^|;)\\s*stroke\\s*:/` to avoid false positives \n  from `stroke-width:`, `stroke-opacity:`, etc.\n- Fixed fill detection: Handle both `fill:transparent` and `fill: transparent` (with/without space)\n- Updated `clearAllColors()`: Preserves outline layer paths (no transparency changes)\n\n**Python (svg-automation.py):**\n- Implemented `has_fill_or_stroke()`: Checks if path has visible fill or stroke\n- Implemented `is_colorable_layer()`: Analyzes all descendant paths in a group\n- Updated `is_in_colorable_layer()`: Layer-based detection instead of layer names\n- Updated `fix_svg_attributes()`: NEVER modifies outline layer paths (preserves z-axis)\n- Fixed regex stroke detection to match JavaScript implementation\n\n**Detection Strategy:**\n- Colorable layer: ALL paths have `fill:transparent` or `fill:none` AND `stroke:none`\n- Outline layer: ANY path has visible fill or stroke (including white fills for z-axis)\n- Works with any layer naming (layer-MC1, layer2, etc.) from Inkscape exports\n\n**Bug Fixes:**\n1. `stroke-width:` was triggering false positive for stroke detection\n2. `fill: transparent` (with space) wasn''t matching `fill:transparent` check\n3. Outline paths with white fills were being made transparent on clear\n\n**Documentation:**\n- Added LAYER_DETECTION.md: Comprehensive guide on detection strategy\n- Added SVG_AUTOMATION_README.md: Usage instructions for automation script\n- Added run-svg-automation.bat: Windows batch file for easy script execution\n\n**Test Files:**\n- Added Dinosore 1.svg: Complex dual-layer SVG with z-axis occlusion\n- 556 outline paths (preserved), 25 colorable paths (detected correctly)\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n)\")",
       "Bash(git push)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(git fetch:*)",
+      "Bash(git merge:*)",
+      "Bash(python generate-sitemap.py:*)",
+      "Bash(node -c:*)",
+      "Bash(git stash:*)",
+      "Bash(git checkout:*)",
+      "Bash(curl:*)",
+      "Bash(ren:*)",
+      "Bash(copy:*)",
+      "Bash(inkscape:*)",
+      "Bash(\"/c/Program Files/Inkscape/bin/inkscape.exe\" \"c:/Users/RDC/Documents/ColoringPageWebsite/assets/magic_pencil_logo.svg\" --export-type=png --export-filename=\"c:/Users/RDC/Documents/ColoringPageWebsite/assets/logo-64.png\" --export-width=64 --export-height=64)",
+      "Bash(\"/c/Program Files/Inkscape/bin/inkscape.exe\" \"c:/Users/RDC/Documents/ColoringPageWebsite/assets/magic_pencil_logo.svg\" --export-type=png --export-filename=\"c:/Users/RDC/Documents/ColoringPageWebsite/assets/logo-128.png\" --export-width=128 --export-height=128)",
+      "Bash(\"/c/Program Files/Inkscape/bin/inkscape.exe\" \"c:/Users/RDC/Documents/ColoringPageWebsite/assets/magic_pencil_logo.svg\" --export-type=png --export-filename=\"c:/Users/RDC/Documents/ColoringPageWebsite/assets/logo-256.png\" --export-width=256 --export-height=256)",
+      "Bash(\"/c/Program Files/Inkscape/bin/inkscape.exe\" \"c:/Users/RDC/Documents/ColoringPageWebsite/assets/magic_pencil_logo.svg\" --export-type=png --export-filename=\"c:/Users/RDC/Documents/ColoringPageWebsite/assets/logo-512.png\" --export-width=512 --export-height=512)"
     ]
   }
 }
