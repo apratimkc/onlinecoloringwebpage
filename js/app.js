@@ -123,6 +123,12 @@ function initializeCategoryPage() {
         breadcrumbSchema.textContent = JSON.stringify(schema, null, 2);
     }
 
+    // Display category content description
+    const categoryContentSection = document.getElementById('category-content');
+    if (categoryContentSection && categoryMeta.contentDescription) {
+        categoryContentSection.innerHTML = categoryMeta.contentDescription;
+    }
+
     // Load images for this category
     const images = getImagesByCategory(categoryId);
     const imageGrid = document.getElementById('image-grid');
