@@ -1,0 +1,477 @@
+/* ===============================================================
+   MagicPencil – Mobile Coloring Page
+   Portrait  : color fan panel fixed at bottom (180px)
+   Landscape : color fan panel fixed at left   (160px)
+   No page reload on rotation – orientation handled by CSS + JS.
+   =============================================================== */
+
+/* ── Body reset for mobile full-screen ───────────────────────── */
+body.mobile-coloring-page {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    touch-action: pan-x pan-y;
+}
+
+/* Suppress the body dot-texture ::before (already handled by cork) */
+body.mobile-coloring-page::before { display: none; }
+
+/* ── TOP BAR ─────────────────────────────────────────────────── */
+.mob-topbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 48px;
+    z-index: 100;
+    background: var(--paper);
+    border-bottom: 2.5px solid var(--ink);
+    box-shadow: 0 2px 6px rgba(45,36,22,0.12);
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    align-items: center;
+    padding-right: 6px;
+    gap: 0;
+}
+
+.mob-hamburger {
+    width: 48px; height: 48px;
+    font-size: 22px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    color: var(--ink);
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mob-title {
+    font-family: 'Gaegu', cursive;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 4px;
+    min-width: 0;
+}
+
+.mob-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+/* Override hist-btn size for mobile top bar */
+.mob-hist-btn {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 18px !important;
+    box-shadow: 2px 2px 0 var(--ink) !important;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* ── HAMBURGER NAV DROPDOWN ──────────────────────────────────── */
+.mob-nav-menu {
+    position: fixed;
+    top: 48px; left: 0;
+    background: var(--white);
+    border: 2.5px solid var(--ink);
+    border-top: none;
+    border-radius: 0 0 16px 0;
+    box-shadow: 4px 4px 0 var(--ink);
+    z-index: 300;
+    display: none;
+    min-width: 170px;
+    overflow: hidden;
+}
+
+.mob-nav-menu.open { display: block; }
+
+.mob-nav-item {
+    display: block;
+    width: 100%;
+    padding: 13px 18px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    background: none;
+    border: none;
+    border-bottom: 1.5px solid var(--paper-2);
+    text-align: left;
+    cursor: pointer;
+    text-decoration: none;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.1s;
+}
+
+.mob-nav-item:last-child { border-bottom: none; }
+.mob-nav-item:hover, .mob-nav-item:active { background: var(--paper-2); color: var(--ink); }
+
+.mob-nav-overlay {
+    position: fixed; inset: 0;
+    z-index: 299;
+    display: none;
+}
+
+.mob-nav-overlay.active { display: block; }
+
+/* ── CORK BOARD CANVAS AREA ──────────────────────────────────── */
+.mob-canvas-area {
+    position: fixed;
+    top: 48px;
+    left: 0; right: 0; bottom: 180px; /* portrait: fan panel 180px */
+    /* Cork board texture (same as desktop) */
+    background:
+        radial-gradient(ellipse 3px 5px at 12% 18%, rgba(90,60,20,0.18) 0%, transparent 100%),
+        radial-gradient(ellipse 5px 3px at 28% 72%, rgba(110,75,30,0.14) 0%, transparent 100%),
+        radial-gradient(ellipse 4px 6px at 47% 35%, rgba(80,52,18,0.16) 0%, transparent 100%),
+        radial-gradient(ellipse 6px 3px at 63% 55%, rgba(100,68,25,0.13) 0%, transparent 100%),
+        radial-gradient(ellipse 3px 4px at 78% 22%, rgba(95,62,20,0.17) 0%, transparent 100%),
+        radial-gradient(ellipse 5px 4px at 85% 80%, rgba(85,55,18,0.15) 0%, transparent 100%),
+        radial-gradient(ellipse 4px 3px at 35% 88%, rgba(105,70,28,0.12) 0%, transparent 100%),
+        radial-gradient(ellipse 3px 5px at 55% 10%, rgba(88,58,20,0.16) 0%, transparent 100%),
+        radial-gradient(ellipse 6px 4px at 20% 50%, rgba(75,50,15,0.12) 0%, transparent 100%),
+        radial-gradient(ellipse 4px 6px at 92% 45%, rgba(98,65,22,0.14) 0%, transparent 100%),
+        linear-gradient(155deg, #c9a87a 0%, #b8935f 35%, #c4a070 60%, #b89460 100%);
+    box-shadow: inset 0 0 40px rgba(60,35,10,0.22), inset 0 0 8px rgba(40,22,5,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    overflow: hidden;
+    z-index: 10;
+}
+
+/* svg-container, svg-ratio-wrapper, tape – reuse desktop styles from coloring-page.css */
+/* svg-container needs height:100% on mobile (already in coloring-page.css) */
+
+/* ── MAGIC TAB (right edge vertical pill) ────────────────────── */
+.mob-magic-tab {
+    position: fixed;
+    right: -2px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 200;
+    background: linear-gradient(160deg, #FFD700 0%, #FFA500 100%);
+    color: var(--ink);
+    border: 2.5px solid var(--ink);
+    border-right: none;
+    border-radius: 12px 0 0 12px;
+    padding: 18px 9px;
+    font-family: 'Gaegu', cursive;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    min-width: 44px;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -3px 0 10px rgba(45,36,22,0.18);
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.15s;
+}
+
+.mob-magic-tab:hover, .mob-magic-tab:active {
+    background: linear-gradient(160deg, #FFE033 0%, #FFB820 100%);
+}
+
+/* ── MAGIC PANEL (slides in from left) ──────────────────────── */
+.mob-magic-panel {
+    position: fixed;
+    top: 48px; left: 0;
+    width: 20vw;
+    height: 60vh;
+    background: var(--white);
+    border-right: 3px solid var(--ink);
+    border-bottom: 3px solid var(--ink);
+    border-radius: 0 0 16px 0;
+    box-shadow: 6px 6px 24px rgba(45,36,22,0.22);
+    z-index: 250;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.mob-magic-panel.open { transform: translateX(0); }
+
+.mob-magic-panel-inner {
+    padding: 10px 6px;
+    overflow-y: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--ink-soft) var(--paper-2);
+}
+
+.mob-magic-panel-inner::-webkit-scrollbar { width: 3px; }
+.mob-magic-panel-inner::-webkit-scrollbar-track { background: var(--paper-2); border-radius: 999px; }
+.mob-magic-panel-inner::-webkit-scrollbar-thumb { background: var(--ink-soft); border-radius: 999px; }
+
+.mob-magic-panel-inner h3 {
+    font-family: 'Gaegu', cursive;
+    font-size: 13px;
+    margin-bottom: 2px;
+    padding-bottom: 6px;
+    border-bottom: 2px dashed var(--ink);
+    text-align: center;
+}
+
+.mob-magic-panel-inner h4 {
+    font-family: 'Gaegu', cursive;
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin: 4px 0 3px;
+    text-align: center;
+}
+
+/* 1-column grids: one item per row */
+.mob-gradient-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+}
+
+/* gradient-btn and pattern-btn styles come from coloring-page.css */
+
+.mob-pattern-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+}
+
+.mob-magic-fill-btn {
+    margin-top: 8px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 10px 4px;
+    background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 60%, var(--yellow) 100%);
+    color: var(--white);
+    border: 2px solid var(--ink);
+    border-radius: 10px;
+    box-shadow: 3px 3px 0 var(--ink);
+    font-family: 'Fredoka', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.mob-magic-fill-btn:active { transform: translate(2px,2px); box-shadow: 1px 1px 0 var(--ink); }
+
+.mob-panel-overlay {
+    position: fixed; inset: 0;
+    background: rgba(45,36,22,0.42);
+    z-index: 240;
+    display: none;
+}
+
+.mob-panel-overlay.active { display: block; }
+
+/* ── DOWNLOAD DROPDOWN (top bar) ─────────────────────────────── */
+.mob-download-wrap { position: relative; }
+
+.mob-download-btn {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2px solid var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
+    font-size: 18px;
+    color: var(--ink);
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mob-download-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 0;
+    background: var(--white);
+    border: 2.5px solid var(--ink);
+    border-radius: 14px;
+    box-shadow: 5px 5px 0 var(--ink);
+    overflow: hidden;
+    z-index: 500;
+    min-width: 175px;
+}
+
+.mob-download-menu.open { display: block; }
+
+.mob-dl-opt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 13px 16px;
+    background: none;
+    border: none;
+    border-bottom: 1.5px solid var(--paper-2);
+    font-family: 'Fredoka', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    cursor: pointer;
+    text-align: left;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.1s;
+}
+
+.mob-dl-opt:last-child { border-bottom: none; }
+.mob-dl-opt:hover, .mob-dl-opt:active { background: var(--paper-2); }
+
+/* ── COLOR FAN PANEL ─────────────────────────────────────────── */
+.mob-color-fan-wrap {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 180px; /* portrait default */
+    background: var(--paper-2);
+    border-top: 2.5px solid var(--ink);
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: hidden;
+}
+
+.mob-color-wheel {
+    flex: 1;
+    width: 100%;
+    display: block;
+    touch-action: none; /* handled manually */
+    -webkit-tap-highlight-color: transparent;
+    cursor: grab;
+}
+
+.mob-color-wheel:active { cursor: grabbing; }
+
+.mob-color-indicator {
+    height: 32px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 10px 4px;
+}
+
+.mob-color-dot {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--ink);
+    display: inline-block;
+    flex-shrink: 0;
+    background: #FF0000;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.mob-color-name {
+    font-family: 'Gaegu', cursive;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    min-width: 60px;
+}
+
+/* ── LANDSCAPE ORIENTATION OVERRIDES ─────────────────────────── */
+@media (orientation: landscape) {
+    /* Magic panel: right side, 10% width, full height */
+    .mob-magic-panel {
+        top: 0;
+        left: auto;
+        right: 0;
+        width: 10vw;
+        height: 100vh;
+        border-right: none;
+        border-left: 3px solid var(--ink);
+        border-bottom: none;
+        border-radius: 16px 0 0 16px;
+        transform: translateX(100%);  /* hidden off the right edge */
+    }
+
+    .mob-magic-panel.open { transform: translateX(0); }
+
+    .mob-magic-panel-inner {
+        padding: 8px 4px;
+        gap: 4px;
+    }
+
+    .mob-magic-panel-inner h3 { font-size: 10px; }
+    .mob-magic-panel-inner h4 { font-size: 9px; }
+
+    .mob-magic-fill-btn {
+        font-size: 9px;
+        padding: 6px 3px;
+    }
+
+    /* Canvas area takes right portion; left is the fan panel */
+    .mob-canvas-area {
+        left: 160px;
+        right: 0; bottom: 0;
+    }
+
+    /* Color fan panel: fixed left strip */
+    .mob-color-fan-wrap {
+        top: 48px; right: auto;
+        width: 160px; height: auto;
+        bottom: 0; left: 0;
+        border-top: none;
+        border-right: 2.5px solid var(--ink);
+        /* Indicator at top, canvas fills below */
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .mob-color-indicator {
+        height: 44px;
+        flex-shrink: 0;
+        order: -1; /* push indicator to top even in column layout */
+        padding: 4px 8px;
+        gap: 4px;
+        border-bottom: 1.5px solid var(--ink);
+    }
+
+    .mob-color-name {
+        font-size: 12px;
+        min-width: unset;
+        text-align: center;
+    }
+}
+
+/* ── LOADING MESSAGE (from coloring-page.css reuse) ─────────── */
+.loading-message {
+    font-family: 'Gaegu', cursive;
+    font-size: 18px;
+    color: var(--ink-soft);
+    text-align: center;
+    padding: 20px;
+}
+
+/* .btn, .btn-primary etc. come from main.css (already loaded) — no duplicates needed */

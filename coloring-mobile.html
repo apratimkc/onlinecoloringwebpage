@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Color and paint your selected image with tap-to-fill, gradients, and patterns - Free online coloring for kids">
+    <meta name="keywords" content="coloring page, online painting, tap to color, kids coloring">
+    <meta name="author" content="MagicPencil">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+
+    <link rel="canonical" href="https://magicpencil.fun/coloring-mobile.html" id="canonical-tag" />
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Coloring Page - MagicPencil">
+    <meta property="og:description" content="Free online coloring and painting for kids">
+    <meta property="og:image" content="https://magicpencil.fun/assets/og-image.png">
+
+    <title>Coloring - MagicPencil</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/coloring-page.css">
+    <link rel="stylesheet" href="css/coloring-mobile.css">
+
+    <script type="application/ld+json" id="image-schema">
+    { "@context": "https://schema.org", "@type": "ImageObject", "name": "", "contentUrl": "", "description": "" }
+    </script>
+    <script type="application/ld+json" id="breadcrumb-schema">
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [] }
+    </script>
+
+    <!-- Reverse redirect: send desktop users back to the full version -->
+    <script>
+    (function () {
+        var isDesktop = window.matchMedia('(min-width: 768px)').matches
+                     && !/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        if (isDesktop) {
+            window.location.replace('coloring.html' + window.location.search);
+        }
+    })();
+    </script>
+</head>
+<body class="coloring-page mobile-coloring-page">
+
+    <!-- ── TOP BAR (48px fixed) ─────────────────────────── -->
+    <div class="mob-topbar">
+        <button class="mob-hamburger" id="mob-hamburger" aria-label="Menu" aria-expanded="false">☰</button>
+        <span class="mob-title" id="image-title-text">🎨 Coloring Page</span>
+        <div class="mob-controls">
+            <button class="hist-btn mob-hist-btn" id="undo-btn" aria-label="Undo" title="Undo" disabled>↶</button>
+            <button class="hist-btn mob-hist-btn" id="redo-btn" aria-label="Redo" title="Redo" disabled>↷</button>
+            <div class="mob-download-wrap">
+                <button class="mob-download-btn" id="mob-download-btn" aria-label="Download" aria-haspopup="true">⬇</button>
+                <div class="mob-download-menu" id="mob-download-menu" role="menu">
+                    <button class="mob-dl-opt" id="mob-download-colored" role="menuitem">🎨 Colored Art</button>
+                    <button class="mob-dl-opt" id="mob-download-sketch" role="menuitem">📄 Clean Outline</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── HAMBURGER NAV DROPDOWN ────────────────────────── -->
+    <nav class="mob-nav-menu" id="mob-nav-menu" aria-label="Navigation menu">
+        <a href="index.html" class="mob-nav-item">🏠 Home</a>
+        <button class="mob-nav-item" id="mob-random-btn">🎲 Random</button>
+        <button class="mob-nav-item" id="mob-next-btn">➡ Next</button>
+    </nav>
+    <div class="mob-nav-overlay" id="mob-nav-overlay"></div>
+
+    <!-- ── CORK BOARD CANVAS AREA ────────────────────────── -->
+    <main class="mob-canvas-area">
+        <div class="svg-container">
+            <div class="svg-ratio-wrapper">
+                <span class="tape tl"></span>
+                <span class="tape tr"></span>
+                <span class="tape bl"></span>
+                <span class="tape br"></span>
+                <div class="svg-content">
+                    <p class="loading-message">Loading image...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ── MAGIC TAB (right edge vertical pill) ──────────── -->
+    <button class="mob-magic-tab" id="mob-magic-tab" aria-label="Open Magic Tools" aria-expanded="false">
+        <span>Magic</span>
+    </button>
+
+    <!-- ── MAGIC PANEL (slides in from left) ─────────────── -->
+    <aside class="mob-magic-panel" id="mob-magic-panel" aria-hidden="true" aria-label="Magic Tools">
+        <div class="mob-magic-panel-inner">
+            <h3>✨ Magic Tools</h3>
+
+            <h4>🌈 Gradients</h4>
+            <div class="mob-gradient-grid">
+                <button class="gradient-btn" data-from="#FF0000" data-to="#FFFF00" data-direction="to bottom"       title="Red → Yellow"   style="background:linear-gradient(to bottom,#FF0000,#FFFF00)"></button>
+                <button class="gradient-btn" data-from="#0000FF" data-to="#00FF00" data-direction="to bottom"       title="Blue → Green"   style="background:linear-gradient(to bottom,#0000FF,#00FF00)"></button>
+                <button class="gradient-btn" data-from="#800080" data-to="#FFC0CB" data-direction="to bottom"       title="Purple → Pink"  style="background:linear-gradient(to bottom,#800080,#FFC0CB)"></button>
+                <button class="gradient-btn" data-from="#FFA500" data-to="#FFFFFF" data-direction="to bottom"       title="Orange → White" style="background:linear-gradient(to bottom,#FFA500,#fff)"></button>
+                <button class="gradient-btn" data-from="#87CEEB" data-to="#FFFFFF" data-direction="to right"        title="Sky → White"    style="background:linear-gradient(to right,#87CEEB,#fff)"></button>
+                <button class="gradient-btn" data-from="#FF0000" data-to="#800080" data-direction="to right"        title="Red → Purple"   style="background:linear-gradient(to right,#FF0000,#800080)"></button>
+                <button class="gradient-btn" data-from="#00FF00" data-to="#FFFF00" data-direction="to bottom right" title="Green → Yellow" style="background:linear-gradient(to bottom right,#00FF00,#FFFF00)"></button>
+                <button class="gradient-btn" data-from="#0000FF" data-to="#FFC0CB" data-direction="to bottom right" title="Blue → Pink"    style="background:linear-gradient(to bottom right,#0000FF,#FFC0CB)"></button>
+            </div>
+
+            <h4>🎭 Patterns</h4>
+            <div class="mob-pattern-grid">
+                <button class="pattern-btn" data-pattern="stripes" title="Stripes">
+                    <svg viewBox="0 0 28 28"><line x1="0" y1="7"  x2="28" y2="7"  stroke="currentColor" stroke-width="3"/><line x1="0" y1="14" x2="28" y2="14" stroke="currentColor" stroke-width="3"/><line x1="0" y1="21" x2="28" y2="21" stroke="currentColor" stroke-width="3"/></svg>
+                    <span>Stripes</span>
+                </button>
+                <button class="pattern-btn" data-pattern="dots" title="Dots">
+                    <svg viewBox="0 0 28 28"><circle cx="7"  cy="7"  r="3.5" fill="currentColor"/><circle cx="21" cy="7"  r="3.5" fill="currentColor"/><circle cx="7"  cy="21" r="3.5" fill="currentColor"/><circle cx="21" cy="21" r="3.5" fill="currentColor"/></svg>
+                    <span>Dots</span>
+                </button>
+                <button class="pattern-btn" data-pattern="checkerboard" title="Checkerboard">
+                    <svg viewBox="0 0 28 28"><rect x="0"  y="0"  width="14" height="14" fill="currentColor"/><rect x="14" y="14" width="14" height="14" fill="currentColor"/></svg>
+                    <span>Checker</span>
+                </button>
+                <button class="pattern-btn" data-pattern="hearts" title="Hearts">
+                    <svg viewBox="0 0 28 28"><text x="4" y="22" font-size="20" fill="currentColor">♥</text></svg>
+                    <span>Hearts</span>
+                </button>
+                <button class="pattern-btn" data-pattern="stars" title="Stars">
+                    <svg viewBox="0 0 28 28"><text x="4" y="22" font-size="20" fill="currentColor">★</text></svg>
+                    <span>Stars</span>
+                </button>
+                <button class="pattern-btn" data-pattern="waves" title="Waves">
+                    <svg viewBox="0 0 28 28" fill="none"><path d="M0 10 Q7 4,14 10 Q21 16,28 10"  stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M0 19 Q7 13,14 19 Q21 25,28 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                    <span>Waves</span>
+                </button>
+            </div>
+
+            <button id="color-it-btn" class="mob-magic-fill-btn">
+                <span style="font-size:20px;line-height:1;">🪄</span> ✨ Magic Fill!
+            </button>
+        </div>
+    </aside>
+    <div class="mob-panel-overlay" id="mob-panel-overlay"></div>
+
+    <!-- ── COLOR FAN PANEL ───────────────────────────────── -->
+    <div class="mob-color-fan-wrap" id="mob-color-fan-wrap">
+        <canvas id="mob-color-wheel" class="mob-color-wheel" aria-label="Color selection wheel"></canvas>
+        <div class="mob-color-indicator">
+            <span class="mob-color-dot" id="mob-color-dot" style="background:#FF0000"></span>
+            <span class="mob-color-name" id="mob-color-name">Red</span>
+        </div>
+    </div>
+
+    <!-- Hidden elements for coloring.js compatibility -->
+    <span id="difficulty-badge" style="display:none;position:absolute;pointer-events:none;">Easy</span>
+
+    <!-- ── CONFIRMATION DIALOG ───────────────────────────── -->
+    <div id="dialog-overlay" class="dialog-overlay">
+        <div class="dialog-box">
+            <h3 id="dialog-title">Confirm</h3>
+            <p id="dialog-message">Are you sure?</p>
+            <div class="dialog-actions">
+                <button id="dialog-confirm" class="btn btn-primary">Yes</button>
+                <button id="dialog-cancel"  class="btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data/image-catalog.js"></script>
+    <script src="js/data/category-metadata.js"></script>
+    <script src="js/colors.js"></script>
+    <script src="js/coloring.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/download.js"></script>
+    <script src="js/coloring-mobile.js"></script>
+</body>
+</html>

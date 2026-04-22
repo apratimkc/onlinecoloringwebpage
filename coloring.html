@@ -13,264 +13,245 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 
-    <!-- Canonical URL (will be updated dynamically by JavaScript) -->
+    <!-- Canonical URL (updated dynamically by JS) -->
     <link rel="canonical" href="https://magicpencil.fun/coloring.html" id="canonical-tag" />
 
-    <!-- Open Graph (will be updated dynamically) -->
+    <!-- Open Graph (updated dynamically) -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Coloring Page - MagicPencil">
     <meta property="og:description" content="Free online coloring and painting for kids">
     <meta property="og:image" content="https://magicpencil.fun/assets/og-image.png">
 
     <title>Coloring - MagicPencil</title>
+
+    <!-- Redirect mobile users before body renders (no flash) -->
+    <script src="js/mobile-redirect.js"></script>
+
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/coloring-page.css">
     <link rel="stylesheet" href="css/cookie-consent.css">
 
-    <!-- Google Analytics will be loaded by cookie-consent.js if user consents -->
-
-    <!-- Schema.org Structured Data (will be updated by JavaScript) -->
+    <!-- Schema.org (updated by JS) -->
     <script type="application/ld+json" id="image-schema">
-    {
-      "@context": "https://schema.org",
-      "@type": "ImageObject",
-      "name": "",
-      "contentUrl": "",
-      "description": ""
-    }
+    { "@context": "https://schema.org", "@type": "ImageObject", "name": "", "contentUrl": "", "description": "" }
     </script>
-
     <script type="application/ld+json" id="breadcrumb-schema">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": []
-    }
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [] }
     </script>
 </head>
 <body class="coloring-page">
+
     <header class="main-header">
         <div class="container">
-            <div class="logo">
-                <a href="/" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
-                    <img src="/assets/logo-64.png" alt="MagicPencil Logo" width="40" height="40" style="display: block;">
-                    <h1 style="margin: 0;">MagicPencil</h1>
-                </a>
-            </div>
+            <a href="/" class="logo" style="text-decoration:none;">
+                <div class="logo-box">
+                    <img src="/assets/logo-128.png" alt="MagicPencil Logo">
+                </div>
+                <span class="logo-text">Magic<span class="red">Pencil</span></span>
+            </a>
             <nav class="main-nav">
-                <a href="index.html">Home</a>
-                <button id="random-btn" class="btn btn-random">Random</button>
-                <button id="next-image-btn" class="btn btn-secondary">Next Image</button>
-                <button id="download-btn" class="btn btn-primary">Download</button>
+                <a href="index.html" class="btn">🏠 Home</a>
+                <button id="random-btn" class="btn btn-random">🎲 Random</button>
+                <button id="next-image-btn" class="btn btn-secondary">Next →</button>
+                <div class="download-wrap">
+                    <button id="download-btn" class="btn btn-primary">⬇️ Download ▾</button>
+                    <div class="download-menu" id="download-menu">
+                        <button class="download-opt" id="download-colored-btn">🎨 Colored Art</button>
+                        <button class="download-opt" id="download-sketch-btn">📄 Clean Outline</button>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
 
     <main class="coloring-container">
-        <!-- Left Panel: Color Palette -->
-        <aside class="color-panel">
+
+        <!-- ── LEFT: Color Panel ─────────────────── -->
+        <aside class="color-panel panel">
+            <h3>🎨 My colors</h3>
+
+            <!-- Crayon indicator (JS updates color via #pencil-icon) -->
             <div class="pencil-indicator">
-                <div id="pencil-icon">
-                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <g>
-                            <!-- Pencil body (will change color dynamically) -->
-                            <g id="pencil-body">
-                                <path fill="currentColor" d="M94.55,33.73l-32.53,32.53c-0.78,0.78-2.05,0.78-2.83,0L33.73,40.81c-0.78-0.78-0.78-2.05,0-2.83
-                                    l32.53-32.53c0.78-0.78,2.05-0.78,2.83,0l25.46,25.46C95.33,31.68,95.33,32.95,94.55,33.73z"/>
-                                <path fill="currentColor" d="M60.61,69.35c-1.15,0-2.31-0.44-3.18-1.32L31.97,42.58c-0.85-0.85-1.32-1.98-1.32-3.18
-                                    c0-1.2,0.47-2.33,1.32-3.18L64.5,3.69c0.85-0.85,1.98-1.32,3.18-1.32s2.34,0.47,3.19,1.32l25.46,25.46
-                                    c1.76,1.76,1.76,4.61,0,6.37l0,0l-32.53,32.53C62.91,68.91,61.76,69.35,60.61,69.35z M35.86,39.4l24.75,24.75l31.82-31.82
-                                    L66.68,7.58L35.86,39.4z M92.78,31.97L92.78,31.97L92.78,31.97z"/>
-                            </g>
-
-                            <!-- Stripe 1 (white, semi-transparent) -->
-                            <g opacity="0.6">
-                                <rect x="47.63" y="41.85" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -10.0834 64.3432)"
-                                      fill="#FFFFFF" width="50" height="5"/>
-                            </g>
-
-                            <!-- Stripe 2 (black, semi-transparent) -->
-                            <g opacity="0.5">
-                                <rect x="39.14" y="33.36" transform="matrix(0.7071 -0.7072 0.7072 0.7071 -6.5672 55.8628)"
-                                      width="50" height="5"/>
-                            </g>
-
-                            <!-- Stripe 3 (white, semi-transparent) -->
-                            <g opacity="0.6">
-                                <rect x="30.66" y="24.88" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.0538 47.3726)"
-                                      fill="#FFFFFF" width="50" height="5"/>
-                            </g>
-
-                            <!-- Pencil tip (cream color - static) -->
-                            <g id="pencil-tip">
-                                <polygon fill="#F5DEB3" points="60.61,67.68 32.32,39.4 18.18,81.82"/>
-                                <path fill="#D2B48C" d="M14.23,85.77l17-51.01l34.01,34.01L14.23,85.77z M33.42,44.02l-11.28,33.85l33.85-11.28L33.42,44.02z"/>
-                            </g>
-
-                            <!-- Inner graphite point (dark - static) -->
-                            <g id="graphite-point">
-                                <polygon fill="#F5DEB3" points="42.48,73.75 26.23,57.6 18.11,81.82"/>
-                                <path fill="#D2B48C" d="M14.15,85.77l11-32.78l21.99,21.85L14.15,85.77z M27.33,62.21l-5.26,15.67l15.77-5.22L27.33,62.21z"/>
-                            </g>
-                        </g>
+                <div id="pencil-icon" aria-hidden="true">
+                    <!-- Crayon SVG – body uses currentColor, set by JS -->
+                    <svg viewBox="0 0 44 90" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Tip (wood) -->
+                        <polygon points="22,88 12,72 32,72" fill="#f5deb3" stroke="#2d2416" stroke-width="2" stroke-linejoin="round"/>
+                        <!-- Bottom band -->
+                        <rect x="12" y="66" width="20" height="6" fill="rgba(0,0,0,0.2)"/>
+                        <!-- Body -->
+                        <rect x="12" y="10" width="20" height="58" fill="currentColor"/>
+                        <!-- Paper label band -->
+                        <rect x="12" y="36" width="20" height="14" fill="rgba(255,255,255,0.35)"/>
+                        <!-- Shine highlight -->
+                        <rect x="16" y="14" width="4" height="22" rx="2" fill="rgba(255,255,255,0.3)"/>
+                        <!-- Body outline -->
+                        <rect x="12" y="10" width="20" height="62" fill="none" stroke="#2d2416" stroke-width="2.5" stroke-linejoin="round"/>
+                        <!-- Bottom divider -->
+                        <line x1="12" y1="66" x2="32" y2="66" stroke="#2d2416" stroke-width="2"/>
+                        <!-- Top cap -->
+                        <path d="M12,10 L12,6 Q12,2 15,2 L29,2 Q32,2 32,6 L32,10" fill="rgba(0,0,0,0.2)" stroke="#2d2416" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
+                    <!-- Legacy pencil SVG preserved as comment for fallback if needed:
+                    OLD_PENCIL_SVG_START
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                      <g><g id="pencil-body">
+                        <path fill="currentColor" d="M94.55,33.73l-32.53,32.53c-0.78,0.78-2.05,0.78-2.83,0L33.73,40.81c-0.78-0.78-0.78-2.05,0-2.83l32.53-32.53c0.78-0.78,2.05-0.78,2.83,0l25.46,25.46C95.33,31.68,95.33,32.95,94.55,33.73z"/>
+                      </g></g>
+                    </svg>
+                    OLD_PENCIL_SVG_END -->
+                </div>
+                <div class="indicator-info">
+                    <div class="indicator-label" id="current-color-name">Red</div>
+                    <div class="indicator-sub">Active color</div>
                 </div>
             </div>
 
+            <!-- Color Swatches -->
             <div class="color-palette">
-                <h3>Colors</h3>
                 <div class="color-grid">
                     <!-- Row 1: Warm Reds/Pinks -->
-                    <button class="color-btn active" data-color="#FF0000" style="background-color: #FF0000;" title="Red"></button>
-                    <button class="color-btn" data-color="#FF6347" style="background-color: #FF6347;" title="Coral"></button>
-                    <button class="color-btn" data-color="#FFC0CB" style="background-color: #FFC0CB;" title="Pink"></button>
-                    <button class="color-btn" data-color="#FFCBA4" style="background-color: #FFCBA4;" title="Peach"></button>
+                    <button class="color-btn active" data-color="#FF0000" style="background:#FF0000" title="Red" aria-label="Red"></button>
+                    <button class="color-btn" data-color="#FF6347" style="background:#FF6347" title="Coral" aria-label="Coral"></button>
+                    <button class="color-btn" data-color="#FFC0CB" style="background:#FFC0CB" title="Pink" aria-label="Pink"></button>
+                    <button class="color-btn" data-color="#FFCBA4" style="background:#FFCBA4" title="Peach" aria-label="Peach"></button>
                     <!-- Row 2: Oranges/Yellows -->
-                    <button class="color-btn" data-color="#FFA500" style="background-color: #FFA500;" title="Orange"></button>
-                    <button class="color-btn" data-color="#FFFF00" style="background-color: #FFFF00;" title="Yellow"></button>
-                    <button class="color-btn" data-color="#FFD700" style="background-color: #FFD700;" title="Gold"></button>
-                    <button class="color-btn" data-color="#F5DEB3" style="background-color: #F5DEB3;" title="Tan"></button>
+                    <button class="color-btn" data-color="#FFA500" style="background:#FFA500" title="Orange" aria-label="Orange"></button>
+                    <button class="color-btn" data-color="#FFFF00" style="background:#FFFF00" title="Yellow" aria-label="Yellow"></button>
+                    <button class="color-btn" data-color="#FFD700" style="background:#FFD700" title="Gold" aria-label="Gold"></button>
+                    <button class="color-btn" data-color="#F5DEB3" style="background:#F5DEB3" title="Tan" aria-label="Tan"></button>
                     <!-- Row 3: Greens -->
-                    <button class="color-btn" data-color="#00FF00" style="background-color: #00FF00;" title="Lime"></button>
-                    <button class="color-btn" data-color="#32CD32" style="background-color: #32CD32;" title="Green"></button>
-                    <button class="color-btn" data-color="#228B22" style="background-color: #228B22;" title="Forest"></button>
-                    <button class="color-btn" data-color="#90EE90" style="background-color: #90EE90;" title="Light Green"></button>
+                    <button class="color-btn" data-color="#00FF00" style="background:#00FF00" title="Lime" aria-label="Lime"></button>
+                    <button class="color-btn" data-color="#32CD32" style="background:#32CD32" title="Green" aria-label="Green"></button>
+                    <button class="color-btn" data-color="#228B22" style="background:#228B22" title="Forest" aria-label="Forest Green"></button>
+                    <button class="color-btn" data-color="#90EE90" style="background:#90EE90" title="Lt Green" aria-label="Light Green"></button>
                     <!-- Row 4: Blues/Teals -->
-                    <button class="color-btn" data-color="#0000FF" style="background-color: #0000FF;" title="Blue"></button>
-                    <button class="color-btn" data-color="#87CEEB" style="background-color: #87CEEB;" title="Sky Blue"></button>
-                    <button class="color-btn" data-color="#008B8B" style="background-color: #008B8B;" title="Teal"></button>
-                    <button class="color-btn" data-color="#191970" style="background-color: #191970;" title="Navy"></button>
+                    <button class="color-btn" data-color="#0000FF" style="background:#0000FF" title="Blue" aria-label="Blue"></button>
+                    <button class="color-btn" data-color="#87CEEB" style="background:#87CEEB" title="Sky Blue" aria-label="Sky Blue"></button>
+                    <button class="color-btn" data-color="#008B8B" style="background:#008B8B" title="Teal" aria-label="Teal"></button>
+                    <button class="color-btn" data-color="#191970" style="background:#191970" title="Navy" aria-label="Navy"></button>
                     <!-- Row 5: Purples/Pinks -->
-                    <button class="color-btn" data-color="#800080" style="background-color: #800080;" title="Purple"></button>
-                    <button class="color-btn" data-color="#4B0082" style="background-color: #4B0082;" title="Indigo"></button>
-                    <button class="color-btn" data-color="#FF69B4" style="background-color: #FF69B4;" title="Hot Pink"></button>
-                    <button class="color-btn" data-color="#DDA0DD" style="background-color: #DDA0DD;" title="Plum"></button>
-                    <!-- Row 6: Earth Tones/Neutrals -->
-                    <button class="color-btn" data-color="#8B4513" style="background-color: #8B4513;" title="Brown"></button>
-                    <button class="color-btn" data-color="#D2691E" style="background-color: #D2691E;" title="Chocolate"></button>
-                    <button class="color-btn" data-color="#808080" style="background-color: #808080;" title="Gray"></button>
-                    <button class="color-btn" data-color="#FFFFFF" style="background-color: #FFFFFF; border: 2px solid #ccc;" title="White"></button>
+                    <button class="color-btn" data-color="#800080" style="background:#800080" title="Purple" aria-label="Purple"></button>
+                    <button class="color-btn" data-color="#4B0082" style="background:#4B0082" title="Indigo" aria-label="Indigo"></button>
+                    <button class="color-btn" data-color="#FF69B4" style="background:#FF69B4" title="Hot Pink" aria-label="Hot Pink"></button>
+                    <button class="color-btn" data-color="#DDA0DD" style="background:#DDA0DD" title="Plum" aria-label="Plum"></button>
+                    <!-- Row 6: Earth/Neutrals -->
+                    <button class="color-btn" data-color="#8B4513" style="background:#8B4513" title="Brown" aria-label="Brown"></button>
+                    <button class="color-btn" data-color="#D2691E" style="background:#D2691E" title="Chocolate" aria-label="Chocolate"></button>
+                    <button class="color-btn" data-color="#808080" style="background:#808080" title="Gray" aria-label="Gray"></button>
+                    <button class="color-btn" data-color="#FFFFFF" style="background:#FFFFFF;border-color:#2d2416" title="White" aria-label="White"></button>
                 </div>
             </div>
 
-            <button id="clear-btn" class="btn btn-danger btn-full-width">CLEAR</button>
+            <button id="clear-btn" class="btn btn-danger btn-full-width">🔄 Start Fresh</button>
         </aside>
 
-        <!-- Center Panel: Canvas -->
+        <!-- ── CENTER: Canvas ──────────────────── -->
         <section class="canvas-panel">
-            <div id="svg-container" class="svg-container">
-                <div class="svg-ratio-wrapper">
-                    <!-- White colorable background (behind SVG) -->
-                    <div id="svg-background" class="svg-background"></div>
+            <div class="canvas-title">
+                <h2 id="image-title-text">🎨 Coloring Page</h2>
+                <!-- Undo / Redo -->
+                <div class="history">
+                    <button class="hist-btn" id="undo-btn" aria-label="Undo" title="Undo (Ctrl+Z)" disabled>↶</button>
+                    <button class="hist-btn" id="redo-btn" aria-label="Redo" title="Redo (Ctrl+Y)" disabled>↷</button>
+                </div>
+                <span class="difficulty-badge" id="difficulty-badge">Easy</span>
+            </div>
 
-                    <!-- SVG Content -->
-                    <div class="svg-content">
-                        <!-- SVG image will be loaded here -->
-                        <p class="loading-message">Loading image...</p>
+            <!-- Canvas area (cork board artboard) -->
+            <div class="canvas-area">
+                <div id="svg-container" class="svg-container">
+                    <div class="svg-ratio-wrapper">
+                        <span class="tape tl"></span>
+                        <span class="tape tr"></span>
+                        <span class="tape bl"></span>
+                        <span class="tape br"></span>
+                        <div class="svg-content">
+                            <p class="loading-message">Loading image...</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Right Panel: Advanced Options -->
-        <aside class="advanced-panel">
-            <button id="advanced-toggle" class="advanced-toggle">Advanced Options ▼</button>
+        <!-- ── RIGHT: Magic Tools ──────────────── -->
+        <aside class="advanced-panel panel">
+            <!-- Toggle for mobile only -->
+            <button id="advanced-toggle" class="advanced-toggle">✨ Magic Tools ▼</button>
 
             <div id="advanced-content" class="advanced-content">
-                <!-- Gradient Section -->
-                <div class="advanced-section">
-                    <h3>Gradient Fill</h3>
-                    <div class="gradient-grid">
-                        <button class="gradient-btn" data-from="#FF0000" data-to="#FFFF00" data-direction="to bottom" title="Red to Yellow" style="background: linear-gradient(to bottom, #FF0000, #FFFF00);"></button>
-                        <button class="gradient-btn" data-from="#0000FF" data-to="#00FF00" data-direction="to bottom" title="Blue to Green" style="background: linear-gradient(to bottom, #0000FF, #00FF00);"></button>
-                        <button class="gradient-btn" data-from="#800080" data-to="#FFC0CB" data-direction="to bottom" title="Purple to Pink" style="background: linear-gradient(to bottom, #800080, #FFC0CB);"></button>
-                        <button class="gradient-btn" data-from="#FFA500" data-to="#FFFFFF" data-direction="to bottom" title="Orange to White" style="background: linear-gradient(to bottom, #FFA500, #FFFFFF);"></button>
-                        <button class="gradient-btn" data-from="#87CEEB" data-to="#FFFFFF" data-direction="to right" title="Sky to White" style="background: linear-gradient(to right, #87CEEB, #FFFFFF);"></button>
-                        <button class="gradient-btn" data-from="#FF0000" data-to="#800080" data-direction="to right" title="Red to Purple" style="background: linear-gradient(to right, #FF0000, #800080);"></button>
-                        <button class="gradient-btn" data-from="#00FF00" data-to="#FFFF00" data-direction="to bottom right" title="Green to Yellow" style="background: linear-gradient(to bottom right, #00FF00, #FFFF00);"></button>
-                        <button class="gradient-btn" data-from="#0000FF" data-to="#FFC0CB" data-direction="to bottom right" title="Blue to Pink" style="background: linear-gradient(to bottom right, #0000FF, #FFC0CB);"></button>
-                    </div>
+                <h3>✨ Magic tools</h3>
+
+                <h4>🌈 Rainbow mix</h4>
+                <div class="gradient-grid">
+                    <button class="gradient-btn" data-from="#FF0000" data-to="#FFFF00" data-direction="to bottom"       title="Red → Yellow"  style="background:linear-gradient(to bottom,#FF0000,#FFFF00)"></button>
+                    <button class="gradient-btn" data-from="#0000FF" data-to="#00FF00" data-direction="to bottom"       title="Blue → Green"  style="background:linear-gradient(to bottom,#0000FF,#00FF00)"></button>
+                    <button class="gradient-btn" data-from="#800080" data-to="#FFC0CB" data-direction="to bottom"       title="Purple → Pink" style="background:linear-gradient(to bottom,#800080,#FFC0CB)"></button>
+                    <button class="gradient-btn" data-from="#FFA500" data-to="#FFFFFF" data-direction="to bottom"       title="Orange → White" style="background:linear-gradient(to bottom,#FFA500,#fff)"></button>
+                    <button class="gradient-btn" data-from="#87CEEB" data-to="#FFFFFF" data-direction="to right"        title="Sky → White"   style="background:linear-gradient(to right,#87CEEB,#fff)"></button>
+                    <button class="gradient-btn" data-from="#FF0000" data-to="#800080" data-direction="to right"        title="Red → Purple"  style="background:linear-gradient(to right,#FF0000,#800080)"></button>
+                    <button class="gradient-btn" data-from="#00FF00" data-to="#FFFF00" data-direction="to bottom right" title="Green → Yellow" style="background:linear-gradient(to bottom right,#00FF00,#FFFF00)"></button>
+                    <button class="gradient-btn" data-from="#0000FF" data-to="#FFC0CB" data-direction="to bottom right" title="Blue → Pink"   style="background:linear-gradient(to bottom right,#0000FF,#FFC0CB)"></button>
                 </div>
 
-                <!-- Pattern Section -->
-                <div class="advanced-section">
-                    <h3>Pattern Fill</h3>
-                    <div class="pattern-controls">
-                        <div class="pattern-color-info">
-                            <p><strong>Color:</strong> <span id="pattern-color-label">Red</span></p>
-                        </div>
-
-                        <div class="pattern-preview" id="pattern-preview"></div>
-
-                        <div class="pattern-grid">
-                            <button class="pattern-btn" data-pattern="stripes" title="Stripes">
-                                <svg width="50" height="50" viewBox="0 0 50 50">
-                                    <line x1="0" y1="10" x2="50" y2="10" stroke="currentColor" stroke-width="3"/>
-                                    <line x1="0" y1="20" x2="50" y2="20" stroke="currentColor" stroke-width="3"/>
-                                    <line x1="0" y1="30" x2="50" y2="30" stroke="currentColor" stroke-width="3"/>
-                                    <line x1="0" y1="40" x2="50" y2="40" stroke="currentColor" stroke-width="3"/>
-                                </svg>
-                                <span>Stripes</span>
-                            </button>
-                            <button class="pattern-btn" data-pattern="dots" title="Dots">
-                                <svg width="50" height="50" viewBox="0 0 50 50">
-                                    <circle cx="10" cy="10" r="3" fill="currentColor"/>
-                                    <circle cx="30" cy="10" r="3" fill="currentColor"/>
-                                    <circle cx="10" cy="30" r="3" fill="currentColor"/>
-                                    <circle cx="30" cy="30" r="3" fill="currentColor"/>
-                                </svg>
-                                <span>Dots</span>
-                            </button>
-                            <button class="pattern-btn" data-pattern="checkerboard" title="Checkerboard">
-                                <svg width="50" height="50" viewBox="0 0 50 50">
-                                    <rect x="0" y="0" width="25" height="25" fill="currentColor"/>
-                                    <rect x="25" y="25" width="25" height="25" fill="currentColor"/>
-                                </svg>
-                                <span>Checker</span>
-                            </button>
-                            <button class="pattern-btn" data-pattern="hearts" title="Hearts">
-                                <svg width="50" height="50" viewBox="0 0 50 50">
-                                    <text x="10" y="30" font-size="30" fill="currentColor">♥</text>
-                                </svg>
-                                <span>Hearts</span>
-                            </button>
-                            <button class="pattern-btn" data-pattern="stars" title="Stars">
-                                <svg width="50" height="50" viewBox="0 0 50 50">
-                                    <text x="10" y="30" font-size="30" fill="currentColor">★</text>
-                                </svg>
-                                <span>Stars</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Action Buttons Section -->
-                <div class="advanced-section action-buttons-section">
-                    <h3>Quick Actions</h3>
-                    <div class="action-buttons-grid">
-                        <button id="color-it-btn" class="btn btn-action btn-color-it" title="Randomly color all regions">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                                <path d="M2 17l10 5 10-5"/>
-                                <path d="M2 12l10 5 10-5"/>
+                <h4>🎭 Patterns</h4>
+                <div class="pattern-controls">
+                    <div class="pattern-grid">
+                        <button class="pattern-btn" data-pattern="stripes" title="Stripes">
+                            <svg viewBox="0 0 28 28">
+                                <line x1="0" y1="7"  x2="28" y2="7"  stroke="currentColor" stroke-width="3"/>
+                                <line x1="0" y1="14" x2="28" y2="14" stroke="currentColor" stroke-width="3"/>
+                                <line x1="0" y1="21" x2="28" y2="21" stroke="currentColor" stroke-width="3"/>
                             </svg>
-                            Color It!
+                            <span>Stripes</span>
                         </button>
-                        <button id="download-pdf-btn" class="btn btn-action btn-download-pdf" title="Download original image as PDF for printing">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                <polyline points="14 2 14 8 20 8"/>
-                                <line x1="12" y1="18" x2="12" y2="12"/>
-                                <line x1="9" y1="15" x2="12" y2="18"/>
-                                <line x1="15" y1="15" x2="12" y2="18"/>
+                        <button class="pattern-btn" data-pattern="dots" title="Dots">
+                            <svg viewBox="0 0 28 28">
+                                <circle cx="7"  cy="7"  r="3.5" fill="currentColor"/>
+                                <circle cx="21" cy="7"  r="3.5" fill="currentColor"/>
+                                <circle cx="7"  cy="21" r="3.5" fill="currentColor"/>
+                                <circle cx="21" cy="21" r="3.5" fill="currentColor"/>
                             </svg>
-                            Download PDF
+                            <span>Dots</span>
+                        </button>
+                        <button class="pattern-btn" data-pattern="checkerboard" title="Checkerboard">
+                            <svg viewBox="0 0 28 28">
+                                <rect x="0"  y="0"  width="14" height="14" fill="currentColor"/>
+                                <rect x="14" y="14" width="14" height="14" fill="currentColor"/>
+                            </svg>
+                            <span>Checker</span>
+                        </button>
+                        <button class="pattern-btn" data-pattern="hearts" title="Hearts">
+                            <svg viewBox="0 0 28 28">
+                                <text x="4" y="22" font-size="20" fill="currentColor">♥</text>
+                            </svg>
+                            <span>Hearts</span>
+                        </button>
+                        <button class="pattern-btn" data-pattern="stars" title="Stars">
+                            <svg viewBox="0 0 28 28">
+                                <text x="4" y="22" font-size="20" fill="currentColor">★</text>
+                            </svg>
+                            <span>Stars</span>
+                        </button>
+                        <button class="pattern-btn" data-pattern="waves" title="Waves">
+                            <svg viewBox="0 0 28 28" fill="none">
+                                <path d="M0 10 Q7 4, 14 10 Q21 16, 28 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                                <path d="M0 19 Q7 13, 14 19 Q21 25, 28 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            </svg>
+                            <span>Waves</span>
                         </button>
                     </div>
                 </div>
+
+                <!-- Magic Wand: auto-color button -->
+                <button id="color-it-btn" class="btn-magic-wand" title="Auto-color all regions with random colors">
+                    <span style="font-size:22px;line-height:1;">🪄</span>
+                    ✨ Magic Fill!
+                </button>
             </div>
         </aside>
+
     </main>
 
     <!-- Confirmation Dialog -->
@@ -280,7 +261,7 @@
             <p id="dialog-message">Are you sure?</p>
             <div class="dialog-actions">
                 <button id="dialog-confirm" class="btn btn-primary">Yes</button>
-                <button id="dialog-cancel" class="btn btn-secondary">Cancel</button>
+                <button id="dialog-cancel" class="btn">Cancel</button>
             </div>
         </div>
     </div>
@@ -290,22 +271,12 @@
         <div class="cookie-consent-container">
             <div class="cookie-consent-content">
                 <h3>🍪 We Use Cookies</h3>
-                <p>
-                    We use cookies to improve your experience and show COPPA-compliant ads.
-                    No personal information is collected from children.
-                    <a href="privacy-policy.html">Learn more</a>
-                </p>
+                <p>We use cookies to improve your experience and show COPPA-compliant ads. No personal information is collected from children. <a href="privacy-policy.html">Learn more</a></p>
             </div>
             <div class="cookie-consent-actions">
-                <button id="cookie-accept-btn" class="cookie-consent-btn cookie-consent-btn-accept">
-                    Accept All
-                </button>
-                <button id="cookie-decline-btn" class="cookie-consent-btn cookie-consent-btn-decline">
-                    Decline
-                </button>
-                <button id="cookie-settings-btn" class="cookie-consent-btn cookie-consent-btn-settings">
-                    Settings
-                </button>
+                <button id="cookie-accept-btn" class="cookie-consent-btn cookie-consent-btn-accept">Accept All</button>
+                <button id="cookie-decline-btn" class="cookie-consent-btn cookie-consent-btn-decline">Decline</button>
+                <button id="cookie-settings-btn" class="cookie-consent-btn cookie-consent-btn-settings">Settings</button>
             </div>
         </div>
     </div>
@@ -315,44 +286,25 @@
         <div class="cookie-settings-content">
             <h2>Cookie Preferences</h2>
             <p>We respect your privacy. Choose which cookies you want to allow:</p>
-
             <div class="cookie-option">
-                <h3>
-                    <span>Essential Cookies</span>
-                    <span class="required-badge">Required</span>
-                </h3>
+                <h3><span>Essential Cookies</span><span class="required-badge">Required</span></h3>
                 <p>These cookies are necessary for the website to function and cannot be disabled.</p>
             </div>
-
             <div class="cookie-option">
-                <h3>
-                    <span>Analytics Cookies</span>
-                    <label class="cookie-toggle">
-                        <input type="checkbox" id="analytics-toggle">
-                        <span class="cookie-toggle-slider"></span>
-                    </label>
+                <h3><span>Analytics Cookies</span>
+                    <label class="cookie-toggle"><input type="checkbox" id="analytics-toggle"><span class="cookie-toggle-slider"></span></label>
                 </h3>
-                <p>Help us understand how visitors use our site to improve user experience. Uses Google Analytics with IP anonymization.</p>
+                <p>Help us understand how visitors use our site to improve user experience.</p>
             </div>
-
             <div class="cookie-option">
-                <h3>
-                    <span>Advertising Cookies</span>
-                    <label class="cookie-toggle">
-                        <input type="checkbox" id="ads-toggle">
-                        <span class="cookie-toggle-slider"></span>
-                    </label>
+                <h3><span>Advertising Cookies</span>
+                    <label class="cookie-toggle"><input type="checkbox" id="ads-toggle"><span class="cookie-toggle-slider"></span></label>
                 </h3>
                 <p>Allow COPPA-compliant ads from Google AdSense. All ads shown to children are non-personalized.</p>
             </div>
-
             <div class="cookie-settings-actions">
-                <button id="cookie-save-btn" class="cookie-consent-btn cookie-consent-btn-accept">
-                    Save Preferences
-                </button>
-                <button id="cookie-close-btn" class="cookie-consent-btn cookie-consent-btn-decline">
-                    Cancel
-                </button>
+                <button id="cookie-save-btn" class="cookie-consent-btn cookie-consent-btn-accept">Save Preferences</button>
+                <button id="cookie-close-btn" class="cookie-consent-btn cookie-consent-btn-decline">Cancel</button>
             </div>
         </div>
     </div>
