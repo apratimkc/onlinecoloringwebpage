@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MagicPencil — Crayon Box Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #fdf6e6;
+    --paper-2: #f7ecd0;
+    --ink: #2d2416;
+    --ink-soft: #6a5a3a;
+    --red: #e8553c;
+    --orange: #f59441;
+    --yellow: #f3c54a;
+    --green: #6fb93f;
+    --teal: #3aa9a3;
+    --blue: #4a8bd8;
+    --purple: #a269d1;
+    --pink: #ef7bb5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Fredoka', system-ui, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(232,85,60,0.06) 0, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(74,139,216,0.06) 0, transparent 40%);
+    min-height: 100vh;
+    /* notebook dots */
+    background-size: auto, auto, 24px 24px;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0; pointer-events: none;
+    background-image: radial-gradient(circle, rgba(45,36,22,0.07) 1px, transparent 1.5px);
+    background-size: 26px 26px; z-index: 0;
+  }
+
+  /* HEADER */
+  .topbar {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 32px;
+  }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo-pencil {
+    width: 48px; height: 48px; border-radius: 14px;
+    background: #fff; border: 3px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    transform: rotate(-6deg);
+  }
+  .logo-pencil svg { width: 28px; height: 28px; }
+  .logo-text {
+    font-family: 'Gaegu', cursive;
+    font-size: 32px; font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .logo-text span { color: var(--red); }
+
+  .nav { display: flex; gap: 10px; align-items: center; }
+  .nav-btn {
+    font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 15px;
+    padding: 10px 18px; border-radius: 14px;
+    background: #fff; color: var(--ink); border: 2.5px solid var(--ink);
+    box-shadow: 3px 3px 0 var(--ink);
+    cursor: pointer; display: flex; align-items: center; gap: 8px;
+    transition: transform .1s, box-shadow .1s;
+  }
+  .nav-btn:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 var(--ink); }
+  .nav-btn.primary { background: var(--red); color: #fff; }
+
+  /* HERO */
+  .hero {
+    position: relative; z-index: 2;
+    padding: 30px 32px 10px;
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px;
+    align-items: center;
+  }
+  .hero h1 {
+    font-family: 'Gaegu', cursive;
+    font-size: clamp(48px, 6vw, 84px);
+    font-weight: 700; line-height: 0.95;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 .word { display: inline-block; transform: rotate(-2deg); }
+  .hero h1 .word.w2 { color: var(--red); transform: rotate(1deg); }
+  .hero h1 .word.w3 { color: var(--blue); transform: rotate(-1deg); }
+  .hero h1 .word.w4 { color: var(--green); transform: rotate(2deg); }
+  .hero-sub {
+    margin-top: 18px; font-size: 19px; color: var(--ink-soft);
+    max-width: 460px; line-height: 1.5;
+  }
+  .hero-cta {
+    margin-top: 26px;
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--ink); color: #fff;
+    font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 22px;
+    padding: 18px 30px; border-radius: 18px;
+    border: 3px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--red);
+    cursor: pointer; transition: transform .1s, box-shadow .1s;
+  }
+  .hero-cta:hover { transform: translate(-2px,-2px); box-shadow: 8px 8px 0 var(--red); }
+  .hero-cta .arrow { font-size: 28px; }
+
+  .hero-tag { margin-top: 18px; display: flex; gap: 18px; font-size: 14px; color: var(--ink-soft); font-weight: 500; }
+  .hero-tag span { display: flex; align-items: center; gap: 6px; }
+  .hero-tag .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--green); }
+
+  /* Crayon illustration */
+  .crayon-stack {
+    position: relative;
+    height: 420px;
+  }
+  .crayon {
+    position: absolute;
+    width: 80px; height: 280px;
+    border-radius: 16px 16px 8px 8px;
+    border: 3px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
+    display: flex; flex-direction: column; align-items: stretch;
+    overflow: hidden;
+  }
+  .crayon::before {
+    content: ''; display: block; height: 28px; position: relative;
+    background: rgba(255,255,255,0.4);
+    border-bottom: 2.5px solid var(--ink);
+  }
+  .crayon::after {
+    content: ''; display: block; height: 18px; position: relative;
+    background: rgba(255,255,255,0.4);
+    border-top: 2.5px solid var(--ink);
+    margin-top: auto;
+  }
+  .crayon .tip {
+    position: absolute; bottom: -36px; left: 50%; transform: translateX(-50%);
+    width: 0; height: 0;
+    border-left: 36px solid transparent;
+    border-right: 36px solid transparent;
+    border-top: 36px solid var(--ink);
+  }
+  .crayon .tip::after {
+    content: ''; position: absolute; top: -38px; left: -32px;
+    width: 0; height: 0;
+    border-left: 32px solid transparent;
+    border-right: 32px solid transparent;
+    border-top: 32px solid var(--crayon-color);
+  }
+  .c1 { background: var(--red); left: 40px; top: 20px; transform: rotate(-12deg); --crayon-color: var(--red); }
+  .c2 { background: var(--yellow); left: 140px; top: 60px; transform: rotate(4deg); --crayon-color: var(--yellow); }
+  .c3 { background: var(--green); left: 240px; top: 10px; transform: rotate(-4deg); --crayon-color: var(--green); }
+  .c4 { background: var(--blue); left: 340px; top: 70px; transform: rotate(10deg); --crayon-color: var(--blue); }
+  .c5 { background: var(--purple); left: 440px; top: 20px; transform: rotate(-6deg); --crayon-color: var(--purple); }
+
+  .scribble { position: absolute; pointer-events: none; }
+  .scribble-1 { top: -10px; right: 20px; color: var(--red); transform: rotate(10deg); }
+  .scribble-2 { bottom: 10px; left: 0; color: var(--blue); }
+
+  /* CATEGORIES */
+  .cats {
+    position: relative; z-index: 2;
+    padding: 50px 32px 40px;
+  }
+  .section-head {
+    display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 22px;
+  }
+  .section-head h2 {
+    font-family: 'Gaegu', cursive;
+    font-size: 44px; font-weight: 700;
+  }
+  .section-head h2 .u { text-decoration: underline wavy var(--red); text-underline-offset: 8px; }
+  .section-head p { color: var(--ink-soft); font-size: 15px; }
+
+  .cat-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px;
+  }
+  .cat {
+    background: #fff; border: 3px solid var(--ink);
+    border-radius: 22px; padding: 22px 14px 18px;
+    box-shadow: 5px 5px 0 var(--ink);
+    text-align: center; cursor: pointer;
+    display: flex; flex-direction: column; align-items: center;
+    position: relative; transition: transform .15s, box-shadow .15s;
+  }
+  .cat:hover { transform: translate(-2px,-2px) rotate(-1deg); box-shadow: 7px 7px 0 var(--ink); }
+  .cat:nth-child(even):hover { transform: translate(-2px,-2px) rotate(1deg); }
+
+  .cat-bubble {
+    width: 72px; height: 72px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px; margin-bottom: 10px;
+    border: 3px solid var(--ink);
+    background: var(--cat-color);
+    box-shadow: inset -6px -6px 0 rgba(0,0,0,0.1);
+  }
+  .cat h3 {
+    font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 17px;
+  }
+  .cat .count {
+    font-family: 'Gaegu', cursive; font-size: 14px; color: var(--ink-soft);
+    margin-top: 2px;
+  }
+  .cat .pin {
+    position: absolute; top: -10px; right: -10px;
+    width: 34px; height: 34px; border-radius: 50%;
+    background: var(--red); border: 3px solid var(--ink);
+    display: none;
+  }
+  .cat.new .pin { display: block; }
+  .cat .pin::after {
+    content: 'NEW!'; position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fredoka', sans-serif; font-size: 10px; color: #fff; font-weight: 700;
+  }
+
+  /* FEATURES STRIP */
+  .features {
+    position: relative; z-index: 2;
+    padding: 40px 32px 60px;
+  }
+  .f-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+  .f-card {
+    background: var(--paper-2);
+    border: 3px dashed var(--ink);
+    border-radius: 20px; padding: 22px;
+  }
+  .f-card .icon {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #fff; border: 2.5px solid var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; margin-bottom: 12px;
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+  .f-card h3 { font-family: 'Gaegu', cursive; font-size: 26px; margin-bottom: 4px; }
+  .f-card p { color: var(--ink-soft); font-size: 15px; line-height: 1.4; }
+
+  /* FOOTER */
+  .foot {
+    position: relative; z-index: 2;
+    padding: 30px 32px; border-top: 3px dashed var(--ink);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'Gaegu', cursive; font-size: 18px; color: var(--ink-soft);
+  }
+  .foot .links { display: flex; gap: 18px; }
+  .foot .links a { color: var(--ink); text-decoration: none; }
+  .foot .links a:hover { color: var(--red); }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">
+      <div class="logo-pencil">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2d2416" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 4l6 6-10 10H4v-6L14 4z"/>
+          <path d="M13 5l6 6"/>
+        </svg>
+      </div>
+      <div class="logo-text">Magic<span>Pencil</span></div>
+    </div>
+    <nav class="nav">
+      <button class="nav-btn">🏠 Home</button>
+      <button class="nav-btn">🎲 Surprise Me</button>
+      <button class="nav-btn primary">Start Coloring →</button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h1>
+        <span class="word">Grab</span>
+        <span class="word w2">a</span>
+        <span class="word w3">crayon,</span><br>
+        <span class="word w4">make</span>
+        <span class="word">magic!</span>
+      </h1>
+      <p class="hero-sub">Hundreds of pictures waiting for your colors. Tap, splash, and fill them up — no mess, no crayons on the wall.</p>
+      <button class="hero-cta">Start Coloring <span class="arrow">→</span></button>
+      <div class="hero-tag">
+        <span><span class="dot"></span> Free forever</span>
+        <span><span class="dot" style="background:var(--blue)"></span> No signup</span>
+        <span><span class="dot" style="background:var(--purple)"></span> Kid-safe</span>
+      </div>
+    </div>
+    <div class="crayon-stack">
+      <svg class="scribble scribble-1" width="90" height="40" viewBox="0 0 90 40" fill="none">
+        <path d="M5 20 Q 20 5, 35 20 T 65 20 T 85 15" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+      <div class="crayon c1"><span class="tip"></span></div>
+      <div class="crayon c2"><span class="tip"></span></div>
+      <div class="crayon c3"><span class="tip"></span></div>
+      <div class="crayon c4"><span class="tip"></span></div>
+      <div class="crayon c5"><span class="tip"></span></div>
+      <svg class="scribble scribble-2" width="120" height="40" viewBox="0 0 120 40" fill="none">
+        <path d="M5 20 Q 25 0, 45 25 T 85 15 T 115 25" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </section>
+
+  <section class="cats">
+    <div class="section-head">
+      <h2>Pick your <span class="u">adventure</span>!</h2>
+      <p>12 big categories · 100+ pictures</p>
+    </div>
+    <div class="cat-grid">
+      <a class="cat new" style="--cat-color:#ffd1b5"><div class="pin"></div><div class="cat-bubble">🐶</div><h3>Animals</h3><div class="count">10 pics</div></a>
+      <a class="cat" style="--cat-color:#ffe0aa"><div class="cat-bubble">🦄</div><h3>Unicorns</h3><div class="count">8 pics</div></a>
+      <a class="cat" style="--cat-color:#ffb8c9"><div class="cat-bubble">👸</div><h3>Princess</h3><div class="count">8 pics</div></a>
+      <a class="cat" style="--cat-color:#b9e2b0"><div class="cat-bubble">🌳</div><h3>Nature</h3><div class="count">8 pics</div></a>
+      <a class="cat" style="--cat-color:#b0d8e8"><div class="cat-bubble">🐠</div><h3>Ocean</h3><div class="count">8 pics</div></a>
+      <a class="cat" style="--cat-color:#d1b9e8"><div class="cat-bubble">🧙</div><h3>Fantasy</h3><div class="count">8 pics</div></a>
+      <a class="cat" style="--cat-color:#ffdf7a"><div class="cat-bubble">🅰️</div><h3>Alphabets</h3><div class="count">26 pics</div></a>
+      <a class="cat" style="--cat-color:#b5d6ff"><div class="cat-bubble">🚗</div><h3>Vehicles</h3><div class="count">8 pics</div></a>
+      <a class="cat" style="--cat-color:#ffc59c"><div class="cat-bubble">🍕</div><h3>Food</h3><div class="count">10 pics</div></a>
+      <a class="cat new" style="--cat-color:#ffb3b3"><div class="pin"></div><div class="cat-bubble">🎄</div><h3>Holidays</h3><div class="count">10 pics</div></a>
+      <a class="cat" style="--cat-color:#ffc9e2"><div class="cat-bubble">🌸</div><h3>Flowers</h3><div class="count">8 pics</div></a>
+      <a class="cat" style="--cat-color:#fff0a0"><div class="cat-bubble">⭐</div><h3>Shapes</h3><div class="count">6 pics</div></a>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="f-grid">
+      <div class="f-card">
+        <div class="icon">👆</div>
+        <h3>Tap to fill</h3>
+        <p>No dragging, no mess. Pick a color and tap — the line art fills in like magic.</p>
+      </div>
+      <div class="f-card">
+        <div class="icon">🌈</div>
+        <h3>Rainbow mixes</h3>
+        <p>Mix two colors into smooth gradients. Make sunsets, oceans, candy clouds.</p>
+      </div>
+      <div class="f-card">
+        <div class="icon">💾</div>
+        <h3>Save & share</h3>
+        <p>Save your finished pictures to your device. Print them. Show them to grandma.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>© 2026 MagicPencil · Made with crayons 🖍️</span>
+    <div class="links"><a>About</a><a>Privacy</a><a>Contact</a></div>
+  </footer>
+</body>
+</html>

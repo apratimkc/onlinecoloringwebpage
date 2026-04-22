@@ -48,7 +48,7 @@ function getContrastingBorderColor(hexColor) {
 }
 
 /**
- * Update pencil indicator color
+ * Update crayon indicator color and label
  */
 function updatePencilIndicator() {
     const pencilIcon = document.getElementById('pencil-icon');
@@ -56,35 +56,43 @@ function updatePencilIndicator() {
 
     const color = coloringState.currentColor;
 
+    // Crayon SVG uses currentColor – just set it on the container
+    // Clear any legacy border/background the old pencil icon used
+    pencilIcon.style.border = 'none';
+    pencilIcon.style.background = 'transparent';
+    pencilIcon.style.backgroundColor = 'transparent';
+    pencilIcon.style.padding = '0';
+
     switch (coloringState.fillMode) {
         case 'solid':
-            // Background = static white, Border & pencil body = selected color
-            pencilIcon.style.backgroundColor = '#FFFFFF';
-            pencilIcon.style.background = '#FFFFFF';
-            pencilIcon.style.color = color;  // SVG pencil body uses selected color
-            pencilIcon.style.border = `3px solid ${color}`;
+            pencilIcon.style.color = color;
             break;
-
         case 'gradient':
-            // Background = static white, Border & pencil body = gradient
-            pencilIcon.style.backgroundColor = '#FFFFFF';
-            pencilIcon.style.background = '#FFFFFF';
-            const gradient = `linear-gradient(${coloringState.gradientDirection}, ${coloringState.gradientStart}, ${coloringState.gradientEnd})`;
-            // For gradient, we'll use the start color for solid parts
             pencilIcon.style.color = coloringState.gradientStart;
-            pencilIcon.style.border = `3px solid ${coloringState.gradientStart}`;
             break;
-
         case 'pattern':
-            // Background = static white, Border & pencil body = selected color
-            pencilIcon.style.backgroundColor = '#FFFFFF';
-            pencilIcon.style.background = '#FFFFFF';
-            pencilIcon.style.color = coloringState.currentColor;
-            pencilIcon.style.border = `3px solid ${coloringState.currentColor}`;
+            pencilIcon.style.color = color;
             break;
     }
 
-    // Update cursor color as well
+    // Update color name label if present (new crayon design)
+    const colorLabel = document.getElementById('current-color-name');
+    if (colorLabel) {
+        switch (coloringState.fillMode) {
+            case 'solid':
+                colorLabel.textContent = getColorName(color);
+                break;
+            case 'gradient':
+                colorLabel.textContent = 'Gradient';
+                break;
+            case 'pattern':
+                colorLabel.textContent = coloringState.selectedPattern.charAt(0).toUpperCase()
+                                       + coloringState.selectedPattern.slice(1);
+                break;
+        }
+    }
+
+    // Update cursor color
     updateCursorColor();
 }
 
@@ -94,17 +102,30 @@ function updatePencilIndicator() {
 function getColorName(hex) {
     const colorNames = {
         '#FF0000': 'Red',
+        '#FF6347': 'Coral',
+        '#FFC0CB': 'Pink',
+        '#FFCBA4': 'Peach',
         '#FFA500': 'Orange',
         '#FFFF00': 'Yellow',
-        '#00FF00': 'Green',
+        '#FFD700': 'Gold',
+        '#F5DEB3': 'Tan',
+        '#00FF00': 'Lime',
+        '#32CD32': 'Green',
+        '#228B22': 'Forest',
+        '#90EE90': 'Lt Green',
         '#0000FF': 'Blue',
+        '#87CEEB': 'Sky Blue',
+        '#008B8B': 'Teal',
+        '#191970': 'Navy',
         '#800080': 'Purple',
-        '#FFC0CB': 'Pink',
+        '#4B0082': 'Indigo',
+        '#FF69B4': 'Hot Pink',
+        '#DDA0DD': 'Plum',
         '#8B4513': 'Brown',
-        '#000000': 'Black',
-        '#FFFFFF': 'White',
+        '#D2691E': 'Chocolate',
         '#808080': 'Gray',
-        '#87CEEB': 'Light Blue'
+        '#FFFFFF': 'White',
+        '#000000': 'Black'
     };
     return colorNames[hex] || hex;
 }

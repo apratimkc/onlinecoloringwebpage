@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MagicPencil — Crayon Box Coloring</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #fdf6e6; --paper-2: #f7ecd0;
+    --ink: #2d2416; --ink-soft: #6a5a3a;
+    --red:#e8553c; --orange:#f59441; --yellow:#f3c54a;
+    --green:#6fb93f; --teal:#3aa9a3; --blue:#4a8bd8;
+    --purple:#a269d1; --pink:#ef7bb5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Fredoka', system-ui, sans-serif;
+    background: var(--paper); color: var(--ink); min-height: 100vh;
+    overflow: hidden;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0; pointer-events: none;
+    background-image: radial-gradient(circle, rgba(45,36,22,0.06) 1px, transparent 1.5px);
+    background-size: 26px 26px; z-index: 0;
+  }
+
+  .topbar {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 24px; background: var(--paper);
+    border-bottom: 3px dashed var(--ink);
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-pencil { width: 40px; height: 40px; border-radius: 12px;
+    background: #fff; border: 2.5px solid var(--ink); box-shadow: 3px 3px 0 var(--ink);
+    display: flex; align-items: center; justify-content: center; transform: rotate(-6deg);
+  }
+  .logo-text { font-family: 'Gaegu', cursive; font-size: 26px; font-weight: 700; }
+  .logo-text span { color: var(--red); }
+  .actions { display: flex; gap: 8px; }
+  .btn {
+    font-family: 'Fredoka'; font-weight: 600; font-size: 14px;
+    padding: 9px 14px; border-radius: 12px;
+    background: #fff; border: 2.5px solid var(--ink); color: var(--ink);
+    box-shadow: 3px 3px 0 var(--ink); cursor: pointer;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .btn:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 var(--ink); }
+  .btn.red { background: var(--red); color: #fff; }
+  .btn.blue { background: var(--blue); color: #fff; }
+  .btn.green { background: var(--green); color: #fff; }
+
+  /* LAYOUT */
+  .wrap {
+    position: relative; z-index: 2;
+    display: grid; grid-template-columns: 240px 1fr 240px;
+    gap: 16px; padding: 16px;
+    height: calc(100vh - 70px);
+  }
+
+  .panel {
+    background: #fff; border: 3px solid var(--ink);
+    border-radius: 22px; box-shadow: 5px 5px 0 var(--ink);
+    padding: 16px; overflow: auto;
+  }
+  .panel h3 {
+    font-family: 'Gaegu', cursive; font-size: 22px;
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 12px; padding-bottom: 8px;
+    border-bottom: 2.5px dashed var(--ink);
+  }
+  .panel h4 {
+    font-family: 'Gaegu', cursive; font-size: 18px;
+    margin: 14px 0 8px; color: var(--ink-soft);
+  }
+
+  /* COLOR PANEL */
+  .current-color {
+    background: var(--paper-2); border: 2.5px solid var(--ink);
+    border-radius: 16px; padding: 12px; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .current-color .swatch {
+    width: 40px; height: 40px; border-radius: 50%;
+    border: 2.5px solid var(--ink); flex-shrink: 0;
+    box-shadow: inset -4px -4px 0 rgba(0,0,0,0.15);
+  }
+  .current-color .info { min-width: 0; flex: 1; }
+  .current-color .label { font-family: 'Gaegu', cursive; font-size: 18px; line-height: 1.1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .current-color .sub { font-size: 11px; color: var(--ink-soft); line-height: 1.2; margin-top: 2px; }
+
+  .color-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+  }
+  .color {
+    aspect-ratio: 1; border-radius: 50%;
+    border: 2.5px solid var(--ink);
+    cursor: pointer;
+    box-shadow: inset -4px -4px 0 rgba(0,0,0,0.15);
+    transition: transform .1s;
+    position: relative;
+  }
+  .color:hover { transform: scale(1.1); }
+  .color.active {
+    box-shadow: inset -4px -4px 0 rgba(0,0,0,0.15), 0 0 0 3px #fff, 0 0 0 5.5px var(--ink);
+    transform: scale(1.08);
+  }
+
+  .start-over {
+    width: 100%; margin-top: 16px;
+    font-family: 'Fredoka'; font-weight: 700; font-size: 15px;
+    padding: 12px; border-radius: 14px;
+    background: var(--red); color: #fff;
+    border: 2.5px solid var(--ink); box-shadow: 4px 4px 0 var(--ink);
+    cursor: pointer;
+  }
+
+  /* CANVAS */
+  .canvas-panel {
+    background: #fff; border: 3px solid var(--ink);
+    border-radius: 22px; box-shadow: 5px 5px 0 var(--ink);
+    padding: 16px; display: flex; flex-direction: column;
+    position: relative;
+  }
+  .canvas-title {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 10px; margin-bottom: 10px; flex-wrap: nowrap;
+  }
+  .canvas-title h2 {
+    font-family: 'Gaegu', cursive; font-size: 24px;
+    display: flex; align-items: center; gap: 8px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0;
+  }
+  .badge {
+    font-family: 'Fredoka'; font-weight: 700; font-size: 11px;
+    padding: 5px 10px; border-radius: 999px;
+    background: var(--green); color: #fff; flex-shrink: 0;
+    border: 2px solid var(--ink); box-shadow: 2px 2px 0 var(--ink);
+  }
+  .canvas-area {
+    flex: 1; background: var(--paper-2);
+    border: 3px dashed var(--ink); border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .canvas-area svg { max-height: 100%; max-width: 100%; }
+  .tape {
+    position: absolute; width: 70px; height: 24px;
+    background: rgba(243,197,74,0.7);
+    border: 1px solid rgba(45,36,22,0.3);
+  }
+  .tape.tl { top: -8px; left: 40px; transform: rotate(-12deg); }
+  .tape.tr { top: -8px; right: 40px; transform: rotate(10deg); }
+  .tape.bl { bottom: -8px; left: 40px; transform: rotate(8deg); }
+  .tape.br { bottom: -8px; right: 40px; transform: rotate(-10deg); }
+
+  .hint {
+    position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+    background: var(--ink); color: #fff;
+    font-family: 'Gaegu', cursive; font-size: 18px;
+    padding: 8px 16px; border-radius: 999px;
+    display: flex; align-items: center; gap: 6px;
+  }
+
+  /* TOOLS PANEL */
+  .gradient-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; }
+  .gradient-btn {
+    aspect-ratio: 1; border-radius: 12px;
+    border: 2.5px solid var(--ink); cursor: pointer;
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+  .gradient-btn:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 var(--ink); }
+
+  .pattern-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 8px; }
+  .pattern-btn {
+    background: var(--paper-2); border: 2.5px solid var(--ink);
+    border-radius: 14px; padding: 10px 8px; cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    box-shadow: 2px 2px 0 var(--ink);
+    font-family: 'Fredoka'; font-size: 13px; font-weight: 600;
+  }
+  .pattern-btn:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 var(--ink); }
+  .pattern-icon { font-size: 22px; }
+
+  .tip {
+    margin-top: 16px; background: var(--yellow);
+    border: 2.5px solid var(--ink); border-radius: 14px;
+    padding: 10px; box-shadow: 3px 3px 0 var(--ink);
+    font-family: 'Gaegu', cursive; font-size: 15px;
+  }
+  .tip b { display: block; font-size: 17px; margin-bottom: 2px; }
+
+  /* progress bar bottom */
+  .progress {
+    position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+    background: var(--paper-2); border: 2.5px solid var(--ink);
+    border-radius: 999px; padding: 4px 12px 4px 6px;
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'Gaegu', cursive; font-size: 14px;
+  }
+  .progress .dots { display: flex; gap: 3px; }
+  .progress .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--ink-soft); }
+  .progress .dot.on { background: var(--green); }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">
+      <div class="logo-pencil">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2d2416" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 4l6 6-10 10H4v-6L14 4z"/><path d="M13 5l6 6"/>
+        </svg>
+      </div>
+      <div class="logo-text">Magic<span>Pencil</span></div>
+    </div>
+    <div class="actions">
+      <button class="btn">🏠 Home</button>
+      <button class="btn">🎲 Random</button>
+      <button class="btn blue">← Prev</button>
+      <button class="btn green">Next →</button>
+      <button class="btn red">📥 Save my art</button>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <aside class="panel">
+      <h3>🎨 My colors</h3>
+      <div class="current-color">
+        <div class="swatch" style="background:#e8553c"></div>
+        <div class="info">
+          <div class="label">Tomato Red</div>
+          <div class="sub">Currently picked</div>
+        </div>
+      </div>
+      <div class="color-grid">
+        <button class="color active" style="background:#e8553c"></button>
+        <button class="color" style="background:#ff8e7c"></button>
+        <button class="color" style="background:#f59441"></button>
+        <button class="color" style="background:#f3c54a"></button>
+        <button class="color" style="background:#fff0a0"></button>
+        <button class="color" style="background:#6fb93f"></button>
+        <button class="color" style="background:#3aa9a3"></button>
+        <button class="color" style="background:#4a8bd8"></button>
+        <button class="color" style="background:#a269d1"></button>
+        <button class="color" style="background:#ef7bb5"></button>
+        <button class="color" style="background:#8b5a2b"></button>
+        <button class="color" style="background:#2d2416"></button>
+        <button class="color" style="background:#9aa0a6"></button>
+        <button class="color" style="background:#ffffff"></button>
+      </div>
+      <button class="start-over">🔄 Start fresh</button>
+    </aside>
+
+    <section class="canvas-panel">
+      <div class="canvas-title">
+        <h2>🦋 Happy Butterfly</h2>
+        <span class="badge">⭐ Easy</span>
+      </div>
+      <div class="canvas-area">
+        <span class="tape tl"></span><span class="tape tr"></span>
+        <span class="tape bl"></span><span class="tape br"></span>
+        <div class="progress">
+          <div class="dots">
+            <div class="dot on"></div><div class="dot on"></div><div class="dot on"></div>
+            <div class="dot on"></div><div class="dot"></div><div class="dot"></div>
+          </div>
+          Halfway there!
+        </div>
+        <svg viewBox="0 0 400 340" width="90%" style="max-width:520px">
+          <!-- butterfly line art -->
+          <g stroke="#2d2416" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <ellipse cx="200" cy="170" rx="10" ry="80" fill="#2d2416"/>
+            <path d="M200 110 Q100 60 60 120 Q30 180 80 210 Q140 240 200 180" fill="#e8553c" opacity="0.7"/>
+            <path d="M200 180 Q130 250 80 260 Q40 255 50 220 Q80 200 140 220 Q180 230 200 210" fill="#f3c54a" opacity="0.7"/>
+            <path d="M200 110 Q300 60 340 120 Q370 180 320 210 Q260 240 200 180" fill="#4a8bd8" opacity="0.7"/>
+            <path d="M200 180 Q270 250 320 260 Q360 255 350 220 Q320 200 260 220 Q220 230 200 210" fill="#6fb93f" opacity="0.7"/>
+            <circle cx="120" cy="140" r="10" fill="#fff"/>
+            <circle cx="280" cy="140" r="10" fill="#fff"/>
+            <path d="M195 110 Q180 80 170 60"/>
+            <path d="M205 110 Q220 80 230 60"/>
+            <circle cx="195" cy="150" r="2" fill="#2d2416"/>
+            <circle cx="205" cy="150" r="2" fill="#2d2416"/>
+            <path d="M195 160 Q200 165 205 160"/>
+          </g>
+        </svg>
+        <div class="hint">💡 Tap an empty spot to fill it!</div>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <h3>✨ Magic tools</h3>
+      <h4>🌈 Rainbow mix</h4>
+      <div class="gradient-grid">
+        <button class="gradient-btn" style="background:linear-gradient(135deg,#e8553c,#f3c54a)"></button>
+        <button class="gradient-btn" style="background:linear-gradient(135deg,#3aa9a3,#4a8bd8)"></button>
+        <button class="gradient-btn" style="background:linear-gradient(135deg,#a269d1,#ef7bb5)"></button>
+        <button class="gradient-btn" style="background:linear-gradient(135deg,#6fb93f,#f3c54a)"></button>
+        <button class="gradient-btn" style="background:linear-gradient(135deg,#4a8bd8,#a269d1)"></button>
+        <button class="gradient-btn" style="background:linear-gradient(135deg,#e8553c,#ef7bb5)"></button>
+        <button class="gradient-btn" style="background:linear-gradient(90deg,#e8553c,#f59441,#f3c54a,#6fb93f,#4a8bd8,#a269d1)"></button>
+        <button class="gradient-btn" style="background:linear-gradient(135deg,#f3c54a,#fff)"></button>
+      </div>
+
+      <h4>🎭 Patterns</h4>
+      <div class="pattern-grid">
+        <button class="pattern-btn"><div class="pattern-icon">〰️</div>Lines</button>
+        <button class="pattern-btn"><div class="pattern-icon">⚪</div>Dots</button>
+        <button class="pattern-btn"><div class="pattern-icon">💕</div>Hearts</button>
+        <button class="pattern-btn"><div class="pattern-icon">⭐</div>Stars</button>
+      </div>
+
+      <div class="tip">
+        <b>💡 Tip!</b>
+        Pick a color, then tap a white area. Tap again to try a new color.
+      </div>
+    </aside>
+  </div>
+</body>
+</html>

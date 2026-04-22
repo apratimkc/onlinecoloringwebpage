@@ -3,6 +3,113 @@
  * Handles SVG loading, path detection, and tap-to-fill functionality
  */
 
+// Undo / Redo stacks
+const undoStack = [];
+const redoStack = [];
+const MAX_HISTORY = 50;
+
+function updateHistoryButtons() {
+    const undoBtn = document.getElementById('undo-btn');
+    const redoBtn = document.getElementById('redo-btn');
+    if (undoBtn) undoBtn.disabled = undoStack.length === 0;
+    if (redoBtn) redoBtn.disabled = redoStack.length === 0;
+}
+
+function recordFill(regionId, oldFill, newFill) {
+    undoStack.push({ regionId, oldFill, newFill });
+    if (undoStack.length > MAX_HISTORY) undoStack.shift();
+    redoStack.length = 0;
+    updateHistoryButtons();
+}
+
+function applyFillById(regionId, fill) {
+    if (!coloringState.svgElement) return;
+    const path = coloringState.svgElement.getElementById(regionId)
+              || coloringState.svgElement.querySelector(`[id="${regionId}"]`);
+    if (!path) return;
+    const styleAttr = path.getAttribute('style');
+    if (styleAttr && styleAttr.includes('fill:')) {
+        path.style.fill = fill || 'transparent';
+    } else {
+        path.setAttribute('fill', fill || 'transparent');
+    }
+}
+
+function initUndoRedo() {
+    const undoBtn = document.getElementById('undo-btn');
+    const redoBtn = document.getElementById('redo-btn');
+
+    if (undoBtn) {
+        undoBtn.addEventListener('click', () => {
+            const action = undoStack.pop();
+            if (!action) return;
+            if (action.type === 'clear') {
+                // Restore all previous fills
+                Object.entries(action.prevFills).forEach(([id, data]) => {
+                    applyFillById(id, data.color || data.startColor || 'transparent');
+                });
+                coloringState.filledRegions = { ...action.prevFills };
+            } else {
+                applyFillById(action.regionId, action.oldFill);
+                if (action.oldFill === 'transparent' || action.oldFill === '' || action.oldFill === null) {
+                    delete coloringState.filledRegions[action.regionId];
+                } else {
+                    coloringState.filledRegions[action.regionId] = { type: 'solid', color: action.oldFill };
+                }
+            }
+            redoStack.push(action);
+            updateHistoryButtons();
+        });
+    }
+
+    if (redoBtn) {
+        redoBtn.addEventListener('click', () => {
+            const action = redoStack.pop();
+            if (!action) return;
+            if (action.type === 'clear') {
+                clearAllColors();
+            } else {
+                applyFillById(action.regionId, action.newFill);
+                coloringState.filledRegions[action.regionId] = { type: 'solid', color: action.newFill };
+            }
+            undoStack.push(action);
+            updateHistoryButtons();
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        const mod = e.ctrlKey || e.metaKey;
+        if (!mod) return;
+        if (e.key === 'z' && !e.shiftKey) { e.preventDefault(); undoBtn && undoBtn.click(); }
+        else if ((e.key === 'z' && e.shiftKey) || e.key === 'y') { e.preventDefault(); redoBtn && redoBtn.click(); }
+    });
+}
+
+function updateProgress() {
+    const dots = document.querySelectorAll('.pdot');
+    const label = document.getElementById('progress-label');
+    if (!dots.length) return;
+
+    const total = coloringState.svgElement
+        ? coloringState.svgElement.querySelectorAll('path, circle, rect, polygon, ellipse').length
+        : 0;
+    const filled = Object.keys(coloringState.filledRegions).length;
+    const pct = total > 0 ? filled / total : 0;
+
+    // Light up dots proportionally (6 dots)
+    const lit = Math.round(pct * dots.length);
+    dots.forEach((d, i) => d.classList.toggle('on', i < lit));
+
+    // Message
+    if (!label) return;
+    if (filled === 0)       label.textContent = 'Just started';
+    else if (pct < 0.25)   label.textContent = 'Getting colorful!';
+    else if (pct < 0.5)    label.textContent = 'Looking great!';
+    else if (pct < 0.75)   label.textContent = 'Halfway there!';
+    else if (pct < 1)      label.textContent = 'Almost done!';
+    else                   label.textContent = 'Masterpiece! 🎉';
+}
+
 // Global state for coloring
 const coloringState = {
     currentImage: null,
@@ -65,8 +172,27 @@ async function loadSVGImage(imageId) {
 
         // Background coloring removed - only dual-layer path coloring supported
 
-        // Reset filled regions
+        // Reset filled regions and history
         coloringState.filledRegions = {};
+        undoStack.length = 0;
+        redoStack.length = 0;
+        updateHistoryButtons();
+
+        // Update canvas title and difficulty badge
+        const titleEl = document.getElementById('image-title-text');
+        if (titleEl) titleEl.textContent = image.name;
+        const badgeEl = document.getElementById('difficulty-badge');
+        if (badgeEl) {
+            badgeEl.textContent = image.difficulty
+                ? image.difficulty.charAt(0).toUpperCase() + image.difficulty.slice(1)
+                : 'Easy';
+        }
+
+        // Reset progress
+        updateProgress();
+
+        // Size wrapper to SVG's exact aspect ratio so it fills with no white gap
+        fitWrapper(svgElement);
 
         // Update cursor to reflect current color
         if (typeof updateCursorColor === 'function') {
@@ -79,6 +205,38 @@ async function loadSVGImage(imageId) {
         console.error('Error loading SVG:', error);
         svgContent.innerHTML = `<p class="loading-message" style="color: red;">Error: ${error.message}<br>Could not load image. Please try another one.</p>`;
     }
+}
+
+/**
+ * Resize svg-ratio-wrapper to exactly match the loaded SVG's aspect ratio.
+ * This ensures the SVG fills the wrapper with zero leftover white space,
+ * so the white paper and the drawing area are identical rectangles.
+ */
+let _wrapperObserver = null;
+
+function fitWrapper(svgElement) {
+    const wrapper = document.querySelector('.svg-ratio-wrapper');
+    const container = document.querySelector('.svg-container');
+    if (!wrapper || !container) return;
+
+    const vb = svgElement && svgElement.viewBox && svgElement.viewBox.baseVal;
+    const ratio = (vb && vb.width && vb.height) ? vb.width / vb.height : 1;
+
+    function resize() {
+        const cw = container.clientWidth;
+        const ch = container.clientHeight;
+        let w = cw, h = cw / ratio;
+        if (h > ch) { h = ch; w = ch * ratio; }
+        wrapper.style.width  = Math.round(w) + 'px';
+        wrapper.style.height = Math.round(h) + 'px';
+    }
+
+    resize();
+
+    // Re-fit on every container size change
+    if (_wrapperObserver) _wrapperObserver.disconnect();
+    _wrapperObserver = new ResizeObserver(resize);
+    _wrapperObserver.observe(container);
 }
 
 /**
@@ -232,6 +390,9 @@ function fillPath(path) {
     const startTime = performance.now();
 
     try {
+        // Capture old fill for undo
+        const oldFill = path.style.fill || path.getAttribute('fill') || 'transparent';
+
         switch (coloringState.fillMode) {
             case 'solid':
                 applySolidColor(path, coloringState.currentColor);
@@ -239,6 +400,7 @@ function fillPath(path) {
                     type: 'solid',
                     color: coloringState.currentColor
                 };
+                recordFill(path.id, oldFill, coloringState.currentColor);
                 break;
 
             case 'gradient':
@@ -255,6 +417,7 @@ function fillPath(path) {
                     endColor: coloringState.gradientEnd,
                     direction: coloringState.gradientDirection
                 };
+                recordFill(path.id, oldFill, coloringState.gradientStart);
                 break;
 
             case 'pattern':
@@ -269,8 +432,12 @@ function fillPath(path) {
                     pattern: coloringState.selectedPattern,
                     color: coloringState.currentColor
                 };
+                recordFill(path.id, oldFill, coloringState.currentColor);
                 break;
         }
+
+        // Update progress pill
+        updateProgress();
 
         // Log performance (should be < 100ms)
         const endTime = performance.now();
@@ -343,6 +510,13 @@ function colorItRandomly() {
 function clearAllColors() {
     if (!coloringState.svgElement) return;
 
+    // Record the clear action for undo
+    const prevFills = { ...coloringState.filledRegions };
+    undoStack.push({ type: 'clear', prevFills });
+    if (undoStack.length > MAX_HISTORY) undoStack.shift();
+    redoStack.length = 0;
+    updateHistoryButtons();
+
     const paths = coloringState.svgElement.querySelectorAll('path, circle, rect, polygon, ellipse');
 
     paths.forEach(path => {
@@ -379,6 +553,7 @@ function clearAllColors() {
 
     // Reset filled regions
     coloringState.filledRegions = {};
+    updateProgress();
 }
 
 /**
@@ -505,6 +680,9 @@ function initializeColoringPage() {
     const imageId = urlParams.get('image');
 
     console.log('Image ID from URL:', imageId);
+
+    // Wire up undo/redo buttons
+    initUndoRedo();
 
     if (imageId) {
         // Get image data for schema

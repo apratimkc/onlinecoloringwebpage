@@ -254,6 +254,27 @@ function applyPattern(path, patternType, color, svgElement) {
             pattern.appendChild(rectStars);
             pattern.appendChild(textStar);
             break;
+
+        case 'waves':
+            // Wave pattern
+            pattern.setAttribute('width', '20');
+            pattern.setAttribute('height', '12');
+
+            const rectWaves = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            rectWaves.setAttribute('width', '20');
+            rectWaves.setAttribute('height', '12');
+            rectWaves.setAttribute('fill', 'white');
+
+            const wave = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            wave.setAttribute('d', 'M0 6 Q5 1, 10 6 Q15 11, 20 6');
+            wave.setAttribute('stroke', color);
+            wave.setAttribute('stroke-width', '2');
+            wave.setAttribute('fill', 'none');
+            wave.setAttribute('stroke-linecap', 'round');
+
+            pattern.appendChild(rectWaves);
+            pattern.appendChild(wave);
+            break;
     }
 
     defs.appendChild(pattern);

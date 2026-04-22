@@ -87,149 +87,24 @@
     }
     </script>
 
-    <style>
-        .faq-content {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .faq-intro {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 40px;
-            border-radius: 12px;
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        .faq-intro h1 {
-            margin: 0 0 15px 0;
-            font-size: 2.5em;
-        }
-
-        .faq-intro p {
-            margin: 0;
-            font-size: 1.1em;
-            opacity: 0.95;
-        }
-
-        .faq-category {
-            margin-bottom: 50px;
-        }
-
-        .faq-category h2 {
-            color: #667eea;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 10px;
-            margin-bottom: 25px;
-        }
-
-        .faq-item {
-            background: #f9f9f9;
-            border-left: 4px solid #667eea;
-            padding: 25px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .faq-item:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transform: translateY(-2px);
-        }
-
-        .faq-question {
-            color: #333;
-            font-size: 1.3em;
-            font-weight: 600;
-            margin: 0 0 15px 0;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .faq-question::before {
-            content: "Q:";
-            color: #667eea;
-            font-weight: 700;
-            margin-right: 10px;
-            flex-shrink: 0;
-        }
-
-        .faq-answer {
-            color: #555;
-            font-size: 1.05em;
-            line-height: 1.7;
-            margin: 0;
-            padding-left: 30px;
-        }
-
-        .faq-answer::before {
-            content: "A:";
-            color: #764ba2;
-            font-weight: 700;
-            margin-left: -30px;
-            margin-right: 10px;
-        }
-
-        .faq-answer strong {
-            color: #333;
-        }
-
-        .contact-cta {
-            background: #f0f4ff;
-            border: 2px solid #667eea;
-            border-radius: 12px;
-            padding: 30px;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .contact-cta h3 {
-            color: #667eea;
-            margin: 0 0 15px 0;
-        }
-
-        .contact-cta p {
-            color: #555;
-            margin: 0 0 20px 0;
-            font-size: 1.1em;
-        }
-
-        .contact-cta a {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s ease;
-        }
-
-        .contact-cta a:hover {
-            transform: scale(1.05);
-        }
-    </style>
 </head>
 <body>
     <header class="main-header">
         <div class="container">
-            <div class="logo">
-                <a href="/" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
-                    <img src="/assets/logo-128.png" alt="MagicPencil Logo" width="50" height="50" style="display: block;">
-                    <h1 style="margin: 0;">MagicPencil</h1>
-                </a>
-            </div>
+            <a href="/" class="logo" style="text-decoration:none;">
+                <div class="logo-box"><img src="/assets/logo-128.png" alt="MagicPencil Logo"></div>
+                <span class="logo-text">Magic<span class="red">Pencil</span></span>
+            </a>
             <nav class="main-nav">
-                <a href="index.html">Home</a>
-                <button id="random-btn" class="btn btn-random">Random</button>
+                <a href="index.html" class="btn">🏠 Home</a>
+                <button id="random-btn" class="btn btn-random">🎲 Surprise Me</button>
             </nav>
         </div>
     </header>
 
-    <main class="faq-content">
-        <div class="faq-intro">
+    <main class="container">
+        <div class="content-page">
+        <div style="text-align:center; margin-bottom:2rem;">
             <h1>Frequently Asked Questions</h1>
             <p>Find answers to common questions about MagicPencil free online coloring pages</p>
         </div>
@@ -355,16 +230,17 @@
             <p>Can't find the answer you're looking for? We're here to help!</p>
             <a href="contact.html">Contact Us</a>
         </div>
+        </div>
     </main>
 
     <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2025 MagicPencil. All rights reserved.</p>
+            <p>© 2026 MagicPencil · Made with crayons 🖍️</p>
             <nav class="footer-nav">
                 <a href="privacy-policy.html">Privacy Policy</a>
                 <a href="contact.html">Contact</a>
                 <a href="about.html">About</a>
-                <a href="faq.html" class="active">FAQ</a>
+                <a href="faq.html">FAQ</a>
             </nav>
         </div>
     </footer>

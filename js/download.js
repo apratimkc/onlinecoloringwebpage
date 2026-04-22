@@ -285,23 +285,29 @@ function downloadAsPNGFallback(canvas) {
 }
 
 /**
- * Initialize download button
+ * Initialize download dropdown
  */
 function initializeDownloadButton() {
     const downloadBtn = document.getElementById('download-btn');
-    if (!downloadBtn) return;
+    const downloadMenu = document.getElementById('download-menu');
+    const coloredBtn = document.getElementById('download-colored-btn');
+    const sketchBtn = document.getElementById('download-sketch-btn');
 
-    downloadBtn.addEventListener('click', downloadImage);
-}
+    if (!downloadBtn || !downloadMenu) return;
 
-/**
- * Initialize PDF download button
- */
-function initializePDFDownloadButton() {
-    const pdfBtn = document.getElementById('download-pdf-btn');
-    if (!pdfBtn) return;
+    // Toggle dropdown on main button click
+    downloadBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        downloadMenu.classList.toggle('open');
+    });
 
-    pdfBtn.addEventListener('click', downloadOriginalPDF);
+    // Close when clicking outside
+    document.addEventListener('click', () => {
+        downloadMenu.classList.remove('open');
+    });
+
+    if (coloredBtn) coloredBtn.addEventListener('click', downloadImage);
+    if (sketchBtn)  sketchBtn.addEventListener('click', downloadOriginalPDF);
 }
 
 /**
@@ -319,14 +325,12 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         if (document.body.classList.contains('coloring-page')) {
             initializeDownloadButton();
-            initializePDFDownloadButton();
             initializeColorItButton();
         }
     });
 } else {
     if (document.body.classList.contains('coloring-page')) {
         initializeDownloadButton();
-        initializePDFDownloadButton();
         initializeColorItButton();
     }
 }

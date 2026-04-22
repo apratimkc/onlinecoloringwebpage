@@ -39,8 +39,6 @@
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/cookie-consent.css">
 
-    <!-- Google Analytics will be loaded by cookie-consent.js if user consents -->
-
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
@@ -66,188 +64,190 @@
     </script>
 </head>
 <body class="homepage">
+
     <header class="main-header">
         <div class="container">
-            <div class="logo">
-                <a href="/" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
-                    <img src="/assets/logo-128.png" alt="MagicPencil Logo" width="50" height="50" style="display: block;">
-                    <h1 style="margin: 0;">MagicPencil</h1>
-                </a>
-            </div>
+            <a href="/" class="logo" style="text-decoration:none;">
+                <div class="logo-box">
+                    <img src="/assets/logo-128.png" alt="MagicPencil Logo">
+                </div>
+                <span class="logo-text">Magic<span class="red">Pencil</span></span>
+            </a>
             <nav class="main-nav">
-                <a href="index.html" class="active">Home</a>
-                <button id="random-btn" class="btn btn-random">Random</button>
+                <a href="index.html" class="btn">🏠 Home</a>
+                <button id="random-btn" class="btn btn-random">🎲 Surprise Me</button>
+                <button id="start-coloring-btn" class="btn btn-primary">Start Coloring →</button>
             </nav>
         </div>
     </header>
 
     <main class="container">
+
+        <!-- Hero -->
         <section class="hero">
-            <h2>Color Your World!</h2>
-            <p>Choose from hundreds of fun coloring pages. Tap to fill with colors, gradients, and patterns.</p>
-            <button id="start-coloring-btn" class="btn btn-primary btn-large">Start Coloring!</button>
+            <div class="hero-text">
+                <h1>
+                    <span class="hero-word">Grab</span>
+                    <span class="hero-word w2"> a</span>
+                    <span class="hero-word w3"> crayon,</span><br>
+                    <span class="hero-word w4">make</span>
+                    <span class="hero-word"> magic!</span>
+                </h1>
+                <p class="hero-sub">Hundreds of pictures waiting for your colors. Tap, splash, and fill them up — no mess, no crayons on the wall.</p>
+                <button id="start-coloring-btn-2" class="btn btn-large">Start Coloring →</button>
+                <div class="hero-tags">
+                    <span><span class="hero-dot" style="background:var(--green)"></span> Free forever</span>
+                    <span><span class="hero-dot" style="background:var(--blue)"></span> No signup</span>
+                    <span><span class="hero-dot" style="background:var(--purple)"></span> Kid-safe</span>
+                </div>
+            </div>
+            <div class="crayon-stack" aria-hidden="true">
+                <div class="crayon-illus ci-red"><span class="crayon-tip"></span></div>
+                <div class="crayon-illus ci-yellow"><span class="crayon-tip"></span></div>
+                <div class="crayon-illus ci-green"><span class="crayon-tip"></span></div>
+                <div class="crayon-illus ci-blue"><span class="crayon-tip"></span></div>
+                <div class="crayon-illus ci-purple"><span class="crayon-tip"></span></div>
+            </div>
         </section>
 
         <!-- AdSense Placeholder -->
         <div class="ad-placeholder">
             <!-- Google AdSense Ad Unit - Banner -->
-            <!-- Ad code will be inserted here (728x90 desktop, 320x50 mobile) -->
-            <div style="background: #f0f0f0; padding: 20px; text-align: center; border: 2px dashed #ccc;">
-                <p style="margin: 0; color: #666;">AdSense Ad Placement</p>
-            </div>
+            <div><p>AdSense Ad Placement</p></div>
         </div>
 
-        <!-- SEO-Rich Content Section -->
-        <section class="about-section" style="margin: 40px 0; padding: 30px; background: #f9f9f9; border-radius: 12px;">
-            <h2 style="color: #333; margin-bottom: 20px;">Welcome to MagicPencil - Free Online Coloring for Kids!</h2>
+        <!-- Categories -->
+        <section class="cats-section">
+            <div class="section-head">
+                <h2>Pick your <span class="u">adventure</span>!</h2>
+                <p>12 categories · 100+ pictures</p>
+            </div>
+            <div class="category-grid">
+                <a href="category.html?cat=animals" class="category-card" data-category="animals" style="--cat-color:#ffd1b5">
+                    <div class="category-bubble"><span class="category-icon">🐶</span></div>
+                    <h3>Animals</h3>
+                </a>
+                <a href="category.html?cat=unicorns" class="category-card" data-category="unicorns" style="--cat-color:#ffe0aa">
+                    <div class="category-bubble"><span class="category-icon">🦄</span></div>
+                    <h3>Unicorns</h3>
+                </a>
+                <a href="category.html?cat=princess" class="category-card" data-category="princess" style="--cat-color:#ffb8c9">
+                    <div class="category-bubble"><span class="category-icon">👸</span></div>
+                    <h3>Princess</h3>
+                </a>
+                <a href="category.html?cat=nature" class="category-card" data-category="nature" style="--cat-color:#b9e2b0">
+                    <div class="category-bubble"><span class="category-icon">🌳</span></div>
+                    <h3>Nature</h3>
+                </a>
+                <a href="category.html?cat=ocean" class="category-card" data-category="ocean" style="--cat-color:#b0d8e8">
+                    <div class="category-bubble"><span class="category-icon">🐠</span></div>
+                    <h3>Ocean</h3>
+                </a>
+                <a href="category.html?cat=fantasy" class="category-card" data-category="fantasy" style="--cat-color:#d1b9e8">
+                    <div class="category-bubble"><span class="category-icon">🧙</span></div>
+                    <h3>Fantasy</h3>
+                </a>
+                <a href="category.html?cat=alphabets" class="category-card" data-category="alphabets" style="--cat-color:#ffdf7a">
+                    <div class="category-bubble"><span class="category-icon">🅰️</span></div>
+                    <h3>Alphabets</h3>
+                </a>
+                <a href="category.html?cat=vehicles" class="category-card" data-category="vehicles" style="--cat-color:#b5d6ff">
+                    <div class="category-bubble"><span class="category-icon">🚗</span></div>
+                    <h3>Vehicles</h3>
+                </a>
+                <a href="category.html?cat=food" class="category-card" data-category="food" style="--cat-color:#ffc59c">
+                    <div class="category-bubble"><span class="category-icon">🍕</span></div>
+                    <h3>Food</h3>
+                </a>
+                <a href="category.html?cat=holidays" class="category-card" data-category="holidays" style="--cat-color:#ffb3b3">
+                    <div class="category-bubble"><span class="category-icon">🎄</span></div>
+                    <h3>Holidays</h3>
+                </a>
+                <a href="category.html?cat=flowers" class="category-card" data-category="flowers" style="--cat-color:#ffc9e2">
+                    <div class="category-bubble"><span class="category-icon">🌸</span></div>
+                    <h3>Flowers</h3>
+                </a>
+                <a href="category.html?cat=shapes" class="category-card" data-category="shapes" style="--cat-color:#fff0a0">
+                    <div class="category-bubble"><span class="category-icon">⭐</span></div>
+                    <h3>Shapes</h3>
+                </a>
+            </div>
+        </section>
 
-            <p style="font-size: 16px; line-height: 1.6; color: #555; margin-bottom: 15px;">
-                MagicPencil is the ultimate free online coloring experience for children ages 2-14. With over 85 coloring pages and counting, kids can explore their creativity through our innovative tap-to-fill coloring technology, beautiful gradient effects, and fun patterns. No downloads required, no login needed – just instant creative fun that's accessible from any device!
+        <!-- Features Strip -->
+        <section class="features-section">
+            <div class="features-grid">
+                <div class="f-card">
+                    <div class="f-icon">👆</div>
+                    <h3>Tap to fill</h3>
+                    <p>No dragging, no mess. Pick a color and tap — the line art fills in like magic.</p>
+                </div>
+                <div class="f-card">
+                    <div class="f-icon">🌈</div>
+                    <h3>Rainbow mixes</h3>
+                    <p>Mix two colors into smooth gradients. Make sunsets, oceans, candy clouds.</p>
+                </div>
+                <div class="f-card">
+                    <div class="f-icon">💾</div>
+                    <h3>Save &amp; share</h3>
+                    <p>Save your finished pictures to your device. Print them. Show them to grandma.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO Content -->
+        <section class="about-section">
+            <h2>Welcome to MagicPencil — Free Online Coloring for Kids!</h2>
+
+            <p style="font-size:15px;line-height:1.7;margin-bottom:14px;">
+                MagicPencil is the ultimate free online coloring experience for children ages 2–14. With over 85 coloring pages and counting, kids can explore their creativity through our innovative tap-to-fill coloring technology, beautiful gradient effects, and fun patterns. No downloads required, no login needed – just instant creative fun from any device!
             </p>
 
-            <h3 style="color: #444; margin: 25px 0 15px 0; font-size: 20px;">Why Kids and Parents Love MagicPencil</h3>
-            <ul style="list-style: none; padding: 0; margin-bottom: 20px;">
-                <li style="padding: 8px 0; padding-left: 25px; position: relative;">
-                    <strong style="color: #6366f1;">Easy Tap-to-Color:</strong> Our simple tap-to-fill technology makes coloring easy and fun, even for toddlers and preschoolers
-                </li>
-                <li style="padding: 8px 0; padding-left: 25px; position: relative;">
-                    <strong style="color: #6366f1;">18 Beautiful Colors:</strong> Choose from a carefully selected rainbow of colors organized by color family for easy selection
-                </li>
-                <li style="padding: 8px 0; padding-left: 25px; position: relative;">
-                    <strong style="color: #6366f1;">Advanced Features:</strong> Gradients and patterns let kids create unique artistic effects and express their creativity
-                </li>
-                <li style="padding: 8px 0; padding-left: 25px; position: relative;">
-                    <strong style="color: #6366f1;">Save & Share:</strong> Download and share colored masterpieces as high-quality images perfect for printing or sharing with family
-                </li>
-                <li style="padding: 8px 0; padding-left: 25px; position: relative;">
-                    <strong style="color: #6366f1;">Always Free:</strong> No subscriptions, no hidden fees, no ads on coloring pages – completely free forever
-                </li>
+            <h3>Why Kids and Parents Love MagicPencil</h3>
+            <ul>
+                <li><strong>Easy Tap-to-Color:</strong> Our simple tap-to-fill technology makes coloring easy and fun, even for toddlers and preschoolers</li>
+                <li><strong>18 Beautiful Colors:</strong> Choose from a carefully selected rainbow of colors organized by color family</li>
+                <li><strong>Advanced Features:</strong> Gradients and patterns let kids create unique artistic effects</li>
+                <li><strong>Save &amp; Share:</strong> Download colored masterpieces as high-quality images perfect for printing</li>
+                <li><strong>Always Free:</strong> No subscriptions, no hidden fees, no ads on coloring pages — completely free forever</li>
             </ul>
 
-            <h3 style="color: #444; margin: 25px 0 15px 0; font-size: 20px;">Popular Coloring Categories</h3>
-            <p style="font-size: 16px; line-height: 1.6; color: #555; margin-bottom: 10px;">
+            <h3>Popular Coloring Categories</h3>
+            <p style="font-size:15px;line-height:1.7;">
                 <strong>Animals:</strong> From cute teddy bears and playful elephants to majestic lions and exotic peacocks, our animal coloring pages help kids learn about wildlife while having creative fun.<br><br>
-                <strong>Alphabets:</strong> A-Z coloring pages perfect for preschoolers and kindergarteners learning letters. Each letter features fun objects that start with that letter!<br><br>
+                <strong>Alphabets:</strong> A–Z coloring pages perfect for preschoolers and kindergarteners learning letters. Each letter features fun objects that start with that letter!<br><br>
                 <strong>Vehicles:</strong> Cars, trains, airplanes, rockets, and more for little transportation enthusiasts who love things that go.<br><br>
-                <strong>Nature:</strong> Beautiful rainbows, trees, flowers, and landscapes to inspire young artists and teach appreciation for the natural world.
+                <strong>Nature:</strong> Beautiful rainbows, trees, flowers, and landscapes to inspire young artists.
             </p>
 
-            <h3 style="color: #444; margin: 25px 0 15px 0; font-size: 20px;">Educational Benefits of Online Coloring</h3>
-            <p style="font-size: 16px; line-height: 1.6; color: #555;">
-                Coloring isn't just fun – it's educational! MagicPencil helps children develop fine motor skills, improve color recognition, and enhance creative thinking. Our intuitive tap-to-fill interface makes coloring accessible for even the youngest artists (ages 2-3), while advanced features like gradients and patterns keep older children (ages 8-14) engaged and challenged. Parents and teachers love using MagicPencil as a calming activity, learning tool, and screen-time alternative that's both fun and beneficial for child development.
+            <h3>Educational Benefits of Online Coloring</h3>
+            <p style="font-size:15px;line-height:1.7;margin:0;">
+                Coloring isn't just fun — it's educational! MagicPencil helps children develop fine motor skills, improve color recognition, and enhance creative thinking. Our intuitive tap-to-fill interface makes coloring accessible for even the youngest artists (ages 2–3), while advanced features keep older children (ages 8–14) engaged and challenged.
             </p>
         </section>
 
-        <!-- Helpful Resources - Eye-catching Box -->
-        <section style="margin: 40px 0; padding: 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);">
-            <h3 style="color: white; margin: 0 0 20px 0; font-size: 24px; text-align: center;">📚 Helpful Resources for Parents & Teachers</h3>
-            <div style="background: white; border-radius: 8px; padding: 25px;">
-                <p style="font-size: 17px; line-height: 1.8; color: #333; margin: 0;">
-                    <strong style="color: #667eea;">📖 <a href="faq.html" style="color: #667eea; text-decoration: underline;">Frequently Asked Questions (FAQ)</a></strong><br>
-                    <span style="color: #666; font-size: 15px;">Find answers to common questions about using MagicPencil, technical requirements, and educational benefits.</span>
+        <!-- Resources Box -->
+        <section class="resources-box">
+            <h3>📚 Helpful Resources for Parents &amp; Teachers</h3>
+            <div class="resources-inner">
+                <p>
+                    <strong>📖 <a href="faq.html">Frequently Asked Questions (FAQ)</a></strong><br>
+                    <span style="color:var(--ink-soft);font-size:14px;">Find answers to common questions about using MagicPencil, technical requirements, and educational benefits.</span>
                     <br><br>
-                    <strong style="color: #667eea;">🧠 <a href="blog-benefits-of-coloring.html" style="color: #667eea; text-decoration: underline;">10 Amazing Benefits of Coloring</a></strong><br>
-                    <span style="color: #666; font-size: 15px;">Discover the research-backed developmental benefits of coloring for children ages 2-14.</span>
+                    <strong>🧠 <a href="blog-benefits-of-coloring.html">10 Amazing Benefits of Coloring</a></strong><br>
+                    <span style="color:var(--ink-soft);font-size:14px;">Discover the research-backed developmental benefits of coloring for children ages 2–14.</span>
                     <br><br>
-                    <strong style="color: #667eea;">👨‍👩‍👧 <a href="blog-choosing-coloring-pages-by-age.html" style="color: #667eea; text-decoration: underline;">Choosing Age-Appropriate Coloring Pages</a></strong><br>
-                    <span style="color: #666; font-size: 15px;">Complete guide to selecting the perfect coloring pages for your child's age and skill level.</span>
+                    <strong>👨‍👩‍👧 <a href="blog-choosing-coloring-pages-by-age.html">Choosing Age-Appropriate Coloring Pages</a></strong><br>
+                    <span style="color:var(--ink-soft);font-size:14px;">Complete guide to selecting the perfect coloring pages for your child's age and skill level.</span>
                 </p>
             </div>
         </section>
 
-        <section class="categories">
-            <h2>Choose a Category</h2>
-            <div class="category-grid">
-                <a href="category.html?cat=alphabets" class="category-card" data-category="alphabets">
-                    <div class="category-image">
-                        <span class="category-icon">🅰️</span>
-                    </div>
-                    <h3>Alphabets</h3>
-                </a>
-
-                <a href="category.html?cat=animals" class="category-card" data-category="animals">
-                    <div class="category-image">
-                        <span class="category-icon">🐶</span>
-                    </div>
-                    <h3>Animals</h3>
-                </a>
-
-                <a href="category.html?cat=princess" class="category-card" data-category="princess">
-                    <div class="category-image">
-                        <span class="category-icon">👸</span>
-                    </div>
-                    <h3>Princess</h3>
-                </a>
-
-                <a href="category.html?cat=unicorns" class="category-card" data-category="unicorns">
-                    <div class="category-image">
-                        <span class="category-icon">🦄</span>
-                    </div>
-                    <h3>Unicorns</h3>
-                </a>
-
-                <a href="category.html?cat=vehicles" class="category-card" data-category="vehicles">
-                    <div class="category-image">
-                        <span class="category-icon">🚗</span>
-                    </div>
-                    <h3>Vehicles</h3>
-                </a>
-
-                <a href="category.html?cat=food" class="category-card" data-category="food">
-                    <div class="category-image">
-                        <span class="category-icon">🍕</span>
-                    </div>
-                    <h3>Food</h3>
-                </a>
-
-                <a href="category.html?cat=nature" class="category-card" data-category="nature">
-                    <div class="category-image">
-                        <span class="category-icon">🌳</span>
-                    </div>
-                    <h3>Nature</h3>
-                </a>
-
-                <a href="category.html?cat=holidays" class="category-card" data-category="holidays">
-                    <div class="category-image">
-                        <span class="category-icon">🎄</span>
-                    </div>
-                    <h3>Holidays</h3>
-                </a>
-
-                <a href="category.html?cat=ocean" class="category-card" data-category="ocean">
-                    <div class="category-image">
-                        <span class="category-icon">🐠</span>
-                    </div>
-                    <h3>Ocean</h3>
-                </a>
-
-                <a href="category.html?cat=fantasy" class="category-card" data-category="fantasy">
-                    <div class="category-image">
-                        <span class="category-icon">🧙</span>
-                    </div>
-                    <h3>Fantasy</h3>
-                </a>
-
-                <a href="category.html?cat=shapes" class="category-card" data-category="shapes">
-                    <div class="category-image">
-                        <span class="category-icon">⭐</span>
-                    </div>
-                    <h3>Shapes</h3>
-                </a>
-
-                <a href="category.html?cat=flowers" class="category-card" data-category="flowers">
-                    <div class="category-image">
-                        <span class="category-icon">🌸</span>
-                    </div>
-                    <h3>Flowers</h3>
-                </a>
-            </div>
-        </section>
     </main>
 
     <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2025 MagicPencil. All rights reserved.</p>
+            <p>© 2026 MagicPencil · Made with crayons 🖍️</p>
             <nav class="footer-nav">
                 <a href="privacy-policy.html">Privacy Policy</a>
                 <a href="contact.html">Contact</a>
@@ -262,22 +262,12 @@
         <div class="cookie-consent-container">
             <div class="cookie-consent-content">
                 <h3>🍪 We Use Cookies</h3>
-                <p>
-                    We use cookies to improve your experience and show COPPA-compliant ads.
-                    No personal information is collected from children.
-                    <a href="privacy-policy.html">Learn more</a>
-                </p>
+                <p>We use cookies to improve your experience and show COPPA-compliant ads. No personal information is collected from children. <a href="privacy-policy.html">Learn more</a></p>
             </div>
             <div class="cookie-consent-actions">
-                <button id="cookie-accept-btn" class="cookie-consent-btn cookie-consent-btn-accept">
-                    Accept All
-                </button>
-                <button id="cookie-decline-btn" class="cookie-consent-btn cookie-consent-btn-decline">
-                    Decline
-                </button>
-                <button id="cookie-settings-btn" class="cookie-consent-btn cookie-consent-btn-settings">
-                    Settings
-                </button>
+                <button id="cookie-accept-btn" class="cookie-consent-btn cookie-consent-btn-accept">Accept All</button>
+                <button id="cookie-decline-btn" class="cookie-consent-btn cookie-consent-btn-decline">Decline</button>
+                <button id="cookie-settings-btn" class="cookie-consent-btn cookie-consent-btn-settings">Settings</button>
             </div>
         </div>
     </div>
@@ -287,44 +277,25 @@
         <div class="cookie-settings-content">
             <h2>Cookie Preferences</h2>
             <p>We respect your privacy. Choose which cookies you want to allow:</p>
-
             <div class="cookie-option">
-                <h3>
-                    <span>Essential Cookies</span>
-                    <span class="required-badge">Required</span>
-                </h3>
+                <h3><span>Essential Cookies</span><span class="required-badge">Required</span></h3>
                 <p>These cookies are necessary for the website to function and cannot be disabled.</p>
             </div>
-
             <div class="cookie-option">
-                <h3>
-                    <span>Analytics Cookies</span>
-                    <label class="cookie-toggle">
-                        <input type="checkbox" id="analytics-toggle">
-                        <span class="cookie-toggle-slider"></span>
-                    </label>
+                <h3><span>Analytics Cookies</span>
+                    <label class="cookie-toggle"><input type="checkbox" id="analytics-toggle"><span class="cookie-toggle-slider"></span></label>
                 </h3>
-                <p>Help us understand how visitors use our site to improve user experience. Uses Google Analytics with IP anonymization.</p>
+                <p>Help us understand how visitors use our site to improve user experience.</p>
             </div>
-
             <div class="cookie-option">
-                <h3>
-                    <span>Advertising Cookies</span>
-                    <label class="cookie-toggle">
-                        <input type="checkbox" id="ads-toggle">
-                        <span class="cookie-toggle-slider"></span>
-                    </label>
+                <h3><span>Advertising Cookies</span>
+                    <label class="cookie-toggle"><input type="checkbox" id="ads-toggle"><span class="cookie-toggle-slider"></span></label>
                 </h3>
                 <p>Allow COPPA-compliant ads from Google AdSense. All ads shown to children are non-personalized.</p>
             </div>
-
             <div class="cookie-settings-actions">
-                <button id="cookie-save-btn" class="cookie-consent-btn cookie-consent-btn-accept">
-                    Save Preferences
-                </button>
-                <button id="cookie-close-btn" class="cookie-consent-btn cookie-consent-btn-decline">
-                    Cancel
-                </button>
+                <button id="cookie-save-btn" class="cookie-consent-btn cookie-consent-btn-accept">Save Preferences</button>
+                <button id="cookie-close-btn" class="cookie-consent-btn cookie-consent-btn-decline">Cancel</button>
             </div>
         </div>
     </div>
@@ -332,5 +303,11 @@
     <script src="js/data/image-catalog.js"></script>
     <script src="js/cookie-consent.js"></script>
     <script src="js/app.js"></script>
+    <script>
+        // Wire up the second hero CTA button (same as start-coloring-btn)
+        document.getElementById('start-coloring-btn-2').addEventListener('click', function() {
+            document.getElementById('start-coloring-btn').click();
+        });
+    </script>
 </body>
 </html>

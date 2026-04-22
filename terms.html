@@ -22,113 +22,22 @@
       gtag('config', 'G-S4TFTTG0SD');
     </script>
 
-    <style>
-        .legal-page {
-            background: linear-gradient(135deg, #FFF8E7 0%, #FFE5E5 50%, #E5F5FF 100%);
-            background-attachment: fixed;
-            min-height: 100vh;
-        }
-
-        .legal-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .legal-content {
-            background: white;
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-            border: 4px solid var(--accent-purple);
-        }
-
-        .legal-content h1 {
-            color: var(--primary-color);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .last-updated {
-            text-align: center;
-            color: #666;
-            font-style: italic;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #f0f0f0;
-        }
-
-        .legal-content h2 {
-            color: var(--secondary-color);
-            font-size: 1.8rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .legal-content h3 {
-            color: #333;
-            font-size: 1.3rem;
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .legal-content p {
-            line-height: 1.8;
-            color: #444;
-            margin-bottom: 1rem;
-        }
-
-        .legal-content ul, .legal-content ol {
-            line-height: 1.8;
-            color: #444;
-            margin-bottom: 1rem;
-            padding-left: 2rem;
-        }
-
-        .legal-content li {
-            margin-bottom: 0.5rem;
-        }
-
-        .highlight-box {
-            background-color: #FFF8E7;
-            border-left: 4px solid var(--accent-yellow);
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 8px;
-        }
-
-        @media (max-width: 768px) {
-            .legal-content {
-                padding: 2rem 1.5rem;
-            }
-
-            .legal-content h1 {
-                font-size: 2rem;
-            }
-
-            .legal-content h2 {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
 </head>
-<body class="legal-page">
+<body>
     <header class="main-header">
         <div class="container">
-            <div class="logo">
-                <div class="logo-text"><a href="index.html">Magic Pencil</a></div>
-            </div>
+            <a href="/" class="logo" style="text-decoration:none;">
+                <div class="logo-box"><img src="/assets/logo-128.png" alt="MagicPencil Logo"></div>
+                <span class="logo-text">Magic<span class="red">Pencil</span></span>
+            </a>
             <nav class="main-nav">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
+                <a href="index.html" class="btn">🏠 Home</a>
             </nav>
         </div>
     </header>
 
-    <main class="legal-container">
-        <div class="legal-content">
+    <main class="container">
+        <div class="content-page">
             <h1>Terms of Service</h1>
             <p class="last-updated"><strong>Last Updated:</strong> December 23, 2025</p>
 
@@ -333,13 +242,13 @@
 
     <footer class="main-footer">
         <div class="container">
-            <div class="footer-links">
+            <p>© 2026 MagicPencil · Made with crayons 🖍️</p>
+            <nav class="footer-nav">
                 <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
-                <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
-            </div>
-            <p class="copyright">&copy; 2025 Magic Pencil. All rights reserved.</p>
+                <a href="about.html">About</a>
+                <a href="faq.html">FAQ</a>
+            </nav>
         </div>
     </footer>
 </body>
