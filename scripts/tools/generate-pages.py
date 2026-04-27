@@ -13,6 +13,7 @@ import os
 import re
 import json
 import sys
+from datetime import date
 from pathlib import Path
 
 # ── Path setup ────────────────────────────────────────────────────────────────
@@ -215,7 +216,17 @@ def make_image_schema_json(image, canonical, description):
         "name": image['name'],
         "contentUrl": f"{BASE_URL}/images/{image['category']}/{encoded}",
         "description": description,
-        "url": canonical
+        "url": canonical,
+        "uploadDate": date.today().isoformat(),
+        "license": f"{BASE_URL}/privacy-policy.html",
+        "creditText": "MagicPencil",
+        "copyrightNotice": f"© {date.today().year} MagicPencil",
+        "creator": {
+            "@type": "Organization",
+            "name": "MagicPencil",
+            "url": BASE_URL
+        },
+        "acquireLicensePage": f"{BASE_URL}/privacy-policy.html"
     }
     return json.dumps(data, indent=2, ensure_ascii=False)
 
