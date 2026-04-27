@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MagicPencil Blog — Tips, guides, and resources for kids coloring, child development, and choosing the right art supplies.">
+    <meta name="author" content="MagicPencil">
+
+    <link rel="canonical" href="https://magicpencil.fun/blog/" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://magicpencil.fun/blog/">
+    <meta property="og:title" content="MagicPencil Blog — Coloring Tips & Resources for Kids">
+    <meta property="og:description" content="Tips, guides, and resources for kids coloring, child development, and choosing the right art supplies.">
+    <meta property="og:image" content="https://magicpencil.fun/assets/og-image.png">
+
+    <title>Blog — Coloring Tips & Resources for Kids | MagicPencil</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+
+    <style>
+        .blog-index {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .blog-index h1 {
+            color: #667eea;
+            font-size: 2.2em;
+            margin-bottom: 8px;
+        }
+
+        .blog-index .subtitle {
+            color: #888;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+        }
+
+        .post-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 24px;
+        }
+
+        .post-card {
+            background: #fff;
+            border: 1px solid #e8eaf0;
+            border-radius: 12px;
+            padding: 28px;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
+
+        .post-card:hover {
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .post-tag {
+            display: inline-block;
+            background: #f0f4ff;
+            color: #667eea;
+            font-size: 0.78em;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+            align-self: flex-start;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .post-tag.product-review {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .post-card h2 {
+            font-size: 1.2em;
+            color: #222;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .post-card p {
+            font-size: 0.95em;
+            color: #666;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .post-meta {
+            font-size: 0.85em;
+            color: #aaa;
+            margin-top: auto;
+        }
+
+        @media (max-width: 480px) {
+            .post-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <a href="/" class="logo" style="text-decoration:none;">
+                <div class="logo-box"><img src="/assets/logo-128.png" alt="MagicPencil Logo"></div>
+                <span class="logo-text">Magic<span class="red">Pencil</span></span>
+            </a>
+            <nav class="main-nav">
+                <a href="/" class="btn">🏠 Home</a>
+                <a href="/blog/" class="btn">📝 Blog</a>
+                <button id="random-btn" class="btn btn-random">🎲 Surprise Me</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="blog-index">
+        <h1>MagicPencil Blog</h1>
+        <p class="subtitle">Coloring tips, child development guides, and honest product recommendations for parents and educators.</p>
+
+        <div class="post-grid">
+
+            <a href="/blog/benefits-of-coloring.html" class="post-card">
+                <span class="post-tag">Resource</span>
+                <h2>10 Amazing Benefits of Coloring for Child Development</h2>
+                <p>Discover how coloring builds fine motor skills, focus, creativity, and emotional regulation — backed by research.</p>
+                <div class="post-meta">January 9, 2026 · 8 min read</div>
+            </a>
+
+            <a href="/blog/choosing-coloring-pages-by-age.html" class="post-card">
+                <span class="post-tag">Resource</span>
+                <h2>How to Choose Age-Appropriate Coloring Pages: Complete Parent's Guide</h2>
+                <p>A breakdown of exactly which coloring pages work best from toddlers to teens — with complexity guides for each stage.</p>
+                <div class="post-meta">January 9, 2026 · 10 min read</div>
+            </a>
+
+            <a href="/blog/animal-coloring-pages.html" class="post-card">
+                <span class="post-tag">Free Pages</span>
+                <h2>Free Animal Coloring Pages for Kids — 15 Cute Animals to Color Online</h2>
+                <p>Elephants, lions, owls, penguins, rabbits, and more — 15 animals ready to color in one tap. Print-free too.</p>
+                <div class="post-meta">April 27, 2026 · 5 min read</div>
+            </a>
+
+            <a href="/blog/elephant-coloring-pages.html" class="post-card">
+                <span class="post-tag">Free Pages</span>
+                <h2>Free Elephant Coloring Pages for Kids — Color Online or Print Free</h2>
+                <p>Color a majestic elephant online or print free at home. Plus fun elephant facts and coloring tips for kids.</p>
+                <div class="post-meta">April 27, 2026 · 5 min read</div>
+            </a>
+
+            <a href="/blog/unicorn-coloring-pages.html" class="post-card">
+                <span class="post-tag">Free Pages</span>
+                <h2>Free Unicorn Coloring Pages for Kids — Magical Designs to Color Online</h2>
+                <p>Magical fantasy coloring pages with dragons, wands, and enchanted scenes. Unicorn facts and supply picks included.</p>
+                <div class="post-meta">April 27, 2026 · 5 min read</div>
+            </a>
+
+            <a href="/blog/alphabet-coloring-pages.html" class="post-card">
+                <span class="post-tag">Free Pages</span>
+                <h2>Free Alphabet Coloring Pages A to Z — Learn Letters While Coloring</h2>
+                <p>All 26 letters, each paired with a fun illustration. Perfect for preschool and kindergarten letter learning.</p>
+                <div class="post-meta">April 27, 2026 · 5 min read</div>
+            </a>
+
+            <a href="/blog/flower-coloring-pages.html" class="post-card">
+                <span class="post-tag">Free Pages</span>
+                <h2>Free Flower Coloring Pages for Kids — Rose, Sunflower, Tulip & More</h2>
+                <p>Five beautiful flower designs to color online or print. Coloring tips for every flower plus nature facts kids will love.</p>
+                <div class="post-meta">April 27, 2026 · 5 min read</div>
+            </a>
+
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>© 2026 MagicPencil · Made with crayons 🖍️</p>
+            <nav class="footer-nav">
+                <a href="/privacy-policy.html">Privacy Policy</a>
+                <a href="/contact.html">Contact</a>
+                <a href="/about.html">About</a>
+                <a href="/faq.html">FAQ</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="/js/data/image-catalog.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>

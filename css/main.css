@@ -682,3 +682,112 @@ a:hover { color: var(--red); }
 
 /* ── Cookie Consent (override via cookie-consent.css) ── */
 /* keep defaults intact */
+
+/* ── Affiliate Widget ────────────────────────── */
+.affiliate-picks {
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 24px 24px 20px;
+  border: 3px solid var(--ink);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  box-shadow: var(--shadow-md);
+}
+
+.affiliate-label {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.affiliate-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.affiliate-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--white);
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.affiliate-card:hover {
+  background: var(--paper);
+  box-shadow: var(--shadow-sm);
+}
+
+.affiliate-img-wrap {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--paper);
+}
+
+.affiliate-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.affiliate-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.affiliate-name {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.affiliate-desc {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.affiliate-price {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--green);
+}
+
+.affiliate-disclosure {
+  margin-top: 16px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+@media (max-width: 650px) {
+  .affiliate-list {
+    grid-template-columns: 1fr;
+  }
+}

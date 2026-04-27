@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <rect width="80" height="80" rx="12" fill="#fdf6e6"/>
+  <!-- bag body -->
+  <rect x="18" y="34" width="44" height="30" rx="5" fill="#f3c54a" stroke="#2d2416" stroke-width="2.5"/>
+  <!-- bag handle -->
+  <path d="M30 34 C30 22 50 22 50 34" stroke="#2d2416" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <!-- smile underline -->
+  <path d="M28 68 Q40 74 52 68" stroke="#2d2416" stroke-width="2" stroke-linecap="round" fill="none"/>
+</svg>

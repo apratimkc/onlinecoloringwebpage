@@ -5,19 +5,23 @@
 
 ## 🔴 TIER 1 — Foundation (Do First, Unlocks Everything Else)
 
-### 1. Fix URL Structure (Query Parameters → Clean URLs)
+### 1. ✅ Fix URL Structure (Query Parameters → Clean URLs)
 **Current:** `/coloring.html?image=animals-elephant`
 **Target:** `/color/animals/elephant`
 Google systematically deprioritizes query-parameter URLs. This is the single root cause behind poor Google indexing. Fixing this unlocks organic Google traffic, which is a prerequisite for AdSense approval and meaningful affiliate revenue.
 
+**Done:** All 85 coloring images now have static HTML pages at `/color/<category>/<slug>.html`. Category pages live at `/categories/<category>.html`. Sitemap updated with clean URLs.
+
 ---
 
-### 2. Fix & Resubmit Sitemap to Google Search Console + Bing
+### 2. ✅ Fix & Resubmit Sitemap to Google Search Console + Bing
 After fixing URLs, the sitemap needs to be regenerated with:
 - Clean static URLs (no query params)
 - URL-encoded image filenames (no spaces, e.g. `Honey%20Bee.svg`)
 - Consistent filename casing across all entries
 Then resubmit to both Google Search Console and Bing Webmaster Tools. Bing is already working — make sure the corrected sitemap is submitted there too.
+
+**Done:** Sitemap regenerated with 101 clean URLs. Resubmit manually in Bing Webmaster Tools (takes 30 seconds — paste sitemap URL and hit submit).
 
 ---
 
