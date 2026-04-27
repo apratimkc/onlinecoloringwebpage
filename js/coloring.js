@@ -141,8 +141,8 @@ async function loadSVGImage(imageId) {
 
         coloringState.currentImage = image;
 
-        // Construct path to SVG file
-        const svgPath = `images/${image.category}/${image.filename}`;
+        // Absolute path — works from any URL depth (/color/cat/slug.html is 2 levels deep)
+        const svgPath = `/images/${image.category}/${image.filename}`;
 
         // Fetch SVG file
         const response = await fetch(svgPath);
@@ -569,6 +569,15 @@ function getSVGDataURL() {
 }
 
 /**
+ * Build the canonical clean URL for a coloring image.
+ * "animals-elephant" -> "https://magicpencil.fun/color/animals/elephant.html"
+ */
+function getCleanUrl(imageData) {
+    const slug = imageData.id.replace(imageData.category + '-', '');
+    return `https://magicpencil.fun/color/${imageData.category}/${slug}.html`;
+}
+
+/**
  * Update Schema.org structured data for coloring page
  */
 function updateColoringPageSchemas(imageData) {
@@ -607,13 +616,13 @@ function updateColoringPageSchemas(imageData) {
                     "@type": "ListItem",
                     "position": 2,
                     "name": categoryInfo.name,
-                    "item": `https://magicpencil.fun/category.html?cat=${imageData.category}`
+                    "item": `https://magicpencil.fun/categories/${imageData.category}.html`
                 },
                 {
                     "@type": "ListItem",
                     "position": 3,
                     "name": imageData.name,
-                    "item": `https://magicpencil.fun/coloring.html?image=${imageData.id}`
+                    "item": getCleanUrl(imageData)
                 }
             ]
         };
@@ -652,8 +661,7 @@ function updateColoringPageSchemas(imageData) {
 
     let ogUrl = document.querySelector('meta[property="og:url"]');
     if (ogUrl) {
-        ogUrl.setAttribute('content',
-            `https://magicpencil.fun/coloring.html?image=${imageData.id}`);
+        ogUrl.setAttribute('content', getCleanUrl(imageData));
     }
 
     let ogImage = document.querySelector('meta[property="og:image"]');
@@ -662,10 +670,10 @@ function updateColoringPageSchemas(imageData) {
             `https://magicpencil.fun/images/${imageData.category}/${imageData.filename}`);
     }
 
-    // Update canonical URL
+    // Update canonical URL to clean URL
     const canonicalTag = document.getElementById('canonical-tag');
     if (canonicalTag) {
-        canonicalTag.href = `https://magicpencil.fun/coloring.html?image=${imageData.id}`;
+        canonicalTag.href = getCleanUrl(imageData);
     }
 }
 
@@ -675,47 +683,45 @@ function updateColoringPageSchemas(imageData) {
 function initializeColoringPage() {
     console.log('Initializing coloring page...');
 
-    // Get image ID from URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const imageId = urlParams.get('image');
+    // Generated pages expose image ID via data attribute on <body>.
+    // Legacy coloring.html falls back to the ?image= URL param.
+    const imageId = document.body.dataset.imageId
+        || new URLSearchParams(window.location.search).get('image');
 
-    console.log('Image ID from URL:', imageId);
+    console.log('Image ID:', imageId);
 
     // Wire up undo/redo buttons
     initUndoRedo();
 
     if (imageId) {
-        // Get image data for schema
         const imageData = getImageById(imageId);
 
-        // Update canonical URL
-        const canonicalTag = document.getElementById('canonical-tag');
-        if (canonicalTag) {
-            canonicalTag.href = `https://magicpencil.fun/coloring.html?image=${imageId}`;
-        }
-
-        // Update schemas with image data
+        // Update canonical to clean URL (no-op on generated pages where it's already baked in)
         if (imageData) {
+            const canonicalTag = document.getElementById('canonical-tag');
+            if (canonicalTag) {
+                canonicalTag.href = getCleanUrl(imageData);
+            }
             updateColoringPageSchemas(imageData);
         }
 
         loadSVGImage(imageId);
     } else {
-        // Load random image if no ID specified
+        // No image ID — load a random image (only happens on bare coloring.html)
         const randomImage = getRandomImage();
         console.log('Random image selected:', randomImage);
         if (randomImage) {
             loadSVGImage(randomImage.id);
-            // Update URL without reloading
-            window.history.replaceState({}, '', `coloring.html?image=${randomImage.id}`);
+            // Use root-relative path (not full URL) so replaceState works on localhost too
+            const slug = randomImage.id.replace(randomImage.category + '-', '');
+            const cleanPath = `/color/${randomImage.category}/${slug}.html`;
+            window.history.replaceState({}, '', cleanPath);
 
-            // Update canonical URL
             const canonicalTag = document.getElementById('canonical-tag');
             if (canonicalTag) {
-                canonicalTag.href = `https://magicpencil.fun/coloring.html?image=${randomImage.id}`;
+                canonicalTag.href = cleanUrl;
             }
 
-            // Update schemas with random image data
             updateColoringPageSchemas(randomImage);
         } else {
             const container = document.getElementById('svg-container');

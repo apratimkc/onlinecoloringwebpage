@@ -470,8 +470,22 @@ function handleOrientationChange() {
     }
 }
 
+// ─── Canonical: point to desktop clean URL for the current image ─────────────
+function updateMobileCanonical() {
+    var imgId = new URLSearchParams(window.location.search).get('image');
+    if (!imgId) return;
+    var dashIdx = imgId.indexOf('-');
+    if (dashIdx === -1) return;
+    var cat  = imgId.slice(0, dashIdx);
+    var slug = imgId.slice(dashIdx + 1);
+    var cleanUrl = 'https://magicpencil.fun/color/' + cat + '/' + slug + '.html';
+    var tag = document.getElementById('canonical-tag');
+    if (tag) tag.href = cleanUrl;
+}
+
 // ─── Bootstrap ───────────────────────────────────────────────────────────────
 function initMobileColoringPage() {
+    updateMobileCanonical();
     initColorWheel();
     initHamburgerMenu();
     initMobileDownload();

@@ -24,6 +24,17 @@
     <meta property="og:image" content="https://magicpencil.fun/assets/og-image.png">
 
     <title>Category - MagicPencil</title>
+
+    <!-- Redirect ?cat= URLs to clean URLs (/categories/cat.html) before anything renders -->
+    <script>
+    (function () {
+        var catId = new URLSearchParams(window.location.search).get('cat');
+        if (catId) {
+            window.location.replace('/categories/' + catId + '.html');
+        }
+    })();
+    </script>
+
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/cookie-consent.css">
@@ -49,7 +60,7 @@
                 <span class="logo-text">Magic<span class="red">Pencil</span></span>
             </a>
             <nav class="main-nav">
-                <a href="index.html" class="btn">🏠 Home</a>
+                <a href="/" class="btn">🏠 Home</a>
                 <button id="random-btn" class="btn btn-random">🎲 Surprise Me</button>
             </nav>
         </div>
@@ -57,7 +68,7 @@
 
     <main class="container">
         <div class="breadcrumb">
-            <a href="index.html">Home</a> &gt; <span id="category-name">Category</span>
+            <a href="/">Home</a> &gt; <span id="category-name">Category</span>
         </div>
 
         <!-- AdSense Placeholder -->

@@ -13,6 +13,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 
+    <!-- Canonical is set dynamically to the desktop clean URL for whichever image is loaded -->
     <link rel="canonical" href="https://magicpencil.fun/coloring-mobile.html" id="canonical-tag" />
 
     <meta property="og:type" content="website">
@@ -32,14 +33,24 @@
     { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [] }
     </script>
 
-    <!-- Reverse redirect: send desktop users back to the full version -->
+    <!-- Reverse redirect: send desktop users to the clean URL for the current image -->
     <script>
     (function () {
         var isDesktop = window.matchMedia('(min-width: 768px)').matches
                      && !/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-        if (isDesktop) {
-            window.location.replace('coloring.html' + window.location.search);
+        if (!isDesktop) return;
+        var imgParam = new URLSearchParams(window.location.search).get('image');
+        if (imgParam) {
+            // "animals-elephant" -> "/color/animals/elephant.html"
+            var dashIdx = imgParam.indexOf('-');
+            if (dashIdx !== -1) {
+                var cat  = imgParam.slice(0, dashIdx);
+                var slug = imgParam.slice(dashIdx + 1);
+                window.location.replace('/color/' + cat + '/' + slug + '.html');
+                return;
+            }
         }
+        window.location.replace('/');
     })();
     </script>
 </head>
@@ -64,7 +75,7 @@
 
     <!-- ── HAMBURGER NAV DROPDOWN ────────────────────────── -->
     <nav class="mob-nav-menu" id="mob-nav-menu" aria-label="Navigation menu">
-        <a href="index.html" class="mob-nav-item">🏠 Home</a>
+        <a href="/" class="mob-nav-item">🏠 Home</a>
         <button class="mob-nav-item" id="mob-random-btn">🎲 Random</button>
         <button class="mob-nav-item" id="mob-next-btn">➡ Next</button>
     </nav>

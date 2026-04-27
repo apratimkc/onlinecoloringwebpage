@@ -3,6 +3,15 @@
  * Handles navigation, random image selection, and page initialization
  */
 
+function getImageUrl(image) {
+    const slug = image.id.replace(image.category + '-', '');
+    return `/color/${image.category}/${slug}.html`;
+}
+
+function getCategoryUrl(categoryId) {
+    return `/categories/${categoryId}.html`;
+}
+
 /**
  * Initialize Random Button (Global)
  */
@@ -13,7 +22,7 @@ function initializeRandomButton() {
     randomBtn.addEventListener('click', () => {
         const randomImage = getRandomImage();
         if (randomImage) {
-            window.location.href = `coloring.html?image=${randomImage.id}`;
+            window.location.href = getImageUrl(randomImage);
         }
     });
 }
@@ -28,7 +37,7 @@ function initializeStartColoringButton() {
     startBtn.addEventListener('click', () => {
         const randomImage = getRandomImage();
         if (randomImage) {
-            window.location.href = `coloring.html?image=${randomImage.id}`;
+            window.location.href = getImageUrl(randomImage);
         }
     });
 }
@@ -37,13 +46,13 @@ function initializeStartColoringButton() {
  * Initialize Category Page
  */
 function initializeCategoryPage() {
-    // Get category from URL
+    // Generated pages (/categories/animals.html): read from data-category-id on <body>
+    // Legacy category.html: fall back to ?cat= URL param
     const urlParams = new URLSearchParams(window.location.search);
-    const categoryId = urlParams.get('cat');
+    const categoryId = urlParams.get('cat') || document.body.dataset.categoryId;
 
     if (!categoryId) {
-        // Redirect to homepage if no category specified
-        window.location.href = 'index.html';
+        window.location.href = '/';
         return;
     }
 
@@ -90,13 +99,13 @@ function initializeCategoryPage() {
 
     let ogUrl = document.querySelector('meta[property="og:url"]');
     if (ogUrl) {
-        ogUrl.setAttribute('content', `https://magicpencil.fun/category.html?cat=${categoryId}`);
+        ogUrl.setAttribute('content', `https://magicpencil.fun${getCategoryUrl(categoryId)}`);
     }
 
-    // Update canonical URL
+    // Update canonical URL (no-op on generated pages where it's already baked in)
     const canonicalTag = document.getElementById('canonical-tag');
     if (canonicalTag) {
-        canonicalTag.href = `https://magicpencil.fun/category.html?cat=${categoryId}`;
+        canonicalTag.href = `https://magicpencil.fun${getCategoryUrl(categoryId)}`;
     }
 
     // Update Breadcrumb Schema
@@ -116,7 +125,7 @@ function initializeCategoryPage() {
                     "@type": "ListItem",
                     "position": 2,
                     "name": categoryMeta.name,
-                    "item": `https://magicpencil.fun/category.html?cat=${categoryId}`
+                    "item": `https://magicpencil.fun${getCategoryUrl(categoryId)}`
                 }
             ]
         };
@@ -144,12 +153,12 @@ function initializeCategoryPage() {
     imageGrid.innerHTML = '';
     images.forEach(image => {
         const card = document.createElement('a');
-        card.href = `coloring.html?image=${image.id}`;
+        card.href = getImageUrl(image);
         card.className = 'image-card';
 
         card.innerHTML = `
             <div class="image-thumbnail">
-                <img src="images/${image.category}/${image.filename}" alt="${image.name}" onerror="this.style.display='none'">
+                <img src="/images/${image.category}/${image.filename}" alt="${image.name}" onerror="this.style.display='none'">
             </div>
             <h4>${image.name}</h4>
         `;

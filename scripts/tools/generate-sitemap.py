@@ -8,12 +8,17 @@ import os
 import json
 import re
 from datetime import datetime
+from pathlib import Path
+from urllib.parse import quote
 from xml.dom import minidom
+
+# Paths — always relative to repo root regardless of CWD
+_REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+IMAGES_DIR = str(_REPO_ROOT / "images")
+OUTPUT_FILE = str(_REPO_ROOT / "sitemap.xml")
 
 # Configuration
 BASE_URL = "https://magicpencil.fun"
-IMAGES_DIR = "images"
-OUTPUT_FILE = "sitemap.xml"
 
 # Static pages configuration
 STATIC_PAGES = [
@@ -166,12 +171,12 @@ def generate_sitemap(images_by_category):
             ''
         ])
 
-    # Add category pages
+    # Add category pages (clean URLs)
     xml_lines.append('    <!-- Category Pages -->')
     for category in CATEGORIES:
         xml_lines.extend([
             '    <url>',
-            f'        <loc>{BASE_URL}/category.html?cat={category}</loc>',
+            f'        <loc>{BASE_URL}/categories/{category}.html</loc>',
             f'        <lastmod>{today}</lastmod>',
             '        <changefreq>weekly</changefreq>',
             '        <priority>0.8</priority>',
@@ -190,19 +195,25 @@ def generate_sitemap(images_by_category):
             image_id = generate_image_id(category, filename)
             image_title = generate_image_title(filename)
 
-            # URL encode the filename for image location
-            encoded_filename = filename.replace(' ', '%20')
+            # URL-encode filename for image:loc (handles spaces, &, etc.)
+            encoded_filename = quote(filename, safe='')
+
+            # Build clean URL: strip category prefix from image_id to get slug
+            slug = image_id[len(category) + 1:] if image_id.startswith(category + '-') else image_id
+
+            # XML-escape text fields (& -> &amp;)
+            safe_title = image_title.replace('&', '&amp;')
 
             xml_lines.extend([
                 '    <url>',
-                f'        <loc>{BASE_URL}/coloring.html?image={image_id}</loc>',
+                f'        <loc>{BASE_URL}/color/{category}/{slug}.html</loc>',
                 f'        <lastmod>{today}</lastmod>',
                 '        <changefreq>monthly</changefreq>',
                 '        <priority>0.7</priority>',
                 '        <image:image>',
                 f'            <image:loc>{BASE_URL}/images/{category}/{encoded_filename}</image:loc>',
-                f'            <image:caption>{image_title} Coloring Page - Free Online Coloring for Kids</image:caption>',
-                f'            <image:title>{image_title}</image:title>',
+                f'            <image:caption>{safe_title} Coloring Page - Free Online Coloring for Kids</image:caption>',
+                f'            <image:title>{safe_title}</image:title>',
                 '        </image:image>',
                 '    </url>',
                 ''

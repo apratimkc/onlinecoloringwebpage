@@ -114,7 +114,7 @@ async function downloadOriginalPDF() {
 
     try {
         // Construct path to original SVG file
-        const svgPath = `images/${coloringState.currentImage.category}/${coloringState.currentImage.filename}`;
+        const svgPath = `/images/${coloringState.currentImage.category}/${coloringState.currentImage.filename}`;
 
         // Fetch the original SVG file (uncolored)
         const response = await fetch(svgPath);

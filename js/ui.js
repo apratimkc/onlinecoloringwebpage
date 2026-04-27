@@ -322,7 +322,7 @@ function initializeNextImageButton() {
             () => {
                 const randomImage = getRandomImage();
                 if (randomImage) {
-                    window.location.href = `coloring.html?image=${randomImage.id}`;
+                    window.location.href = getImageUrl(randomImage);
                 }
                 hideDialog();
             },

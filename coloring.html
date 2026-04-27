@@ -24,6 +24,21 @@
 
     <title>Coloring - MagicPencil</title>
 
+    <!-- Redirect ?image= URLs to clean URLs (/color/cat/slug.html) before anything renders -->
+    <script>
+    (function () {
+        var imageId = new URLSearchParams(window.location.search).get('image');
+        if (imageId) {
+            var dashIdx = imageId.indexOf('-');
+            if (dashIdx !== -1) {
+                var cat  = imageId.slice(0, dashIdx);
+                var slug = imageId.slice(dashIdx + 1);
+                window.location.replace('/color/' + cat + '/' + slug + '.html');
+            }
+        }
+    })();
+    </script>
+
     <!-- Redirect mobile users before body renders (no flash) -->
     <script src="js/mobile-redirect.js"></script>
 
@@ -51,7 +66,7 @@
                 <span class="logo-text">Magic<span class="red">Pencil</span></span>
             </a>
             <nav class="main-nav">
-                <a href="index.html" class="btn">🏠 Home</a>
+                <a href="/" class="btn">🏠 Home</a>
                 <button id="random-btn" class="btn btn-random">🎲 Random</button>
                 <button id="next-image-btn" class="btn btn-secondary">Next →</button>
                 <div class="download-wrap">

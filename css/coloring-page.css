@@ -2,7 +2,21 @@
    Coloring Page – Crayon Box Style
    =============================================== */
 
-.coloring-page { overflow: hidden; }
+.coloring-page { overflow-x: hidden; }
+
+/* SEO content: in DOM for Google/screen-readers, zero layout impact.
+   Uses the standard "visually hidden" (sr-only) pattern. */
+.seo-coloring-meta {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
 
 /* ── Three-panel grid ────────────────────────── */
 .coloring-container {
@@ -589,3 +603,58 @@
 
 .dialog-actions { display: flex; gap: 10px; justify-content: flex-end; }
 .dialog-actions .btn { flex: 1; justify-content: center; }
+
+/* ── Fun Fact Section ────────────────────────── */
+.fun-fact-section {
+  max-width: 860px;
+  margin: 32px auto 40px;
+  padding: 0 20px;
+}
+
+.fun-fact-inner {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  background: #fffde7;
+  border: 2px solid #ffe082;
+  border-radius: 16px;
+  padding: 24px 28px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.fun-fact-icon {
+  font-size: 2rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.fun-fact-text { flex: 1; }
+
+.fun-fact-heading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #e65100;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.fun-fact-text p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #3e2723;
+  margin: 0 0 10px;
+}
+
+.fun-fact-text p:last-child { margin-bottom: 0; }
+
+@media (max-width: 767px) {
+  .fun-fact-inner {
+    flex-direction: column;
+    gap: 10px;
+    padding: 18px 16px;
+  }
+  .fun-fact-icon { font-size: 1.6rem; }
+  .fun-fact-text p { font-size: 0.95rem; }
+}

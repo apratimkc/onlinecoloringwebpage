@@ -5,144 +5,122 @@
     <!-- Homepage -->
     <url>
         <loc>https://magicpencil.fun/</loc>
-        <lastmod>2026-01-09</lastmod>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
-    </url>
-
-    <!-- FAQ and Resources -->
-    <url>
-        <loc>https://magicpencil.fun/faq.html</loc>
-        <lastmod>2026-01-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <url>
-        <loc>https://magicpencil.fun/blog-benefits-of-coloring.html</loc>
-        <lastmod>2026-01-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-
-    <url>
-        <loc>https://magicpencil.fun/blog-choosing-coloring-pages-by-age.html</loc>
-        <lastmod>2026-01-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
     </url>
 
     <!-- Legal Pages -->
     <url>
         <loc>https://magicpencil.fun/privacy-policy.html</loc>
-        <lastmod>2026-01-09</lastmod>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
 
     <url>
         <loc>https://magicpencil.fun/contact.html</loc>
-        <lastmod>2026-01-09</lastmod>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
 
     <url>
         <loc>https://magicpencil.fun/about.html</loc>
-        <lastmod>2026-01-09</lastmod>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
 
     <!-- Category Pages -->
     <url>
-        <loc>https://magicpencil.fun/category.html?cat=alphabets</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/categories/alphabets.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/category.html?cat=animals</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/categories/animals.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/category.html?cat=princess</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/categories/princess.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/category.html?cat=unicorns</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/categories/unicorns.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/category.html?cat=vehicles</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/categories/vehicles.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/category.html?cat=food</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/categories/food.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/category.html?cat=nature</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/categories/nature.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/category.html?cat=holidays</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/categories/holidays.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/category.html?cat=ocean</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/categories/ocean.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/category.html?cat=fantasy</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/categories/fantasy.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/category.html?cat=shapes</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/categories/shapes.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/category.html?cat=flowers</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/categories/flowers.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <!-- Coloring Pages - Alphabets -->
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-a-apple</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/a-apple.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -153,8 +131,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-b-balloons</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/b-balloons.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -165,8 +143,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-c-cat</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/c-cat.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -177,8 +155,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-d-dog</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/d-dog.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -189,8 +167,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-e-elephant</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/e-elephant.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -201,8 +179,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-f-fish</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/f-fish.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -213,8 +191,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-g-gift</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/g-gift.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -225,8 +203,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-h-house</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/h-house.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -237,8 +215,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-i-icecream</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/i-icecream.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -249,8 +227,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-j-juice</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/j-juice.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -261,8 +239,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-k-kite</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/k-kite.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -273,8 +251,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-l-leaf</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/l-leaf.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -285,8 +263,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-m-moon</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/m-moon.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -297,8 +275,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-n-nest</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/n-nest.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -309,8 +287,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-o-orange</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/o-orange.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -321,8 +299,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-p-pencil</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/p-pencil.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -333,8 +311,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-q-queen</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/q-queen.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -345,8 +323,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-r-rainbow</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/r-rainbow.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -357,8 +335,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-s-sun</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/s-sun.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -369,8 +347,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-t-tree</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/t-tree.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -381,8 +359,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-u-umbrella</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/u-umbrella.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -393,8 +371,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-v-van</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/v-van.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -405,8 +383,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-w-whale</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/w-whale.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -417,8 +395,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-x-xylophone</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/x-xylophone.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -429,8 +407,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-y-yak</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/y-yak.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -441,8 +419,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=alphabets-z-zebra</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/alphabets/z-zebra.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -454,8 +432,8 @@
 
     <!-- Coloring Pages - Animals -->
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=animals-caterpillar</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/animals/caterpillar.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -466,8 +444,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=animals-dinosaur</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/animals/dinosaur.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -478,8 +456,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=animals-elephant</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/animals/elephant.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -490,8 +468,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=animals-giraffe</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/animals/giraffe.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -502,8 +480,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=animals-hen</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/animals/hen.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -514,8 +492,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=animals-honey-bee</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/animals/honey-bee.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -526,8 +504,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=animals-ladybug</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/animals/ladybug.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -538,8 +516,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=animals-lion</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/animals/lion.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -550,8 +528,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=animals-owl</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/animals/owl.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -562,8 +540,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=animals-penguin</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/animals/penguin.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -574,8 +552,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=animals-rabbit-1</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/animals/rabbit-1.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -586,8 +564,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=animals-rabbit</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/animals/rabbit.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -598,8 +576,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=animals-rubber-duckie</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/animals/rubber-duckie.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -610,8 +588,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=animals-teddy-bear</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/animals/teddy-bear.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -622,8 +600,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=animals-peacock</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/animals/peacock.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -635,8 +613,8 @@
 
     <!-- Coloring Pages - Fantasy -->
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=fantasy-dragon-firing</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/fantasy/dragon-firing.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -647,8 +625,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=fantasy-house</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/fantasy/house.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -659,8 +637,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=fantasy-magic-wand</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/fantasy/magic-wand.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -671,8 +649,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=fantasy-pair-of-mittens</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/fantasy/pair-of-mittens.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -683,8 +661,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=fantasy-pencil</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/fantasy/pencil.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -695,8 +673,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=fantasy-robot</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/fantasy/robot.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -707,8 +685,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=fantasy-treasure-chest</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/fantasy/treasure-chest.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -720,8 +698,8 @@
 
     <!-- Coloring Pages - Flowers -->
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=flowers-cactus</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/flowers/cactus.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -732,8 +710,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=flowers-mushroom</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/flowers/mushroom.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -744,8 +722,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=flowers-rose</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/flowers/rose.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -756,8 +734,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=flowers-sunflower</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/flowers/sunflower.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -768,8 +746,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=flowers-tulip</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/flowers/tulip.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -781,8 +759,8 @@
 
     <!-- Coloring Pages - Food -->
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=food-apple</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/food/apple.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -793,8 +771,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=food-birthday-cake</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/food/birthday-cake.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -805,8 +783,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=food-donut</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/food/donut.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -817,8 +795,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=food-ice-cream-cone</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/food/ice-cream-cone.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -829,20 +807,20 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=food-tea-cup--saucer</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/food/tea-cup--saucer.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
-            <image:loc>https://magicpencil.fun/images/food/Tea%20Cup%20&amp;%20Saucer.svg</image:loc>
+            <image:loc>https://magicpencil.fun/images/food/Tea%20Cup%20%26%20Saucer.svg</image:loc>
             <image:caption>Tea Cup &amp; Saucer Coloring Page - Free Online Coloring for Kids</image:caption>
             <image:title>Tea Cup &amp; Saucer</image:title>
         </image:image>
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=food-watermelon</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/food/watermelon.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -853,8 +831,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=food-cupcake</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/food/cupcake.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -866,8 +844,8 @@
 
     <!-- Coloring Pages - Holidays -->
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=holidays-gift-box</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/holidays/gift-box.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -878,8 +856,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=holidays-hot-air-balloon</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/holidays/hot-air-balloon.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -890,8 +868,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=holidays-kite</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/holidays/kite.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -903,20 +881,20 @@
 
     <!-- Coloring Pages - Nature -->
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=nature-cloud--sun</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/nature/cloud--sun.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
-            <image:loc>https://magicpencil.fun/images/nature/Cloud%20&amp;%20Sun.svg</image:loc>
+            <image:loc>https://magicpencil.fun/images/nature/Cloud%20%26%20Sun.svg</image:loc>
             <image:caption>Cloud &amp; Sun Coloring Page - Free Online Coloring for Kids</image:caption>
             <image:title>Cloud &amp; Sun</image:title>
         </image:image>
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=nature-oak-leaf</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/nature/oak-leaf.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -927,8 +905,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=nature-palm-tree</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/nature/palm-tree.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -939,8 +917,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=nature-rainbow</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/nature/rainbow.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -951,8 +929,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=nature-sea-and-hills</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/nature/sea-and-hills.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -963,8 +941,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=nature-smiling-star</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/nature/smiling-star.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -975,8 +953,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=nature-starry-sky</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/nature/starry-sky.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -987,8 +965,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=nature-umbrella</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/nature/umbrella.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -1000,8 +978,8 @@
 
     <!-- Coloring Pages - Ocean -->
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=ocean-sea-shell</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/ocean/sea-shell.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -1012,8 +990,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=ocean-shark-with-baby</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/ocean/shark-with-baby.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -1024,8 +1002,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=ocean-submarine</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/ocean/submarine.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -1036,8 +1014,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=ocean-whale</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/ocean/whale.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -1049,8 +1027,8 @@
 
     <!-- Coloring Pages - Shapes -->
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=shapes-crown</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/shapes/crown.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -1062,8 +1040,8 @@
 
     <!-- Coloring Pages - Vehicles -->
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=vehicles-airplane</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/vehicles/airplane.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -1074,8 +1052,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=vehicles-bicycle</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/vehicles/bicycle.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -1086,8 +1064,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=vehicles-car</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/vehicles/car.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -1098,8 +1076,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=vehicles-fire-truck</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/vehicles/fire-truck.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -1110,8 +1088,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=vehicles-helicopter</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/vehicles/helicopter.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -1122,8 +1100,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=vehicles-rocket</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/vehicles/rocket.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -1134,8 +1112,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=vehicles-school-bus</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/vehicles/school-bus.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -1146,8 +1124,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=vehicles-steam-engine-train</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/vehicles/steam-engine-train.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -1158,8 +1136,8 @@
     </url>
 
     <url>
-        <loc>https://magicpencil.fun/coloring.html?image=vehicles-tugboat</loc>
-        <lastmod>2026-01-09</lastmod>
+        <loc>https://magicpencil.fun/color/vehicles/tugboat.html</loc>
+        <lastmod>2026-04-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>

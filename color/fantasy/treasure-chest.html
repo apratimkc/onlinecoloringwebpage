@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Color a treasure chest online for free! Tap to fill with colors, gradients, and patterns. Perfect for kids ages 2–12. Print or download your artwork.">
+    <meta name="keywords" content="Fantasy coloring page, coloring pages for kids, free online coloring, treasure chest coloring page">
+    <meta name="author" content="MagicPencil">
+
+    <!-- Favicons (absolute paths — this page lives at /color/category/slug.html) -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+
+    <!-- Canonical — static, baked in, unique per page -->
+    <link rel="canonical" href="https://magicpencil.fun/color/fantasy/treasure-chest.html" id="canonical-tag" />
+
+    <!-- Mobile alternate — tells Google the mobile equivalent URL (separate mobile URL pattern) -->
+    <link rel="alternate" media="only screen and (max-width: 767px)" href="https://magicpencil.fun/coloring-mobile.html?image=fantasy-treasure-chest">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Treasure Chest Coloring Page for Kids — Free Online | MagicPencil">
+    <meta property="og:description" content="Color a treasure chest online for free! Tap to fill with colors, gradients, and patterns. Perfect for kids ages 2–12. Print or download your artwork.">
+    <meta property="og:url" content="https://magicpencil.fun/color/fantasy/treasure-chest.html">
+    <meta property="og:image" content="https://magicpencil.fun/assets/og-image.png">
+
+    <title>Treasure Chest Coloring Page for Kids — Free Online | MagicPencil</title>
+
+    <!-- CSS — MUST be absolute paths (page is 2 levels deep at /color/category/slug.html) -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/coloring-page.css">
+    <link rel="stylesheet" href="/css/cookie-consent.css">
+
+    <!-- Schema.org: ImageObject — baked in with real values -->
+    <script type="application/ld+json" id="image-schema">
+    {
+  "@context": "https://schema.org",
+  "@type": "ImageObject",
+  "name": "Treasure Chest",
+  "contentUrl": "https://magicpencil.fun/images/fantasy/Treasure%20Chest.svg",
+  "description": "Color a treasure chest online for free! Tap to fill with colors, gradients, and patterns. Perfect for kids ages 2–12. Print or download your artwork.",
+  "url": "https://magicpencil.fun/color/fantasy/treasure-chest.html"
+}
+    </script>
+
+    <!-- Schema.org: BreadcrumbList — baked in with real values -->
+    <script type="application/ld+json" id="breadcrumb-schema">
+    {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://magicpencil.fun/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Fantasy",
+      "item": "https://magicpencil.fun/categories/fantasy.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Treasure Chest Coloring Page",
+      "item": "https://magicpencil.fun/color/fantasy/treasure-chest.html"
+    }
+  ]
+}
+    </script>
+
+    <!-- NOTE: mobile-redirect.js is intentionally at end of <body>, NOT here.
+         It needs to read data-image-id from <body>, which is not yet parsed at <head> time. -->
+</head>
+<body class="coloring-page" data-image-id="fantasy-treasure-chest" data-category="fantasy">
+
+    <!-- SEO content: in DOM for Google indexing, zero layout impact (visually hidden).
+         The sr-only pattern is standard accessibility practice; Google indexes it fully. -->
+    <div class="seo-coloring-meta">
+        <nav aria-label="Breadcrumb">
+            <a href="/">Home</a> › <a href="/categories/fantasy.html">Fantasy</a> › Treasure Chest Coloring Page
+        </nav>
+        <h1>Treasure Chest Coloring Page</h1>
+        <p>Bring this treasure chest to life with your favorite colors! Tap any area to fill it instantly. Try solid colors, rainbow gradients, or fun patterns like dots and stars. When you're done, download your artwork or print it out.</p>
+    </div>
+
+    <!-- ── COLORING TOOL (identical layout to coloring.html; all hrefs absolute) ── -->
+
+    <header class="main-header">
+        <div class="container">
+            <a href="/" class="logo" style="text-decoration:none;">
+                <div class="logo-box">
+                    <img src="/assets/logo-128.png" alt="MagicPencil Logo">
+                </div>
+                <span class="logo-text">Magic<span class="red">Pencil</span></span>
+            </a>
+            <nav class="main-nav">
+                <a href="/" class="btn">🏠 Home</a>
+                <button id="random-btn" class="btn btn-random">🎲 Random</button>
+                <button id="next-image-btn" class="btn btn-secondary">Next →</button>
+                <div class="download-wrap">
+                    <button id="download-btn" class="btn btn-primary">⬇️ Download ▾</button>
+                    <div class="download-menu" id="download-menu">
+                        <button class="download-opt" id="download-colored-btn">🎨 Colored Art</button>
+                        <button class="download-opt" id="download-sketch-btn">📄 Clean Outline</button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="coloring-container">
+
+        <!-- ── LEFT: Color Panel ─────────────────── -->
+        <aside class="color-panel panel">
+            <h3>🎨 My colors</h3>
+
+            <div class="pencil-indicator">
+                <div id="pencil-icon" aria-hidden="true">
+                    <svg viewBox="0 0 44 90" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="22,88 12,72 32,72" fill="#f5deb3" stroke="#2d2416" stroke-width="2" stroke-linejoin="round"/>
+                        <rect x="12" y="66" width="20" height="6" fill="rgba(0,0,0,0.2)"/>
+                        <rect x="12" y="10" width="20" height="58" fill="currentColor"/>
+                        <rect x="12" y="36" width="20" height="14" fill="rgba(255,255,255,0.35)"/>
+                        <rect x="16" y="14" width="4" height="22" rx="2" fill="rgba(255,255,255,0.3)"/>
+                        <rect x="12" y="10" width="20" height="62" fill="none" stroke="#2d2416" stroke-width="2.5" stroke-linejoin="round"/>
+                        <line x1="12" y1="66" x2="32" y2="66" stroke="#2d2416" stroke-width="2"/>
+                        <path d="M12,10 L12,6 Q12,2 15,2 L29,2 Q32,2 32,6 L32,10" fill="rgba(0,0,0,0.2)" stroke="#2d2416" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="indicator-info">
+                    <div class="indicator-label" id="current-color-name">Red</div>
+                    <div class="indicator-sub">Active color</div>
+                </div>
+            </div>
+
+            <div class="color-palette">
+                <div class="color-grid">
+                    <!-- Row 1: Warm Reds/Pinks -->
+                    <button class="color-btn active" data-color="#FF0000" style="background:#FF0000" title="Red" aria-label="Red"></button>
+                    <button class="color-btn" data-color="#FF6347" style="background:#FF6347" title="Coral" aria-label="Coral"></button>
+                    <button class="color-btn" data-color="#FFC0CB" style="background:#FFC0CB" title="Pink" aria-label="Pink"></button>
+                    <button class="color-btn" data-color="#FFCBA4" style="background:#FFCBA4" title="Peach" aria-label="Peach"></button>
+                    <!-- Row 2: Oranges/Yellows -->
+                    <button class="color-btn" data-color="#FFA500" style="background:#FFA500" title="Orange" aria-label="Orange"></button>
+                    <button class="color-btn" data-color="#FFFF00" style="background:#FFFF00" title="Yellow" aria-label="Yellow"></button>
+                    <button class="color-btn" data-color="#FFD700" style="background:#FFD700" title="Gold" aria-label="Gold"></button>
+                    <button class="color-btn" data-color="#F5DEB3" style="background:#F5DEB3" title="Tan" aria-label="Tan"></button>
+                    <!-- Row 3: Greens -->
+                    <button class="color-btn" data-color="#00FF00" style="background:#00FF00" title="Lime" aria-label="Lime"></button>
+                    <button class="color-btn" data-color="#32CD32" style="background:#32CD32" title="Green" aria-label="Green"></button>
+                    <button class="color-btn" data-color="#228B22" style="background:#228B22" title="Forest" aria-label="Forest Green"></button>
+                    <button class="color-btn" data-color="#90EE90" style="background:#90EE90" title="Lt Green" aria-label="Light Green"></button>
+                    <!-- Row 4: Blues/Teals -->
+                    <button class="color-btn" data-color="#0000FF" style="background:#0000FF" title="Blue" aria-label="Blue"></button>
+                    <button class="color-btn" data-color="#87CEEB" style="background:#87CEEB" title="Sky Blue" aria-label="Sky Blue"></button>
+                    <button class="color-btn" data-color="#008B8B" style="background:#008B8B" title="Teal" aria-label="Teal"></button>
+                    <button class="color-btn" data-color="#191970" style="background:#191970" title="Navy" aria-label="Navy"></button>
+                    <!-- Row 5: Purples/Pinks -->
+                    <button class="color-btn" data-color="#800080" style="background:#800080" title="Purple" aria-label="Purple"></button>
+                    <button class="color-btn" data-color="#4B0082" style="background:#4B0082" title="Indigo" aria-label="Indigo"></button>
+                    <button class="color-btn" data-color="#FF69B4" style="background:#FF69B4" title="Hot Pink" aria-label="Hot Pink"></button>
+                    <button class="color-btn" data-color="#DDA0DD" style="background:#DDA0DD" title="Plum" aria-label="Plum"></button>
+                    <!-- Row 6: Earth/Neutrals -->
+                    <button class="color-btn" data-color="#8B4513" style="background:#8B4513" title="Brown" aria-label="Brown"></button>
+                    <button class="color-btn" data-color="#D2691E" style="background:#D2691E" title="Chocolate" aria-label="Chocolate"></button>
+                    <button class="color-btn" data-color="#808080" style="background:#808080" title="Gray" aria-label="Gray"></button>
+                    <button class="color-btn" data-color="#FFFFFF" style="background:#FFFFFF;border-color:#2d2416" title="White" aria-label="White"></button>
+                </div>
+            </div>
+
+            <button id="clear-btn" class="btn btn-danger btn-full-width">🔄 Start Fresh</button>
+        </aside>
+
+        <!-- ── CENTER: Canvas ──────────────────── -->
+        <section class="canvas-panel">
+            <div class="canvas-title">
+                <h2 id="image-title-text">🎨 Coloring Page</h2>
+                <div class="history">
+                    <button class="hist-btn" id="undo-btn" aria-label="Undo" title="Undo (Ctrl+Z)" disabled>↶</button>
+                    <button class="hist-btn" id="redo-btn" aria-label="Redo" title="Redo (Ctrl+Y)" disabled>↷</button>
+                </div>
+                <span class="difficulty-badge" id="difficulty-badge">Easy</span>
+            </div>
+
+            <div class="canvas-area">
+                <div id="svg-container" class="svg-container">
+                    <div class="svg-ratio-wrapper">
+                        <span class="tape tl"></span>
+                        <span class="tape tr"></span>
+                        <span class="tape bl"></span>
+                        <span class="tape br"></span>
+                        <div class="svg-content">
+                            <p class="loading-message">Loading image...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── RIGHT: Magic Tools ──────────────── -->
+        <aside class="advanced-panel panel">
+            <button id="advanced-toggle" class="advanced-toggle">✨ Magic Tools ▼</button>
+
+            <div id="advanced-content" class="advanced-content">
+                <h3>✨ Magic tools</h3>
+
+                <h4>🌈 Rainbow mix</h4>
+                <div class="gradient-grid">
+                    <button class="gradient-btn" data-from="#FF0000" data-to="#FFFF00" data-direction="to bottom"       title="Red → Yellow"  style="background:linear-gradient(to bottom,#FF0000,#FFFF00)"></button>
+                    <button class="gradient-btn" data-from="#0000FF" data-to="#00FF00" data-direction="to bottom"       title="Blue → Green"  style="background:linear-gradient(to bottom,#0000FF,#00FF00)"></button>
+                    <button class="gradient-btn" data-from="#800080" data-to="#FFC0CB" data-direction="to bottom"       title="Purple → Pink" style="background:linear-gradient(to bottom,#800080,#FFC0CB)"></button>
+                    <button class="gradient-btn" data-from="#FFA500" data-to="#FFFFFF" data-direction="to bottom"       title="Orange → White" style="background:linear-gradient(to bottom,#FFA500,#fff)"></button>
+                    <button class="gradient-btn" data-from="#87CEEB" data-to="#FFFFFF" data-direction="to right"        title="Sky → White"   style="background:linear-gradient(to right,#87CEEB,#fff)"></button>
+                    <button class="gradient-btn" data-from="#FF0000" data-to="#800080" data-direction="to right"        title="Red → Purple"  style="background:linear-gradient(to right,#FF0000,#800080)"></button>
+                    <button class="gradient-btn" data-from="#00FF00" data-to="#FFFF00" data-direction="to bottom right" title="Green → Yellow" style="background:linear-gradient(to bottom right,#00FF00,#FFFF00)"></button>
+                    <button class="gradient-btn" data-from="#0000FF" data-to="#FFC0CB" data-direction="to bottom right" title="Blue → Pink"   style="background:linear-gradient(to bottom right,#0000FF,#FFC0CB)"></button>
+                </div>
+
+                <h4>🎭 Patterns</h4>
+                <div class="pattern-controls">
+                    <div class="pattern-grid">
+                        <button class="pattern-btn" data-pattern="stripes" title="Stripes">
+                            <svg viewBox="0 0 28 28">
+                                <line x1="0" y1="7"  x2="28" y2="7"  stroke="currentColor" stroke-width="3"/>
+                                <line x1="0" y1="14" x2="28" y2="14" stroke="currentColor" stroke-width="3"/>
+                                <line x1="0" y1="21" x2="28" y2="21" stroke="currentColor" stroke-width="3"/>
+                            </svg>
+                            <span>Stripes</span>
+                        </button>
+                        <button class="pattern-btn" data-pattern="dots" title="Dots">
+                            <svg viewBox="0 0 28 28">
+                                <circle cx="7"  cy="7"  r="3.5" fill="currentColor"/>
+                                <circle cx="21" cy="7"  r="3.5" fill="currentColor"/>
+                                <circle cx="7"  cy="21" r="3.5" fill="currentColor"/>
+                                <circle cx="21" cy="21" r="3.5" fill="currentColor"/>
+                            </svg>
+                            <span>Dots</span>
+                        </button>
+                        <button class="pattern-btn" data-pattern="checkerboard" title="Checkerboard">
+                            <svg viewBox="0 0 28 28">
+                                <rect x="0"  y="0"  width="14" height="14" fill="currentColor"/>
+                                <rect x="14" y="14" width="14" height="14" fill="currentColor"/>
+                            </svg>
+                            <span>Checker</span>
+                        </button>
+                        <button class="pattern-btn" data-pattern="hearts" title="Hearts">
+                            <svg viewBox="0 0 28 28">
+                                <text x="4" y="22" font-size="20" fill="currentColor">♥</text>
+                            </svg>
+                            <span>Hearts</span>
+                        </button>
+                        <button class="pattern-btn" data-pattern="stars" title="Stars">
+                            <svg viewBox="0 0 28 28">
+                                <text x="4" y="22" font-size="20" fill="currentColor">★</text>
+                            </svg>
+                            <span>Stars</span>
+                        </button>
+                        <button class="pattern-btn" data-pattern="waves" title="Waves">
+                            <svg viewBox="0 0 28 28" fill="none">
+                                <path d="M0 10 Q7 4, 14 10 Q21 16, 28 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                                <path d="M0 19 Q7 13, 14 19 Q21 25, 28 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            </svg>
+                            <span>Waves</span>
+                        </button>
+                    </div>
+                </div>
+
+                <button id="color-it-btn" class="btn-magic-wand" title="Auto-color all regions with random colors">
+                    <span style="font-size:22px;line-height:1;">🪄</span>
+                    ✨ Magic Fill!
+                </button>
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- Fun fact section — visible below the canvas, good for SEO and kid engagement -->
+    <section class="fun-fact-section">
+        <div class="fun-fact-inner">
+            <span class="fun-fact-icon">💡</span>
+            <div class="fun-fact-text">
+                <h3 class="fun-fact-heading">Did You Know?</h3>
+                <p>Imagine a treasure chest! It is not just any box; it is a magical container that holds secrets from long, long ago. Some treasure chests are filled with shiny gold coins and sparkling jewels, waiting for a brave adventurer to discover them. Other chests might hold secret maps, ancient stories, or maybe even a talking parrot hiding inside! These chests are special because they hold the promises of wonderful adventures and amazing discoveries waiting just for you.</p>
+                <p>These wonderful treasure chests are usually made from strong, sturdy wood, like oak or pine, so they can protect the treasures inside for hundreds of years. Think about how strong the wood is, holding all the secrets safe from the rain and the wind. Sometimes, the chests are decorated with beautiful carvings and shiny metal hinges, making them look grand and very important. They are like secret fortresses built just for hiding amazing things!</p>
+                <p>A treasure chest is often the most exciting place in a pirate's story, because it represents the start of a grand journey. When a pirate finds a chest, they know that a big adventure is about to begin! These chests are often buried deep in the sandy earth or hidden behind thick jungle vines, waiting patiently for someone clever enough to find them. They remind us that the greatest treasures are not always gold, but the stories and dreams we find when we explore the world.</p>
+                <p>Some treasure chests are actually very heavy and strong, sometimes weighing as much as a big grown-up! If you could open one, you would find an amazing world waiting inside, full of forgotten history and untold stories. They are the perfect place to imagine yourself as the explorer who finally unlocks the door to a magical world of riches.</p>
+                <p>Real treasure chests are usually a warm, rich brown color, but since you are the adventurer, you can paint yours any color you wish—maybe sparkling blue or bright emerald green! 💎🎨</p>
+            </div>
+        </div>
+    </section>
+    <!-- Confirmation Dialog -->
+    <div id="dialog-overlay" class="dialog-overlay">
+        <div class="dialog-box">
+            <h3 id="dialog-title">Confirm</h3>
+            <p id="dialog-message">Are you sure?</p>
+            <div class="dialog-actions">
+                <button id="dialog-confirm" class="btn btn-primary">Yes</button>
+                <button id="dialog-cancel" class="btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent-banner" class="cookie-consent-banner">
+        <div class="cookie-consent-container">
+            <div class="cookie-consent-content">
+                <h3>🍪 We Use Cookies</h3>
+                <p>We use cookies to improve your experience and show COPPA-compliant ads. No personal information is collected from children. <a href="/privacy-policy.html">Learn more</a></p>
+            </div>
+            <div class="cookie-consent-actions">
+                <button id="cookie-accept-btn" class="cookie-consent-btn cookie-consent-btn-accept">Accept All</button>
+                <button id="cookie-decline-btn" class="cookie-consent-btn cookie-consent-btn-decline">Decline</button>
+                <button id="cookie-settings-btn" class="cookie-consent-btn cookie-consent-btn-settings">Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div id="cookie-settings-modal" class="cookie-settings-modal">
+        <div class="cookie-settings-content">
+            <h2>Cookie Preferences</h2>
+            <p>We respect your privacy. Choose which cookies you want to allow:</p>
+            <div class="cookie-option">
+                <h3><span>Essential Cookies</span><span class="required-badge">Required</span></h3>
+                <p>These cookies are necessary for the website to function and cannot be disabled.</p>
+            </div>
+            <div class="cookie-option">
+                <h3><span>Analytics Cookies</span>
+                    <label class="cookie-toggle"><input type="checkbox" id="analytics-toggle"><span class="cookie-toggle-slider"></span></label>
+                </h3>
+                <p>Help us understand how visitors use our site to improve user experience.</p>
+            </div>
+            <div class="cookie-option">
+                <h3><span>Advertising Cookies</span>
+                    <label class="cookie-toggle"><input type="checkbox" id="ads-toggle"><span class="cookie-toggle-slider"></span></label>
+                </h3>
+                <p>Allow COPPA-compliant ads from Google AdSense. All ads shown to children are non-personalized.</p>
+            </div>
+            <div class="cookie-settings-actions">
+                <button id="cookie-save-btn" class="cookie-consent-btn cookie-consent-btn-accept">Save Preferences</button>
+                <button id="cookie-close-btn" class="cookie-consent-btn cookie-consent-btn-decline">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shared scripts — all absolute paths -->
+    <script src="/js/data/image-catalog.js"></script>
+    <script src="/js/data/category-metadata.js"></script>
+    <script src="/js/colors.js"></script>
+    <script src="/js/coloring.js"></script>
+    <script src="/js/ui.js"></script>
+    <script src="/js/download.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/app.js"></script>
+
+    <!-- Mobile redirect LAST — needs data-image-id on <body> which is now in the DOM -->
+    <script src="/js/mobile-redirect.js"></script>
+</body>
+</html>
