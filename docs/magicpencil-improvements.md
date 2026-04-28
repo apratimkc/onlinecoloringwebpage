@@ -71,6 +71,24 @@ Each post: 600–900 words, 1–2 affiliate product links, links back to the rel
 
 ---
 
+### 6b. Google Analytics — Affiliate Click Events ⏳ TODO
+On every affiliate product link (`rel="sponsored"`), fire a GA4 `affiliate_click` event so you can see exactly which products get clicks, on which pages, and in which categories.
+
+**Implementation:** Add a `click` event listener in `js/affiliate-widget.js` that calls:
+```js
+gtag('event', 'affiliate_click', {
+  asin: p.asin,
+  product_name: p.name,
+  category: category,
+  page_url: window.location.pathname
+});
+```
+**Why it matters:** Without this, you have no way to know which products convert. Once you have 30+ days of data, you can swap low-click products for better ones and meaningfully improve affiliate revenue.
+
+**Prerequisite:** GA4 tag must be on the site first (add `gtag.js` to page templates).
+
+---
+
 ## 🟡 TIER 3 — Traffic Growth
 
 ### 7. Pinterest Strategy
@@ -111,7 +129,26 @@ You already have a free download feature. A natural next step is bundling 10–1
 
 ---
 
-### 12. Social Sharing Button Per Coloring Page
+### 12. Google Analytics — Coloring Progress Milestone Events ⏳ TODO
+Fire GA4 events when a user has colored 50%, 80%, and 100% of the regions on a coloring page. This tells you how engaged users actually are before they leave.
+
+**Implementation:** In `app.js`, after every fill action, calculate `coloredRegions / totalRegions`. When the ratio first crosses 0.5, 0.8, and 1.0, fire:
+```js
+gtag('event', 'coloring_progress', {
+  milestone: '50%',   // or '80%' / '100%'
+  image_id: currentImageId,
+  category: currentCategory
+});
+```
+Track the 100% event as `coloring_complete` separately — it's the strongest engagement signal on the site.
+
+**Why it matters:** Knowing drop-off rates (how many users reach 50% vs 100%) reveals whether images are too complex, and whether the "download" CTA is being seen by engaged users.
+
+**Prerequisite:** GA4 tag must be on the site (same as item 6b above).
+
+---
+
+### 13. Social Sharing Button Per Coloring Page
 Add a "Share this page" button on each coloring page. When a parent shares their child's colored creation on Facebook/WhatsApp, it brings referral traffic organically. Low dev effort, compounding effect over time.
 
 ---

@@ -216,7 +216,7 @@ Section: "The Bottom Line"
 Disclosure at top AND bottom
 ```
 
-**Status:** ⏳ TODO (3 posts)
+**Status:** ✅ Done — 3 review posts written: best-crayons-for-kids, best-markers-for-kids, best-coloring-books-for-toddlers. Each has comparison table, 4-5 full review cards with 500px product images, pros/cons, buying guide, verdict, dual disclosure.
 
 ---
 
