@@ -8,6 +8,13 @@ const undoStack = [];
 const redoStack = [];
 const MAX_HISTORY = 50;
 
+// ── Analytics tracking state ──────────────────────────────────────────────────
+let _sessionStartTime = 0;
+let _firstFillFired   = false;
+let _fillsCount       = 0;
+let _milestonesFired  = new Set();
+let _undoCountInSession = 0;
+
 function updateHistoryButtons() {
     const undoBtn = document.getElementById('undo-btn');
     const redoBtn = document.getElementById('redo-btn');
@@ -43,6 +50,12 @@ function initUndoRedo() {
         undoBtn.addEventListener('click', () => {
             const action = undoStack.pop();
             if (!action) return;
+
+            // Track undo usage
+            if (typeof trackUndoUsed === 'function' && coloringState.currentImage) {
+                _undoCountInSession++;
+                trackUndoUsed(coloringState.currentImage.id, _undoCountInSession);
+            }
             if (action.type === 'clear') {
                 // Restore all previous fills
                 Object.entries(action.prevFills).forEach(([id, data]) => {
@@ -108,6 +121,25 @@ function updateProgress() {
     else if (pct < 0.75)   label.textContent = 'Halfway there!';
     else if (pct < 1)      label.textContent = 'Almost done!';
     else                   label.textContent = 'Masterpiece! 🎉';
+
+    // Analytics: fire progress milestones (25 / 50 / 80 / 100 %)
+    if (coloringState.currentImage && typeof trackColoringProgress === 'function') {
+        const imageId  = coloringState.currentImage.id;
+        const category = coloringState.currentImage.category;
+        [[0.25, '25%'], [0.5, '50%'], [0.8, '80%'], [1.0, '100%']].forEach(([threshold, label]) => {
+            if (pct >= threshold && !_milestonesFired.has(label)) {
+                _milestonesFired.add(label);
+                trackColoringProgress(label, imageId, category);
+                if (threshold === 1.0) {
+                    trackColoringComplete(
+                        imageId, category,
+                        Math.round((Date.now() - _sessionStartTime) / 1000),
+                        _fillsCount
+                    );
+                }
+            }
+        });
+    }
 }
 
 // Global state for coloring
@@ -178,6 +210,13 @@ async function loadSVGImage(imageId) {
         redoStack.length = 0;
         updateHistoryButtons();
 
+        // Reset analytics tracking state for this new image session
+        _sessionStartTime   = Date.now();
+        _firstFillFired     = false;
+        _fillsCount         = 0;
+        _milestonesFired    = new Set();
+        _undoCountInSession = 0;
+
         // Update canvas title and difficulty badge
         const titleEl = document.getElementById('image-title-text');
         if (titleEl) titleEl.textContent = image.name;
@@ -197,6 +236,12 @@ async function loadSVGImage(imageId) {
         // Update cursor to reflect current color
         if (typeof updateCursorColor === 'function') {
             updateCursorColor();
+        }
+
+        // Track session start
+        if (typeof trackColoringSessionStart === 'function') {
+            const deviceType = /Android|iPhone|iPad/i.test(navigator.userAgent) ? 'mobile' : 'desktop';
+            trackColoringSessionStart(image.id, image.category, deviceType);
         }
 
         console.log('SVG loaded successfully:', image.name);
@@ -436,6 +481,17 @@ function fillPath(path) {
                 break;
         }
 
+        // Analytics: first fill and fill count
+        _fillsCount++;
+        if (!_firstFillFired && typeof trackFirstFill === 'function') {
+            _firstFillFired = true;
+            trackFirstFill(
+                coloringState.currentImage ? coloringState.currentImage.id : '',
+                coloringState.currentImage ? coloringState.currentImage.category : '',
+                Date.now() - _sessionStartTime
+            );
+        }
+
         // Update progress pill
         updateProgress();
 
@@ -472,6 +528,11 @@ function colorItRandomly() {
     if (!coloringState.svgElement) {
         console.warn('No SVG loaded');
         return;
+    }
+
+    // Track magic fill use
+    if (typeof trackMagicFillUsed === 'function' && coloringState.currentImage) {
+        trackMagicFillUsed(coloringState.currentImage.id, coloringState.currentImage.category);
     }
 
     const paths = coloringState.svgElement.querySelectorAll('path, circle, rect, polygon, ellipse');

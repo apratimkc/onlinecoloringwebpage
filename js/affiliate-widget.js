@@ -7,6 +7,15 @@
   const body = document.body;
   const category = (body.dataset.categoryId || body.dataset.category || '').toLowerCase();
 
+  function getPageType() {
+    const path = window.location.pathname;
+    if (path === '/' || path === '/index.html') return 'homepage';
+    if (path.startsWith('/categories/')) return 'category_page';
+    if (path.startsWith('/blog/')) return 'blog';
+    if (path.startsWith('/color/')) return 'coloring_page';
+    return 'other';
+  }
+
   const pool = AFFILIATE_PRODUCTS.filter(p =>
     p.categories.includes('all') || (category && p.categories.includes(category))
   );
@@ -60,4 +69,26 @@
       <div class="affiliate-list">${cards}</div>
       <p class="affiliate-disclosure">As an Amazon Associate, MagicPencil earns from qualifying purchases.</p>
     </section>`;
+
+  const pageType = getPageType();
+
+  // Fire widget impression event
+  if (typeof trackAffiliateWidgetImpression === 'function') {
+    trackAffiliateWidgetImpression(
+      category || 'all',
+      pageType,
+      picks.map(p => p.asin)
+    );
+  }
+
+  // Fire click event on each affiliate card
+  if (typeof trackAffiliateClick === 'function') {
+    placeholder.querySelectorAll('.affiliate-card').forEach((link, i) => {
+      const product = picks[i];
+      if (!product) return;
+      link.addEventListener('click', () => {
+        trackAffiliateClick(product.asin, product.name, category || 'all', pageType);
+      });
+    });
+  }
 })();

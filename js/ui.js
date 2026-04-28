@@ -196,6 +196,11 @@ function initializeColorPalette() {
                 coloringState.colorHistory.shift(); // Keep only last 2
             }
 
+            // Track color selection
+            if (typeof trackColorSelected === 'function') {
+                trackColorSelected(getColorName(newColor), newColor, 'solid');
+            }
+
             // Set to solid mode
             coloringState.fillMode = 'solid';
 
@@ -233,6 +238,12 @@ function initializeGradientControls() {
             // Switch to gradient mode
             coloringState.fillMode = 'gradient';
 
+            // Track fill mode change
+            if (typeof trackFillModeUsed === 'function') {
+                const imgId = coloringState.currentImage ? coloringState.currentImage.id : '';
+                trackFillModeUsed('gradient', imgId);
+            }
+
             // Remove active from color buttons and pattern buttons
             document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.pattern-btn').forEach(b => b.classList.remove('active'));
@@ -262,6 +273,12 @@ function initializePatternControls() {
 
             // Switch to pattern mode
             coloringState.fillMode = 'pattern';
+
+            // Track fill mode change
+            if (typeof trackFillModeUsed === 'function') {
+                const imgId = coloringState.currentImage ? coloringState.currentImage.id : '';
+                trackFillModeUsed('pattern', imgId);
+            }
 
             // Remove active from color buttons
             document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
@@ -298,6 +315,19 @@ function initializeClearButton() {
             'Clear All Colors',
             'Are you sure you want to clear all colors? This cannot be undone.',
             () => {
+                // Track before clearing so we capture the completion % at time of clear
+                if (typeof trackClearAllConfirmed === 'function' && coloringState.currentImage) {
+                    const total  = coloringState.svgElement
+                        ? coloringState.svgElement.querySelectorAll('path, circle, rect, polygon, ellipse').length
+                        : 0;
+                    const filled = Object.keys(coloringState.filledRegions).length;
+                    const pct    = total > 0 ? Math.round((filled / total) * 100) : 0;
+                    trackClearAllConfirmed(
+                        coloringState.currentImage.id,
+                        coloringState.currentImage.category,
+                        pct
+                    );
+                }
                 clearAllColors();
                 hideDialog();
             },
@@ -322,6 +352,9 @@ function initializeNextImageButton() {
             () => {
                 const randomImage = getRandomImage();
                 if (randomImage) {
+                    if (typeof trackNextImageConfirmed === 'function' && coloringState.currentImage) {
+                        trackNextImageConfirmed(coloringState.currentImage.id, randomImage.id);
+                    }
                     window.location.href = getImageUrl(randomImage);
                 }
                 hideDialog();

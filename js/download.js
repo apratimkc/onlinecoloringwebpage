@@ -306,8 +306,28 @@ function initializeDownloadButton() {
         downloadMenu.classList.remove('open');
     });
 
-    if (coloredBtn) coloredBtn.addEventListener('click', downloadImage);
-    if (sketchBtn)  sketchBtn.addEventListener('click', downloadOriginalPDF);
+    if (coloredBtn) coloredBtn.addEventListener('click', () => {
+        if (typeof trackDownloadClicked === 'function' && coloringState.currentImage) {
+            const total  = coloringState.svgElement
+                ? coloringState.svgElement.querySelectorAll('path, circle, rect, polygon, ellipse').length
+                : 0;
+            const filled = Object.keys(coloringState.filledRegions).length;
+            const pct    = total > 0 ? Math.round((filled / total) * 100) : 0;
+            trackDownloadClicked('colored_art', coloringState.currentImage.id, coloringState.currentImage.category, pct);
+        }
+        downloadImage();
+    });
+    if (sketchBtn) sketchBtn.addEventListener('click', () => {
+        if (typeof trackDownloadClicked === 'function' && coloringState.currentImage) {
+            const total  = coloringState.svgElement
+                ? coloringState.svgElement.querySelectorAll('path, circle, rect, polygon, ellipse').length
+                : 0;
+            const filled = Object.keys(coloringState.filledRegions).length;
+            const pct    = total > 0 ? Math.round((filled / total) * 100) : 0;
+            trackDownloadClicked('clean_outline', coloringState.currentImage.id, coloringState.currentImage.category, pct);
+        }
+        downloadOriginalPDF();
+    });
 }
 
 /**

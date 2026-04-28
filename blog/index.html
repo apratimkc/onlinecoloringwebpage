@@ -3,113 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MagicPencil Blog — Tips, guides, and resources for kids coloring, child development, and choosing the right art supplies.">
+    <meta name="description" content="MagicPencil Blog — Tips, guides, product reviews, and free coloring page resources for kids, parents, and teachers.">
     <meta name="author" content="MagicPencil">
 
     <link rel="canonical" href="https://magicpencil.fun/blog/" />
-
-    <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://magicpencil.fun/blog/">
     <meta property="og:title" content="MagicPencil Blog — Coloring Tips & Resources for Kids">
-    <meta property="og:description" content="Tips, guides, and resources for kids coloring, child development, and choosing the right art supplies.">
+    <meta property="og:description" content="Tips, guides, product reviews, and free coloring page resources for parents and educators.">
     <meta property="og:image" content="https://magicpencil.fun/assets/og-image.png">
 
     <title>Blog — Coloring Tips & Resources for Kids | MagicPencil</title>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/cookie-consent.css">
 
     <style>
-        .blog-index {
-            max-width: 900px;
+        .blog-index-wrap {
+            max-width: 960px;
             margin: 40px auto;
             padding: 0 20px;
         }
 
-        .blog-index h1 {
-            color: #667eea;
-            font-size: 2.2em;
-            margin-bottom: 8px;
+        .blog-index-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.4rem;
+            color: var(--ink);
+            margin-bottom: 6px;
         }
 
-        .blog-index .subtitle {
-            color: #888;
-            font-size: 1.1em;
-            margin-bottom: 40px;
+        .blog-index-sub {
+            font-size: 1.05rem;
+            color: var(--ink-soft, #6a5a3a);
+            margin-bottom: 36px;
         }
 
+        /* Filter tabs */
+        .blog-filters {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .filter-btn {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 6px 16px;
+            border: 2px solid var(--ink);
+            border-radius: 20px;
+            background: var(--white);
+            color: var(--ink);
+            cursor: pointer;
+            box-shadow: 3px 3px 0 var(--ink);
+            text-decoration: none;
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        .filter-btn:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 var(--ink);
+        }
+
+        .filter-btn.active {
+            background: var(--ink);
+            color: var(--white);
+        }
+
+        /* Post grid */
         .post-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 22px;
         }
 
         .post-card {
-            background: #fff;
-            border: 1px solid #e8eaf0;
-            border-radius: 12px;
-            padding: 28px;
-            text-decoration: none;
-            color: inherit;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            transition: box-shadow 0.2s ease, transform 0.2s ease;
+            gap: 10px;
+            padding: 22px;
+            border: 3px solid var(--ink);
+            border-radius: var(--radius-md);
+            background: var(--white);
+            box-shadow: var(--shadow-md);
+            text-decoration: none;
+            color: var(--ink);
+            transition: transform 0.15s, box-shadow 0.15s;
         }
 
         .post-card:hover {
-            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.15);
-            transform: translateY(-2px);
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0 var(--ink);
         }
 
         .post-tag {
             display: inline-block;
-            background: #f0f4ff;
-            color: #667eea;
-            font-size: 0.78em;
-            font-weight: 600;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
             padding: 3px 10px;
+            border: 2px solid var(--ink);
             border-radius: 20px;
+            background: var(--yellow);
+            color: var(--ink);
             align-self: flex-start;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.04em;
         }
 
         .post-tag.product-review {
-            background: #fff3e0;
-            color: #e65100;
+            background: var(--red);
+            color: #fff;
+        }
+
+        .post-tag.resource {
+            background: var(--green);
+            color: #fff;
         }
 
         .post-card h2 {
-            font-size: 1.2em;
-            color: #222;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.15rem;
+            color: var(--ink);
             margin: 0;
-            line-height: 1.4;
+            line-height: 1.35;
         }
 
         .post-card p {
-            font-size: 0.95em;
-            color: #666;
+            font-size: 0.92rem;
+            color: var(--ink-soft, #6a5a3a);
             margin: 0;
             line-height: 1.6;
+            flex: 1;
         }
 
         .post-meta {
-            font-size: 0.85em;
-            color: #aaa;
+            font-size: 0.8rem;
+            color: #999;
             margin-top: auto;
+            padding-top: 8px;
+            border-top: 1.5px solid #eee;
         }
 
-        @media (max-width: 480px) {
-            .post-grid {
-                grid-template-columns: 1fr;
-            }
+        @media (max-width: 600px) {
+            .blog-index-title { font-size: 1.8rem; }
+            .post-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -128,80 +172,90 @@
         </div>
     </header>
 
-    <main class="blog-index">
-        <h1>MagicPencil Blog</h1>
-        <p class="subtitle">Coloring tips, child development guides, and honest product recommendations for parents and educators.</p>
+    <main class="blog-index-wrap">
+        <h1 class="blog-index-title">📝 MagicPencil Blog</h1>
+        <p class="blog-index-sub">Free coloring pages, product reviews, and expert tips for parents and educators.</p>
 
-        <div class="post-grid">
+        <div class="blog-filters">
+            <span class="filter-btn active" data-filter="all">All Posts</span>
+            <span class="filter-btn" data-filter="free-pages" style="background:var(--yellow);border-color:var(--ink);">Free Pages</span>
+            <span class="filter-btn" data-filter="product-review" style="background:var(--red);color:#fff;border-color:var(--ink);">Product Reviews</span>
+            <span class="filter-btn" data-filter="resource" style="background:var(--green);color:#fff;border-color:var(--ink);">Resources</span>
+        </div>
 
-            <a href="/blog/benefits-of-coloring.html" class="post-card">
-                <span class="post-tag">Resource</span>
-                <h2>10 Amazing Benefits of Coloring for Child Development</h2>
-                <p>Discover how coloring builds fine motor skills, focus, creativity, and emotional regulation — backed by research.</p>
-                <div class="post-meta">January 9, 2026 · 8 min read</div>
-            </a>
+        <div class="post-grid" id="post-grid">
 
-            <a href="/blog/choosing-coloring-pages-by-age.html" class="post-card">
-                <span class="post-tag">Resource</span>
-                <h2>How to Choose Age-Appropriate Coloring Pages: Complete Parent's Guide</h2>
-                <p>A breakdown of exactly which coloring pages work best from toddlers to teens — with complexity guides for each stage.</p>
-                <div class="post-meta">January 9, 2026 · 10 min read</div>
-            </a>
-
-            <a href="/blog/animal-coloring-pages.html" class="post-card">
-                <span class="post-tag">Free Pages</span>
-                <h2>Free Animal Coloring Pages for Kids — 15 Cute Animals to Color Online</h2>
-                <p>Elephants, lions, owls, penguins, rabbits, and more — 15 animals ready to color in one tap. Print-free too.</p>
-                <div class="post-meta">April 27, 2026 · 5 min read</div>
-            </a>
-
-            <a href="/blog/elephant-coloring-pages.html" class="post-card">
-                <span class="post-tag">Free Pages</span>
-                <h2>Free Elephant Coloring Pages for Kids — Color Online or Print Free</h2>
-                <p>Color a majestic elephant online or print free at home. Plus fun elephant facts and coloring tips for kids.</p>
-                <div class="post-meta">April 27, 2026 · 5 min read</div>
-            </a>
-
-            <a href="/blog/unicorn-coloring-pages.html" class="post-card">
-                <span class="post-tag">Free Pages</span>
-                <h2>Free Unicorn Coloring Pages for Kids — Magical Designs to Color Online</h2>
-                <p>Magical fantasy coloring pages with dragons, wands, and enchanted scenes. Unicorn facts and supply picks included.</p>
-                <div class="post-meta">April 27, 2026 · 5 min read</div>
-            </a>
-
-            <a href="/blog/alphabet-coloring-pages.html" class="post-card">
-                <span class="post-tag">Free Pages</span>
-                <h2>Free Alphabet Coloring Pages A to Z — Learn Letters While Coloring</h2>
-                <p>All 26 letters, each paired with a fun illustration. Perfect for preschool and kindergarten letter learning.</p>
-                <div class="post-meta">April 27, 2026 · 5 min read</div>
-            </a>
-
-            <a href="/blog/flower-coloring-pages.html" class="post-card">
-                <span class="post-tag">Free Pages</span>
-                <h2>Free Flower Coloring Pages for Kids — Rose, Sunflower, Tulip & More</h2>
-                <p>Five beautiful flower designs to color online or print. Coloring tips for every flower plus nature facts kids will love.</p>
-                <div class="post-meta">April 27, 2026 · 5 min read</div>
-            </a>
-
-            <a href="/blog/best-crayons-for-kids.html" class="post-card">
+            <!-- Apr 28 — Product Reviews (newest) -->
+            <a href="/blog/best-coloring-books-for-toddlers.html" class="post-card" data-type="product-review">
                 <span class="post-tag product-review">Product Review</span>
-                <h2>Best Crayons for Kids in 2026 — 5 Top Picks by Age</h2>
-                <p>From toddler jumbo crayons to 64-color school sets — honest reviews with pros, cons, and a buying guide for every age.</p>
+                <h2>Best Coloring Books for Toddlers in 2026 — 5 Picks That Hold Attention</h2>
+                <p>Animals, vehicles, ocean, dragons, and alphabet — toddler coloring books with simple outlines that actually work for ages 2–5.</p>
                 <div class="post-meta">April 28, 2026 · 7 min read</div>
             </a>
 
-            <a href="/blog/best-markers-for-kids.html" class="post-card">
+            <a href="/blog/best-markers-for-kids.html" class="post-card" data-type="product-review">
                 <span class="post-tag product-review">Product Review</span>
                 <h2>Best Washable Markers for Kids in 2026 — 4 Top Picks Reviewed</h2>
                 <p>Toddler-safe 8-count sets to 100-count super tip collections — find the right washable markers for your child's age.</p>
                 <div class="post-meta">April 28, 2026 · 6 min read</div>
             </a>
 
-            <a href="/blog/best-coloring-books-for-toddlers.html" class="post-card">
+            <a href="/blog/best-crayons-for-kids.html" class="post-card" data-type="product-review">
                 <span class="post-tag product-review">Product Review</span>
-                <h2>Best Coloring Books for Toddlers in 2026 — 5 Picks That Hold Attention</h2>
-                <p>Animals, vehicles, ocean, dragons, and alphabet — the toddler coloring books with simple outlines that actually work for ages 2–5.</p>
+                <h2>Best Crayons for Kids in 2026 — 5 Top Picks by Age</h2>
+                <p>From toddler jumbo crayons to 64-color school sets — honest reviews with pros, cons, and a buying guide for every age.</p>
                 <div class="post-meta">April 28, 2026 · 7 min read</div>
+            </a>
+
+            <!-- Apr 27 — Free Pages -->
+            <a href="/blog/flower-coloring-pages.html" class="post-card" data-type="free-pages">
+                <span class="post-tag">Free Pages</span>
+                <h2>Free Flower Coloring Pages for Kids — Rose, Sunflower, Tulip & More</h2>
+                <p>Five beautiful flower designs to color online or print. Coloring tips for every flower plus nature facts kids will love.</p>
+                <div class="post-meta">April 27, 2026 · 5 min read</div>
+            </a>
+
+            <a href="/blog/alphabet-coloring-pages.html" class="post-card" data-type="free-pages">
+                <span class="post-tag">Free Pages</span>
+                <h2>Free Alphabet Coloring Pages A to Z — Learn Letters While Coloring</h2>
+                <p>All 26 letters, each paired with a fun illustration. Perfect for preschool and kindergarten letter learning.</p>
+                <div class="post-meta">April 27, 2026 · 5 min read</div>
+            </a>
+
+            <a href="/blog/unicorn-coloring-pages.html" class="post-card" data-type="free-pages">
+                <span class="post-tag">Free Pages</span>
+                <h2>Free Unicorn Coloring Pages for Kids — Magical Designs to Color Online</h2>
+                <p>Magical fantasy coloring pages with dragons, wands, and enchanted scenes. Unicorn facts and supply picks included.</p>
+                <div class="post-meta">April 27, 2026 · 5 min read</div>
+            </a>
+
+            <a href="/blog/elephant-coloring-pages.html" class="post-card" data-type="free-pages">
+                <span class="post-tag">Free Pages</span>
+                <h2>Free Elephant Coloring Pages for Kids — Color Online or Print Free</h2>
+                <p>Color a majestic elephant online or print free at home. Plus fun elephant facts and coloring tips for kids.</p>
+                <div class="post-meta">April 27, 2026 · 5 min read</div>
+            </a>
+
+            <a href="/blog/animal-coloring-pages.html" class="post-card" data-type="free-pages">
+                <span class="post-tag">Free Pages</span>
+                <h2>Free Animal Coloring Pages for Kids — 15 Cute Animals to Color Online</h2>
+                <p>Elephants, lions, owls, penguins, rabbits, and more — 15 animals ready to color in one tap. Print-free too.</p>
+                <div class="post-meta">April 27, 2026 · 5 min read</div>
+            </a>
+
+            <!-- Jan 9 — Resources (oldest) -->
+            <a href="/blog/choosing-coloring-pages-by-age.html" class="post-card" data-type="resource">
+                <span class="post-tag resource">Resource</span>
+                <h2>How to Choose Age-Appropriate Coloring Pages: Complete Parent's Guide</h2>
+                <p>A breakdown of exactly which coloring pages work best from toddlers to teens — with complexity guides for each stage.</p>
+                <div class="post-meta">January 9, 2026 · 10 min read</div>
+            </a>
+
+            <a href="/blog/benefits-of-coloring.html" class="post-card" data-type="resource">
+                <span class="post-tag resource">Resource</span>
+                <h2>10 Amazing Benefits of Coloring for Child Development</h2>
+                <p>Discover how coloring builds fine motor skills, focus, creativity, and emotional regulation — backed by research.</p>
+                <div class="post-meta">January 9, 2026 · 8 min read</div>
             </a>
 
         </div>
@@ -220,6 +274,32 @@
     </footer>
 
     <script src="/js/data/image-catalog.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+    <script src="/js/blog.js"></script>
     <script src="/js/app.js"></script>
+    <script>
+        (function () {
+            var btns = document.querySelectorAll('.filter-btn');
+            var cards = document.querySelectorAll('#post-grid .post-card');
+
+            btns.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var filter = btn.getAttribute('data-filter');
+
+                    btns.forEach(function (b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+
+                    cards.forEach(function (card) {
+                        if (filter === 'all' || card.getAttribute('data-type') === filter) {
+                            card.style.display = '';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        })();
+    </script>
 </body>
 </html>

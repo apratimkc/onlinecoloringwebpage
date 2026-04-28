@@ -22,6 +22,9 @@ function initializeRandomButton() {
     randomBtn.addEventListener('click', () => {
         const randomImage = getRandomImage();
         if (randomImage) {
+            if (typeof trackRandomUsed === 'function') {
+                trackRandomUsed('header_button', randomImage.id);
+            }
             window.location.href = getImageUrl(randomImage);
         }
     });
@@ -37,6 +40,9 @@ function initializeStartColoringButton() {
     startBtn.addEventListener('click', () => {
         const randomImage = getRandomImage();
         if (randomImage) {
+            if (typeof trackRandomUsed === 'function') {
+                trackRandomUsed('hero_cta', randomImage.id);
+            }
             window.location.href = getImageUrl(randomImage);
         }
     });
@@ -151,7 +157,7 @@ function initializeCategoryPage() {
 
     // Create image cards
     imageGrid.innerHTML = '';
-    images.forEach(image => {
+    images.forEach((image, index) => {
         const card = document.createElement('a');
         card.href = getImageUrl(image);
         card.className = 'image-card';
@@ -162,6 +168,13 @@ function initializeCategoryPage() {
             </div>
             <h4>${image.name}</h4>
         `;
+
+        // Track image selection
+        card.addEventListener('click', () => {
+            if (typeof trackImageSelected === 'function') {
+                trackImageSelected(image.id, categoryId, index);
+            }
+        });
 
         imageGrid.appendChild(card);
     });
@@ -185,8 +198,14 @@ function initializeCategoryPage() {
  * Initialize Homepage
  */
 function initializeHomepage() {
-    // No special initialization needed for homepage currently
-    // Category cards are already in HTML
+    // Track category card clicks
+    document.querySelectorAll('.category-card[data-category]').forEach(card => {
+        card.addEventListener('click', () => {
+            if (typeof trackCategorySelected === 'function') {
+                trackCategorySelected(card.dataset.category, 'category_grid');
+            }
+        });
+    });
 }
 
 /**

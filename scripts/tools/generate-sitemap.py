@@ -51,6 +51,20 @@ CATEGORIES = [
     "food", "nature", "holidays", "ocean", "fantasy", "shapes", "flowers"
 ]
 
+# Blog posts — add an entry here each time a new post is published
+BLOG_POSTS = [
+    {"slug": "best-coloring-books-for-toddlers", "lastmod": "2026-04-28"},
+    {"slug": "best-markers-for-kids", "lastmod": "2026-04-28"},
+    {"slug": "best-crayons-for-kids", "lastmod": "2026-04-28"},
+    {"slug": "flower-coloring-pages", "lastmod": "2026-04-27"},
+    {"slug": "alphabet-coloring-pages", "lastmod": "2026-04-27"},
+    {"slug": "unicorn-coloring-pages", "lastmod": "2026-04-27"},
+    {"slug": "elephant-coloring-pages", "lastmod": "2026-04-27"},
+    {"slug": "animal-coloring-pages", "lastmod": "2026-04-27"},
+    {"slug": "choosing-coloring-pages-by-age", "lastmod": "2026-01-09"},
+    {"slug": "benefits-of-coloring", "lastmod": "2026-01-09"},
+]
+
 class Colors:
     """ANSI color codes for terminal output"""
     GREEN = '\033[92m'
@@ -167,6 +181,28 @@ def generate_sitemap(images_by_category):
             f'        <lastmod>{today}</lastmod>',
             f'        <changefreq>{page["changefreq"]}</changefreq>',
             f'        <priority>{page["priority"]}</priority>',
+            '    </url>',
+            ''
+        ])
+
+    # Add blog pages
+    xml_lines.append('    <!-- Blog Pages -->')
+    xml_lines.extend([
+        '    <url>',
+        f'        <loc>{BASE_URL}/blog/</loc>',
+        f'        <lastmod>{today}</lastmod>',
+        '        <changefreq>weekly</changefreq>',
+        '        <priority>0.8</priority>',
+        '    </url>',
+        ''
+    ])
+    for post in BLOG_POSTS:
+        xml_lines.extend([
+            '    <url>',
+            f'        <loc>{BASE_URL}/blog/{post["slug"]}.html</loc>',
+            f'        <lastmod>{post["lastmod"]}</lastmod>',
+            '        <changefreq>monthly</changefreq>',
+            '        <priority>0.7</priority>',
             '    </url>',
             ''
         ])
@@ -306,8 +342,9 @@ def main():
     print(f"  • Categories: {total_categories}")
     print(f"  • Images: {total_images}")
     print(f"  • Static pages: {len(STATIC_PAGES)}")
+    print(f"  • Blog posts: {len(BLOG_POSTS) + 1}")
     print(f"  • Category pages: {len(CATEGORIES)}")
-    print(f"  • Total URLs: {len(STATIC_PAGES) + len(CATEGORIES) + total_images}")
+    print(f"  • Total URLs: {len(STATIC_PAGES) + len(BLOG_POSTS) + 1 + len(CATEGORIES) + total_images}")
     print(f"  • Output file: {OUTPUT_FILE}")
     print(f"\n{Colors.YELLOW}Note: Changes not committed. Review and commit manually.{Colors.RESET}\n")
 

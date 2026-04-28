@@ -452,7 +452,19 @@ function initMagicPanel() {
 }
 
 // ─── Orientation change ──────────────────────────────────────────────────────
+let _prevOrientation = null;
+
 function handleOrientationChange() {
+    const newOrientation = window.innerHeight > window.innerWidth ? 'portrait' : 'landscape';
+    if (_prevOrientation && _prevOrientation !== newOrientation) {
+        if (typeof trackOrientationChange === 'function') {
+            const imgId = (typeof coloringState !== 'undefined' && coloringState.currentImage)
+                ? coloringState.currentImage.id : '';
+            trackOrientationChange(_prevOrientation, imgId);
+        }
+    }
+    _prevOrientation = newOrientation;
+
     resizeColorWheelCanvas();
 
     // Keep the currently selected colour at the pointer for the new geometry
@@ -485,6 +497,7 @@ function updateMobileCanonical() {
 
 // ─── Bootstrap ───────────────────────────────────────────────────────────────
 function initMobileColoringPage() {
+    _prevOrientation = window.innerHeight > window.innerWidth ? 'portrait' : 'landscape';
     updateMobileCanonical();
     initColorWheel();
     initHamburgerMenu();
