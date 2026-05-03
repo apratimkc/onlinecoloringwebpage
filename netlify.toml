@@ -14,13 +14,6 @@
     Content-Type = "text/plain; charset=utf-8"
     Cache-Control = "public, max-age=3600"
 
-# Ensure XML files are included
-[[redirects]]
-  from = "/sitemap.xml"
-  to = "/sitemap.xml"
-  status = 200
-  force = false
-
 # Redirect root favicon to assets folder
 [[redirects]]
   from = "/favicon.ico"
